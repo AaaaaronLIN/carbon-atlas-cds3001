@@ -1,0 +1,43 @@
+Part 1 verification — real output from carbon_lab.carbon_emission
+Captured: 2026-11-18 15:41 HKT  |  MySQL 8.0.46
+
+== Row count, date range, dimensions ==
++------------+------------+------------+--------+---------+
+| total_rows | first_day  | last_day   | series | sectors |
++------------+------------+------------+--------+---------+
+|     655200 | 2019-01-01 | 2026-08-31 |     39 |       6 |
++------------+------------+------------+--------+---------+
+
+== Sample rows ==
++----+------------+---------+------------------------+--------------+
+| id | date       | country | sector                 | value        |
++----+------------+---------+------------------------+--------------+
+|  1 | 2019-01-01 | Austria | Domestic Aviation      | 0.0000655401 |
+|  2 | 2019-01-01 | Austria | Ground Transport       |    0.0828784 |
+|  3 | 2019-01-01 | Austria | Industry               |    0.0307917 |
+|  4 | 2019-01-01 | Austria | International Aviation |   0.00568559 |
+|  5 | 2019-01-01 | Austria | Power                  |     0.013261 |
++----+------------+---------+------------------------+--------------+
+
+== World sector totals, 2025 (the /api/sectors query) ==
++------------------------+----------+
+| sector                 | total    |
++------------------------+----------+
+| Power                  | 13492.09 |
+| Industry               | 12663.62 |
+| Ground Transport       |  6884.44 |
+| Residential            |  3398.32 |
+| International Aviation |  1019.08 |
+| Domestic Aviation      |   398.37 |
++------------------------+----------+
+
+== Top 5 countries, 2025 (the /api/country_ytd query) ==
++--------------------+----------+
+| country            | total    |
++--------------------+----------+
+| China              | 12089.15 |
+| United States      |  5035.52 |
+| India              |  3308.65 |
+| Russian Federation |  1669.94 |
+| Japan              |    978.1 |
++--------------------+----------+

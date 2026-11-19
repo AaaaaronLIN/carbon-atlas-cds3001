@@ -1,0 +1,4 @@
+# CDS3001 Group Project - Part 2 dependencies
+flask>=3.0
+pymysql>=1.1
+cryptography>=42.0     # needed by pymysql for caching_sha2_password (MySQL 8 default)

@@ -1,0 +1,2500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+  (function () {
+    try {
+      var p = new URLSearchParams(location.search).get("theme");
+      var t = (p === "light" || p === "stage") ? p : (localStorage.getItem("carbon-atlas-theme") || "stage");
+      document.documentElement.setAttribute("data-theme", t === "light" ? "light" : "stage");
+    } catch (e) { document.documentElement.setAttribute("data-theme", "stage"); }
+  })();
+</script>
+<title>Carbon Atlas — See every tonne. Cut what matters.</title>
+<meta name="description" content="Carbon Atlas by Data Fanatics: a daily, sector-level brief on global CO₂ emissions. Carbon Monitor data stored in MySQL and served through our own Flask API.">
+<meta name="theme-color" content="#0A1310">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%230E7C5A'/%3E%3Ccircle cx='20' cy='20' r='12.5' fill='none' stroke='%23F6F3EC' stroke-width='1.4'/%3E%3Cellipse cx='20' cy='20' rx='5.2' ry='12.5' fill='none' stroke='%23F6F3EC' stroke-width='1.1' opacity='.8'/%3E%3Cline x1='7.5' y1='20' x2='32.5' y2='20' stroke='%23F6F3EC' stroke-width='1.1' opacity='.8'/%3E%3Cpath d='M20 11l2.6 7.2L20 16.7l-2.6 1.5z' fill='%23F6F3EC'/%3E%3C/svg%3E">
+<style>
+  /* ============================================================
+     Carbon Atlas — design tokens
+     A deliberately light, editorial "analyst brief" look:
+     paper + ink + emerald, hairline rules, serif headlines.
+     The default is the "stage" theme (deep ink + ivory + gold) for projection;
+     the light "day" theme is the print/report view. Both are original to this project.
+     (The reference dashboard supplied in the course is dark neon;
+      this file shares no styling, layout or widget set with it.)
+     ============================================================ */
+  :root{
+    --paper:#F6F3EC;
+    --panel:#FFFDF8;
+    --ink:#16211C;
+    --ink-2:#3B4A43;
+    --muted:#5E6B63;
+    --line:#DED9CC;
+    --line-soft:#EAE5D9;
+    --emerald:#0E7C5A;
+    --emerald-2:#0A5943;
+    --emerald-soft:#DCEBE3;
+    --vermilion:#B4471F;
+    --ochre:#9B7412;
+    --blue:#2F6DB5;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,"Helvetica Neue",Arial,sans-serif;
+    --mono:"SF Mono",ui-monospace,"Roboto Mono",Menlo,Consolas,monospace;
+    --maxw:1180px;
+    --radius:3px;
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{text-wrap:balance}
+  a{color:var(--emerald-2)}
+  :focus-visible{outline:2px solid var(--emerald-2);outline-offset:2px}
+  .skip{
+    position:absolute;left:-9999px;top:0;background:var(--ink);color:var(--paper);
+    padding:10px 16px;z-index:300;
+  }
+  .skip:focus{left:12px;top:12px}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  .visually-hidden{
+    position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;
+    clip:rect(0 0 0 0);white-space:nowrap;border:0;
+  }
+
+  /* ---------- top bar ---------- */
+  .topbar{
+    position:sticky;top:0;z-index:50;
+    background:rgba(246,243,236,.92);
+    backdrop-filter:saturate(140%) blur(8px);
+    -webkit-backdrop-filter:saturate(140%) blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar-in{
+    max-width:var(--maxw);margin:0 auto;padding:13px 28px;
+    display:flex;align-items:center;gap:26px;
+  }
+  .brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink)}
+  .brand-mark{width:34px;height:34px;display:block;flex:none}
+  .brand-text strong{
+    display:block;font-family:var(--serif);font-size:19px;font-weight:600;
+    letter-spacing:.005em;line-height:1.05;
+  }
+  .brand-text span{
+    display:block;font-family:var(--mono);font-size:9.5px;text-transform:uppercase;
+    letter-spacing:.16em;color:var(--muted);margin-top:3px;
+  }
+  .nav{display:flex;gap:22px;margin-left:auto}
+  .nav a{
+    color:var(--ink-2);text-decoration:none;font-size:13px;letter-spacing:.01em;
+    padding:5px 0;border-bottom:1px solid transparent;
+  }
+  .nav a:hover,.nav a:focus-visible{border-bottom-color:var(--ink)}
+  .status{
+    display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--muted);
+    border:1px solid var(--line);padding:6px 12px;border-radius:999px;
+    background:var(--panel);white-space:nowrap;font-variant-numeric:tabular-nums;
+  }
+  .status-dot{width:7px;height:7px;border-radius:50%;background:var(--emerald);flex:none;
+    box-shadow:0 0 0 3px rgba(14,124,90,.14)}
+  .status.is-offline{color:var(--vermilion);border-color:#E5C6B8}
+  .status.is-offline .status-dot{background:var(--vermilion);box-shadow:0 0 0 3px rgba(180,71,31,.14)}
+
+  /* ---------- hero ---------- */
+  .hero{padding:58px 0 8px}
+  .hero-eyebrow{
+    display:flex;align-items:center;gap:12px;
+    font-family:var(--mono);font-size:11px;text-transform:uppercase;
+    letter-spacing:.18em;color:var(--muted);
+  }
+  .hero-eyebrow::before{content:"";width:36px;height:1px;background:var(--ink);display:block}
+  .hero h1{
+    font-family:var(--serif);font-weight:400;letter-spacing:-.018em;
+    font-size:clamp(38px,5.4vw,66px);line-height:1.02;margin:20px 0 0;max-width:16ch;
+  }
+  .hero h1 em{font-style:italic;color:var(--emerald)}
+  .hero-lede{max-width:66ch;color:var(--ink-2);font-size:17px;margin:18px 0 0}
+  .hero-lede b{color:var(--ink);font-weight:600}
+
+  .scope{
+    display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px;
+    margin-top:26px;padding-top:18px;border-top:1px solid var(--line);
+  }
+  .scope-label{
+    font-family:var(--mono);font-size:10px;text-transform:uppercase;
+    letter-spacing:.14em;color:var(--muted);
+  }
+  .years{display:flex;gap:5px;flex-wrap:wrap}
+  .chip{
+    font-family:var(--mono);font-size:12px;line-height:1;color:var(--ink-2);
+    background:var(--panel);border:1px solid var(--line);border-radius:2px;
+    padding:8px 8px;cursor:pointer;transition:background .15s,border-color .15s,color .15s;
+  }
+  .chip:hover{border-color:var(--ink)}
+  .chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .chip .ytd{font-size:8.5px;letter-spacing:.1em;opacity:.65;margin-left:3px;vertical-align:1px}
+  .chip.play{border-color:var(--emerald);color:var(--emerald-2);font-family:var(--sans);font-weight:600}
+  .chip.play:hover{background:var(--emerald-soft)}
+  .chip.play[data-playing="true"]{background:var(--emerald);border-color:var(--emerald);color:#fff}
+  select{
+    font-family:var(--sans);font-size:13.5px;color:var(--ink);background:var(--panel);
+    border:1px solid var(--line);border-radius:2px;padding:7px 30px 7px 10px;
+    appearance:none;cursor:pointer;max-width:176px;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%235E6B63' stroke-width='1.4'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:right 10px center;
+  }
+  select:hover{border-color:var(--ink)}
+  .btn{
+    font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;
+    background:var(--panel);border:1px solid var(--line);color:var(--ink-2);
+    padding:8px 12px;border-radius:2px;cursor:pointer;transition:border-color .15s,color .15s;
+    white-space:nowrap;
+  }
+  .btn:hover{border-color:var(--ink);color:var(--ink)}
+  .scope{gap:10px 12px}
+  .scope .spacer{margin-left:auto}
+
+  /* ---------- KPI strip ---------- */
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);margin-top:38px;border-top:1px solid var(--ink)}
+  .kpi{padding:18px 22px 6px 0;border-right:1px solid var(--line);min-width:0}
+  .kpi:last-child{border-right:none;padding-right:0}
+  .kpi .name{
+    font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.13em;
+    color:var(--muted);
+  }
+  .kpi .value{
+    font-family:var(--serif);font-size:clamp(27px,3vw,40px);line-height:1.08;
+    margin-top:7px;letter-spacing:-.01em;font-variant-numeric:tabular-nums;
+    white-space:nowrap;
+  }
+  .kpi .value .unit{font-family:var(--sans);font-size:12.5px;color:var(--muted);letter-spacing:0;margin-left:5px}
+  .kpi .sub{font-size:12px;color:var(--muted);margin-top:3px;min-height:18px}
+  .up{color:var(--vermilion)}
+  .down{color:var(--emerald-2)}
+
+  .headline{
+    margin-top:26px;padding:15px 20px;background:var(--emerald-soft);
+    border-left:3px solid var(--emerald);font-size:15.5px;color:var(--ink);
+    max-width:100%;
+  }
+  .headline b{font-weight:600}
+
+  /* ---------- sections ---------- */
+  .section{padding-top:52px;margin-top:52px;border-top:1px solid var(--line);scroll-margin-top:78px}
+  .sec-head{
+    display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:20px;
+    align-items:start;margin-bottom:24px;
+  }
+  .sec-num{
+    font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--emerald-2);
+    padding-top:9px;
+  }
+  .sec-head h2{
+    font-family:var(--serif);font-weight:400;font-size:clamp(26px,3vw,35px);
+    line-height:1.1;letter-spacing:-.012em;margin:0;
+  }
+  .sec-deck{color:var(--ink-2);font-size:15px;max-width:80ch;margin:8px 0 0}
+  .sec-meta{
+    font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.13em;
+    color:var(--muted);padding-top:12px;white-space:nowrap;
+  }
+
+  .panel{
+    background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+    padding:17px 18px 13px;min-width:0;
+  }
+  .panel-head{display:flex;justify-content:space-between;align-items:baseline;gap:14px;margin-bottom:10px}
+  .panel-head h3{margin:0;font-size:14.5px;font-weight:600;letter-spacing:.005em}
+  .panel-note{
+    font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.1em;
+    color:var(--muted);white-space:nowrap;
+  }
+  .panel-foot{margin:10px 2px 0;font-size:12px;color:var(--muted)}
+  .panel-tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+
+  .where-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:20px}
+  .map{width:100%;height:426px}
+  .table-wrap{max-height:426px;overflow:auto;border-top:1px solid var(--line-soft);margin:0 -4px}
+  table.rank{width:100%;min-width:432px;border-collapse:collapse;font-size:12.5px}
+  .rank thead th{
+    position:sticky;top:0;z-index:1;background:var(--panel);
+    font-family:var(--mono);font-size:9.5px;text-transform:uppercase;letter-spacing:.09em;
+    color:var(--muted);font-weight:500;text-align:right;padding:8px 6px;
+    border-bottom:1px solid var(--line);white-space:nowrap;
+  }
+  .rank thead th.l{text-align:left}
+  .rank thead th button{
+    all:unset;cursor:pointer;font:inherit;color:inherit;letter-spacing:inherit;
+    text-transform:inherit;
+  }
+  .rank thead th button:hover{color:var(--ink)}
+  .rank thead th[aria-sort] button::after{content:" ⇅";font-size:9px;opacity:.6}
+  .rank thead th[aria-sort="descending"] button::after{content:" ↓";opacity:1;color:var(--ink)}
+  .rank thead th[aria-sort="ascending"] button::after{content:" ↑";opacity:1;color:var(--ink)}
+  .rank tbody td{
+    padding:6px 5px;border-bottom:1px solid var(--line-soft);text-align:right;
+    font-variant-numeric:tabular-nums;white-space:nowrap;
+  }
+  .rank tbody td.l{text-align:left}
+  .rank tbody tr{cursor:pointer}
+  .rank tbody tr:hover{background:#F2EFE6}
+  .rank tbody tr[aria-current="true"]{background:var(--emerald-soft);box-shadow:inset 2px 0 0 var(--emerald)}
+  .rank tbody tr[aria-current="true"] .country{font-weight:600;color:var(--emerald-2)}
+  .rank .rk{color:var(--muted);font-family:var(--mono);font-size:10.5px}
+  .rank .country{font-weight:500;color:var(--ink)}
+  .rank .share{color:var(--muted)}
+  .rank .sparkcell{width:78px;padding-right:2px}
+  .rank .spark{display:block;height:22px}
+  .rank .neg{color:var(--emerald-2)}
+  .rank .pos{color:var(--vermilion)}
+
+  .two{display:grid;grid-template-columns:1.1fr .9fr;gap:20px}
+  .chart{width:100%;height:300px}
+  .takeaway{
+    margin:12px 0 0;padding-top:11px;border-top:1px dashed var(--line);
+    font-size:13px;color:var(--ink-2);
+  }
+  .takeaway b{color:var(--ink);font-weight:600}
+
+  .trend-panel .chart{height:362px}
+  .event-key{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+  .event{
+    font-family:var(--mono);font-size:10px;letter-spacing:.02em;color:var(--muted);
+    background:#FBF8F1;border:1px solid var(--line);border-radius:2px;padding:4px 8px;
+  }
+  .event i{font-style:normal;color:var(--vermilion);margin-right:3px}
+  .chart-controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .chart-controls label{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .seg{display:inline-flex;border:1px solid var(--line);border-radius:2px;overflow:hidden;background:var(--panel)}
+  .seg button{
+    all:unset;font-family:var(--mono);font-size:10px;letter-spacing:.05em;color:var(--muted);
+    padding:7px 9px;cursor:pointer;white-space:nowrap;
+  }
+  .seg button + button{border-left:1px solid var(--line)}
+  .seg button:hover{color:var(--ink)}
+  .seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+
+  .findings{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .finding{
+    background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--emerald);
+    padding:17px 18px 16px;min-width:0;
+  }
+  .finding.c-blue{border-top-color:var(--blue)}
+  .finding.c-ochre{border-top-color:var(--ochre)}
+  .finding.c-verm{border-top-color:var(--vermilion)}
+  .finding .big{
+    font-family:var(--serif);font-size:31px;line-height:1.05;letter-spacing:-.01em;
+    font-variant-numeric:tabular-nums;
+  }
+  .finding .big span{font-family:var(--sans);font-size:13px;color:var(--muted);margin-left:4px}
+  .finding h3{
+    font-family:var(--mono);font-size:9.5px;font-weight:500;text-transform:uppercase;
+    letter-spacing:.13em;color:var(--muted);margin:12px 0 6px;
+  }
+  .finding p{margin:0;font-size:13.5px;color:var(--ink-2)}
+  .finding p b{color:var(--ink)}
+
+  .method-grid{display:grid;grid-template-columns:1fr 1.32fr;gap:20px;align-items:start}
+  .method-col{display:grid;gap:20px;align-content:start}
+  .method-grid h3{font-size:15px;margin:0 0 12px}
+  dl.facts{display:grid;grid-template-columns:auto 1fr;gap:7px 14px;margin:0;font-size:13px}
+  dl.facts dt{
+    font-family:var(--mono);font-size:9.5px;text-transform:uppercase;letter-spacing:.08em;
+    color:var(--muted);padding-top:3px;
+  }
+  dl.facts dd{margin:0;color:var(--ink-2);word-break:break-word}
+  ol.steps{margin:14px 0 0;padding-left:17px;font-size:12.5px;color:var(--ink-2)}
+  ol.steps li{margin-bottom:6px}
+  code{font-family:var(--mono);font-size:.92em;background:#F1EDE2;padding:1px 4px;border-radius:2px}
+  ul.limits{margin:0;padding-left:17px;font-size:13px;color:var(--ink-2)}
+  ul.limits li{margin-bottom:7px}
+  ul.limits li b{color:var(--ink);font-weight:600}
+  table.gelsi{width:100%;border-collapse:collapse;font-size:12.5px}
+  .gelsi th{
+    text-align:left;font-family:var(--mono);font-size:9px;text-transform:uppercase;
+    letter-spacing:.08em;color:var(--muted);border-bottom:1px solid var(--line);
+    padding:6px 6px 6px 0;font-weight:500;
+  }
+  .gelsi td{border-bottom:1px solid var(--line-soft);padding:7px 6px 7px 0;vertical-align:top;color:var(--ink-2)}
+  .gelsi td:first-child{
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;font-weight:600;
+    color:var(--emerald-2);white-space:nowrap;
+  }
+  .source-note{font-size:12px;color:var(--muted);margin:14px 0 0}
+  .api-list{font-family:var(--mono);font-size:11.5px;color:var(--ink-2);line-height:1.9;margin:10px 0 0}
+  .api-list span{color:var(--emerald-2)}
+
+  .foot{margin-top:60px;border-top:1px solid var(--line);padding:24px 0 46px}
+  .foot-in{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
+  .foot a{color:var(--emerald-2)}
+
+  /* ---------- overlays ---------- */
+  #loading{
+    position:fixed;inset:0;z-index:100;background:var(--paper);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;
+    transition:opacity .45s ease;
+  }
+  #loading.hide{opacity:0;pointer-events:none}
+  .spinner{
+    width:34px;height:34px;border-radius:50%;border:2px solid var(--line);
+    border-top-color:var(--emerald);animation:spin .9s linear infinite;
+  }
+  @keyframes spin{to{transform:rotate(360deg)}}
+  #loading p{margin:0;font-family:var(--mono);font-size:11px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--muted);text-align:center;max-width:46ch;line-height:1.9}
+  #errorBanner{
+    margin:18px 0 0;padding:14px 16px;border:1px solid #E5C6B8;background:#FBF0EB;
+    color:#7A2E12;font-size:13.5px;border-radius:var(--radius);
+  }
+  #errorBanner b{color:#5E220C}
+  #errorBanner code{font-family:var(--mono);font-size:12px;background:#fff;padding:1px 5px;border:1px solid #EAD5C9}
+  .toast{
+    position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(8px);
+    background:var(--ink);color:var(--paper);font-size:13px;padding:10px 16px;
+    border-radius:2px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:200;
+  }
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  /* ============================================================
+     Carbon Atlas 2.0 — stage theme, globe hero, story mode, team
+     ============================================================ */
+  :root[data-theme="stage"]{
+    --paper:#0A1310;
+    --panel:#0F1D17;
+    --ink:#F2EFE5;
+    --ink-2:#C7D2CA;
+    --muted:#8CA096;
+    --line:#2A3B32;
+    --line-soft:#1B2A23;
+    --emerald:#43D6A4;
+    --emerald-2:#8CF0CB;
+    --emerald-soft:#123326;
+    --vermilion:#FF8A5C;
+    --ochre:#E3B341;
+    --blue:#82B4FF;
+  }
+  html{background:var(--paper)}
+  body{transition:background .35s ease,color .35s ease}
+  :root[data-theme="stage"] .topbar{background:rgba(10,19,16,.92)}
+  :root[data-theme="stage"] .panel,
+  :root[data-theme="stage"] .finding,
+  :root[data-theme="stage"] .member{box-shadow:0 18px 44px -30px rgba(0,0,0,.85)}
+  :root[data-theme="stage"] .rank thead th{background:var(--panel)}
+  :root[data-theme="stage"] .rank tbody tr:hover{background:#17281F}
+  :root[data-theme="stage"] .event{background:#101F19}
+  :root[data-theme="stage"] .headline{background:#123326}
+  :root[data-theme="stage"] .globe-stage::before{opacity:.9}
+  /* readable inline code on the dark stage theme (was light-on-light) */
+  :root[data-theme="stage"] code{background:#16271F;color:#F2EFE5;border:1px solid #22352B}
+  :root[data-theme="stage"] .code{background:#0F1D17}
+  .theme-btn{
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--ink-2);
+    background:var(--panel);border:1px solid var(--line);border-radius:999px;
+    padding:7px 12px;cursor:pointer;white-space:nowrap;flex:none;
+    transition:border-color .15s,color .15s;
+  }
+  .theme-btn:hover{border-color:var(--ink);color:var(--ink)}
+  .theme-btn[aria-pressed="true"]{color:var(--emerald-2);border-color:var(--emerald)}
+
+  .hero-main{display:grid;grid-template-columns:minmax(0,1.06fr) minmax(0,.94fr);gap:20px;align-items:center}
+  .hero-copy{min-width:0}
+  .hero-tagline{
+    font-family:var(--serif);font-style:italic;font-size:18px;color:var(--emerald-2);
+    margin:14px 0 0;letter-spacing:.005em;
+  }
+  .hero-tagline em{font-style:normal;color:var(--ink);font-weight:600}
+  .globe-stage{
+    position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    min-height:430px;min-width:0;
+  }
+  .globe-stage::before{
+    content:"";position:absolute;inset:4% 6% 8%;border-radius:50%;z-index:0;pointer-events:none;
+    background:radial-gradient(closest-side, var(--emerald-soft), transparent 72%);
+    opacity:.8;filter:blur(8px);
+  }
+  #globeCanvas{
+    position:relative;z-index:1;display:block;width:100%;height:auto;
+    max-width:536px;aspect-ratio:1/1;cursor:grab;touch-action:none;
+  }
+  #globeCanvas.grabbing{cursor:grabbing}
+  .globe-hud{
+    position:absolute;top:4px;left:8px;z-index:2;display:inline-flex;align-items:center;gap:7px;
+    font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--muted);background:var(--panel);border:1px solid var(--line);
+    border-radius:999px;padding:5px 10px;
+  }
+  .hud-dot{width:5px;height:5px;border-radius:50%;background:var(--emerald);flex:none;
+    box-shadow:0 0 0 2px rgba(14,124,90,.16)}
+  .globe-tip{
+    position:absolute;z-index:5;pointer-events:none;opacity:0;transform:translateY(4px);
+    transition:opacity .12s ease,transform .12s ease;
+    background:var(--ink);color:var(--paper);padding:8px 11px;border-radius:3px;
+    font-size:12px;line-height:1.45;max-width:230px;box-shadow:0 16px 34px -18px rgba(0,0,0,.55);
+  }
+  .globe-tip.show{opacity:1;transform:translateY(0)}
+  .globe-tip b{font-weight:600}
+  .globe-tip .tip-muted{opacity:.7}
+  .globe-caption{
+    position:relative;z-index:2;margin:0;font-family:var(--mono);font-size:9px;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:center;
+  }
+  .chip.story{background:var(--emerald);border-color:var(--emerald);color:#04140F;
+    font-family:var(--sans);font-weight:600}
+  .chip.story:hover{background:var(--emerald-2);border-color:var(--emerald-2)}
+  .chip.reset{padding:8px 9px;font-size:13px}
+
+  .story-bar{
+    position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:120;
+    width:min(780px,calc(100vw - 32px));background:var(--ink);color:var(--paper);
+    border-radius:4px;padding:12px 16px;display:flex;align-items:center;gap:14px;
+    box-shadow:0 26px 70px -26px rgba(0,0,0,.65);
+  }
+  .story-bar[hidden]{display:none}
+  .story-caption{font-size:13.5px;flex:1;line-height:1.4}
+  .story-caption b{color:var(--emerald);font-weight:600}
+  .story-dots{display:flex;gap:5px;flex:none}
+  .story-dots i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.25);display:block}
+  .story-dots i.on{background:var(--emerald)}
+  .story-skip{
+    font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--paper);background:transparent;border:1px solid rgba(255,255,255,.28);
+    padding:5px 9px;border-radius:2px;cursor:pointer;flex:none;
+  }
+  .story-skip:hover{border-color:var(--paper)}
+  body.story .scope,body.story .nav{opacity:.45;pointer-events:none}
+
+  .team-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+  .member{
+    background:var(--panel);border:1px solid var(--line);border-radius:4px;
+    padding:18px 16px 16px;min-width:0;
+  }
+  .member-ava{width:86px;height:86px;margin-bottom:14px}
+  .member-ava svg{width:100%;height:100%;display:block;border-radius:50%}
+  .member h3{font-family:var(--serif);font-weight:400;font-size:18px;margin:0;letter-spacing:-.005em}
+  .member-id{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;color:var(--muted);margin:3px 0 9px}
+  .member-role{font-size:11.5px;letter-spacing:.02em;color:var(--emerald-2);margin:0 0 10px;font-weight:600}
+  .member-line{font-size:12.5px;color:var(--ink-2);margin:0;line-height:1.45}
+  .team-foot{
+    margin-top:18px;padding-top:14px;border-top:1px solid var(--line);
+    font-size:12.5px;color:var(--muted);display:flex;gap:20px;flex-wrap:wrap;
+  }
+  .team-foot b{color:var(--ink)}
+
+  @media (max-width:1080px){
+    .hero-main{grid-template-columns:1fr;gap:4px}
+    .globe-stage{order:2;min-height:0;padding:6px 0 2px}
+    #globeCanvas{max-width:420px;margin:0 auto}
+    .team-grid{grid-template-columns:repeat(2,1fr)}
+  }
+  @media (max-width:760px){
+    .theme-btn{display:none}
+    .member-ava{width:66px;height:66px}
+    .team-grid{grid-template-columns:1fr}
+    .hero-tagline{font-size:15.5px}
+    .story-bar{padding:10px 12px;gap:10px;bottom:14px}
+    .story-caption{font-size:12px}
+  }
+
+  /* ---------- motion polish ---------- */
+  .kpi .value{transition:color .3s ease}
+  .panel,.finding,.member{transition:background-color .35s ease,border-color .35s ease}
+  #headline.swap{animation:headlineSwap .5s cubic-bezier(.2,.7,.3,1) both}
+  @keyframes headlineSwap{from{opacity:.35;transform:translateY(3px)}to{opacity:1;transform:none}}
+  .rank tbody.fade tr{animation:rowIn .42s cubic-bezier(.2,.7,.3,1) both;animation-delay:var(--d,0ms)}
+  @keyframes rowIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+  .story-caption.swap{animation:capIn .4s ease both}
+  @keyframes capIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:1080px){
+    .kpis{grid-template-columns:repeat(2,1fr)}
+    .kpi{border-right:none;border-bottom:1px solid var(--line-soft);padding-bottom:14px}
+    .kpi:nth-child(odd){border-right:1px solid var(--line)}
+    .where-grid,.two{grid-template-columns:1fr}
+    .findings{grid-template-columns:repeat(2,1fr)}
+    .method-grid{grid-template-columns:1fr}
+    .map{height:380px}
+  }
+  @media (max-width:760px){
+    .wrap{padding:0 18px}
+    .topbar-in{padding:11px 18px;gap:14px}
+    .nav{display:none}
+    .status{margin-left:auto}
+    .hero{padding-top:38px}
+    .hero h1{max-width:none}
+    .kpis{grid-template-columns:1fr 1fr}
+    .sec-head{grid-template-columns:auto 1fr}
+    .sec-meta{display:none}
+    .findings{grid-template-columns:1fr}
+    .method-grid{grid-template-columns:1fr}
+    .map{height:330px}
+    .scope .spacer{margin-left:0}
+    .table-wrap{max-height:340px}
+    .kpi .value{font-size:26px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{animation:none!important;transition:none!important}
+  }
+  @media print{
+    .topbar,.scope,.status,.panel-tools,#loading,.toast,.skip{display:none!important}
+    .section{break-inside:avoid;margin-top:28px;padding-top:24px}
+    body{background:#fff}
+    .panel,.finding{border-color:#ccc}
+  }
+</style>
+</head>
+<body class="is-loading">
+<a class="skip" href="#main">Skip to content</a>
+
+<div id="loading" role="status" aria-live="polite">
+  <div class="spinner"></div>
+  <p>Carbon Atlas · reading 655,200 rows from MySQL</p>
+</div>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="#main">
+      <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+        <circle cx="20" cy="20" r="18.2" fill="none" stroke="#16211C" stroke-opacity=".18" stroke-width="1.3"/>
+        <ellipse cx="20" cy="20" rx="7.4" ry="18.2" fill="none" stroke="#0E7C5A" stroke-width="1.1" opacity=".9"/>
+        <ellipse cx="20" cy="20" rx="18.2" ry="7.4" fill="none" stroke="#16211C" stroke-opacity=".38" stroke-width="1"/>
+        <path d="M20 5.6l3.3 11.2-3.3-2.2-3.3 2.2z" fill="#0E7C5A"/>
+        <circle cx="20" cy="20" r="2" fill="#F6F3EC" stroke="#16211C" stroke-width="1.1"/>
+      </svg>
+      <span class="brand-text">
+        <strong>Carbon Atlas</strong>
+        <span>by Data Fanatics</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#where">Where</a>
+      <a href="#what">What</a>
+      <a href="#when">When</a>
+      <a href="#findings">Findings</a>
+      <a href="#team">Team</a>
+      <a href="#method">Method</a>
+    </nav>
+    <button class="theme-btn" id="themeBtn" type="button" aria-pressed="false"
+            title="Switch between the day brief and the stage (projection) theme">◐ Stage</button>
+    <div class="status" id="statusPill" role="status" aria-live="polite">
+      <span class="status-dot"></span><span id="statusText">Connecting…</span>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap">
+    <div id="errorBanner" hidden></div>
+
+    <!-- ======================= HERO ======================= -->
+    <section class="hero" aria-labelledby="heroTitle">
+      <div class="hero-main">
+        <div class="hero-copy">
+          <p class="hero-eyebrow">Global carbon brief · <span id="eyebrowYear">—</span></p>
+          <h1 id="heroTitle">Where the world's <em>CO₂</em> comes from.</h1>
+          <p class="hero-lede">
+            A daily, sector-level reading of the planet's carbon emissions.
+            <b>Carbon Monitor</b> data is stored in MySQL and served through our own
+            Flask API — every number on this page comes from a live SQL query.
+          </p>
+          <p class="hero-tagline">See every tonne. <em>Cut what matters.</em></p>
+        </div>
+
+        <div class="globe-stage" aria-label="Rotating globe of global CO₂ emissions">
+          <canvas id="globeCanvas"></canvas>
+          <div class="globe-hud" id="globeHud" title="Data served live from the API · selected period"><span class="hud-dot"></span><span id="globeYear">2025 · full year</span></div>
+          <div class="globe-tip" id="globeTip" role="status" aria-live="polite"></div>
+          <p class="globe-caption">Drag to spin · click a country · colour = total CO₂</p>
+        </div>
+      </div>
+
+      <div class="scope" role="group" aria-label="Scope controls">
+        <span class="scope-label">Scope</span>
+        <select id="countrySelect" aria-label="Country or region"></select>
+        <button class="btn chip reset" id="resetBtn" type="button" title="Back to the world view" aria-label="Back to the world view">↺</button>
+        <span class="scope-label">Year</span>
+        <div class="years" id="yearButtons" role="group" aria-label="Year"></div>
+        <button class="chip play" id="playBtn" type="button" title="Animate the years" aria-label="Animate the years">▶</button>
+        <button class="chip story" id="storyBtn" type="button">▶ Play the brief</button>
+        <span class="spacer"></span>
+        <button class="btn" id="shareBtn" type="button">Copy link</button>
+      </div>
+
+      <div class="kpis" aria-label="Key figures">
+        <div class="kpi">
+          <div class="name" id="kpiTotalLabel">Emissions</div>
+          <div class="value" id="kpiTotal">—</div>
+          <div class="sub" id="kpiTotalSub">MtCO₂</div>
+        </div>
+        <div class="kpi">
+          <div class="name">Daily average</div>
+          <div class="value" id="kpiDaily">—</div>
+          <div class="sub">MtCO₂ per day</div>
+        </div>
+        <div class="kpi">
+          <div class="name">Change vs 2019</div>
+          <div class="value" id="kpiChange">—</div>
+          <div class="sub" id="kpiChangeSub">same period, like-for-like</div>
+        </div>
+        <div class="kpi">
+          <div class="name">Largest sector</div>
+          <div class="value" id="kpiSector" style="font-size:clamp(22px,2.4vw,32px)">—</div>
+          <div class="sub" id="kpiSectorSub">share of the total</div>
+        </div>
+      </div>
+
+      <p class="headline" id="headline" aria-live="polite">Loading the brief…</p>
+    </section>
+
+    <!-- ======================= 01 WHERE ======================= -->
+    <section class="section" id="where" aria-labelledby="whereTitle">
+      <div class="sec-head">
+        <span class="sec-num">01 / Where</span>
+        <div>
+          <h2 id="whereTitle">Which countries carry the emissions?</h2>
+          <p class="sec-deck">
+            Each country's annual total, ranked. Click the map or a row to focus the rest of
+            the brief on that country — the KPI strip, sector mix and weekly rhythm all follow.
+          </p>
+        </div>
+      </div>
+
+      <div class="where-grid">
+        <figure class="panel" style="margin:0">
+          <figcaption class="panel-head">
+            <h3>World map</h3>
+            <span class="panel-note" id="mapNote">—</span>
+          </figcaption>
+          <div id="mapChart" class="map" role="img" aria-label="World map of CO₂ emissions by country"></div>
+        </figure>
+
+        <div class="panel">
+          <div class="panel-head">
+            <h3>Country ranking</h3>
+            <div class="panel-tools">
+              <span class="panel-note" id="tableNote">—</span>
+              <button class="btn" id="exportBtn" type="button">Export CSV</button>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table class="rank" id="rankTable">
+              <caption class="visually-hidden">CO₂ emissions by country for the selected year</caption>
+              <thead>
+                <tr>
+                  <th scope="col" class="l" data-key="rank"><button type="button">#</button></th>
+                  <th scope="col" class="l" data-key="country"><button type="button">Country</button></th>
+                  <th scope="col" data-key="total"><button type="button">MtCO₂</button></th>
+                  <th scope="col" data-key="share"><button type="button">Share</button></th>
+                  <th scope="col" data-key="change"><button type="button">vs 2019</button></th>
+                  <th scope="col" class="sparkcell"><span class="visually-hidden">Trend 2019–2025</span></th>
+                </tr>
+              </thead>
+              <tbody id="rankBody"></tbody>
+            </table>
+          </div>
+          <p class="panel-foot" id="tableFoot">Click a row to focus the brief on that country.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= 02 WHAT ======================= -->
+    <section class="section" id="what" aria-labelledby="whatTitle">
+      <div class="sec-head">
+        <span class="sec-num">02 / What</span>
+        <div>
+          <h2 id="whatTitle">What activity produces it?</h2>
+          <p class="sec-deck">
+            Six sectors, measured every day. Power and industry do most of the work —
+            but the balance shifts with the season, the economy and the weather.
+          </p>
+        </div>
+      </div>
+
+      <div class="two">
+        <div class="panel">
+          <div class="panel-head">
+            <h3>Emissions by sector</h3>
+            <span class="panel-note" id="sectorNote">—</span>
+          </div>
+          <div id="sectorChart" class="chart" role="img" aria-label="Bar chart of CO₂ emissions by sector"></div>
+          <p class="takeaway" id="sectorTakeaway">—</p>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head">
+            <h3>Weekly rhythm</h3>
+            <span class="panel-note">Average day, Mon–Sun</span>
+          </div>
+          <div id="weekdayChart" class="chart" role="img" aria-label="Bar chart of average daily emissions by weekday"></div>
+          <p class="takeaway" id="weekdayTakeaway">—</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= 03 WHEN ======================= -->
+    <section class="section" id="when" aria-labelledby="whenTitle">
+      <div class="sec-head">
+        <span class="sec-num">03 / When</span>
+        <div>
+          <h2 id="whenTitle">How has it moved since 2019?</h2>
+          <p class="sec-deck">
+            Monthly totals from January 2019 to the latest complete month. The 2020 collapse
+            and rebound are visible without any smoothing — and you can overlay a second
+            country to compare the shape of its curve.
+          </p>
+        </div>
+        <span class="sec-meta">2019 → 2026</span>
+      </div>
+
+      <div class="panel trend-panel">
+        <div class="panel-head">
+          <h3 id="trendTitle">Monthly CO₂ emissions</h3>
+          <div class="chart-controls">
+            <label for="compareSelect">Compare with</label>
+            <select id="compareSelect" aria-label="Compare with another country"></select>
+            <div class="seg" role="group" aria-label="Scale">
+              <button type="button" id="modeAbs" aria-pressed="true">Absolute</button>
+              <button type="button" id="modeIdx" aria-pressed="false">Index · 2019 = 100</button>
+            </div>
+          </div>
+        </div>
+        <div id="trendChart" class="chart" role="img" aria-label="Line chart of monthly CO₂ emissions"></div>
+        <div class="event-key" aria-label="Chart annotations">
+          <span class="event"><i>▮</i>Mar–May 2020 · COVID-19 lockdowns</span>
+          <span class="event"><i>▮</i>2021 · rebound year</span>
+          <span class="event" id="partialEvent"><i>▮</i>2026 · data to 31 Aug (partial year)</span>
+        </div>
+        <p class="takeaway" id="trendTakeaway">—</p>
+      </div>
+    </section>
+
+    <!-- ======================= 04 FINDINGS ======================= -->
+    <section class="section" id="findings" aria-labelledby="findingsTitle">
+      <div class="sec-head">
+        <span class="sec-num">04 / Findings</span>
+        <div>
+          <h2 id="findingsTitle">What the numbers say.</h2>
+          <p class="sec-deck">
+            Six readings computed directly from the database. They are the slide-ready
+            summary of everything above.
+          </p>
+        </div>
+        <span class="sec-meta">Auto-generated</span>
+      </div>
+      <div class="findings" id="findingsGrid"></div>
+    </section>
+
+    <!-- ======================= 05 TEAM ======================= -->
+    <section class="section" id="team" aria-labelledby="teamTitle">
+      <div class="sec-head">
+        <span class="sec-num">05 / Team</span>
+        <div>
+          <h2 id="teamTitle">The team behind the brief</h2>
+          <p class="sec-deck">
+            <b>Data Fanatics</b> is a five-person data science team at Lingnan University.
+            We built Carbon Atlas end to end — the database, the API, the interface and the story.
+          </p>
+        </div>
+        <span class="sec-meta">Data Fanatics</span>
+      </div>
+
+      <div class="team-grid">
+        <article class="member">
+          <div class="member-ava">
+            <svg viewBox="0 0 120 120" role="img" aria-label="Cartoon avatar of LIN Xiaotong">
+              <defs><clipPath id="avat1"><circle cx="60" cy="60" r="58"/></clipPath></defs>
+              <circle cx="60" cy="60" r="58" fill="#DCEBE3"/>
+              <g clip-path="url(#avat1)">
+                <path d="M4 126c7-27 28-40 56-40s49 13 56 40z" fill="#0E7C5A"/>
+                <path d="M46 80h28v16c0 8-28 8-28 0z" fill="#D9A06E"/>
+                <ellipse cx="60" cy="57" rx="24" ry="26" fill="#E8B98F"/>
+                <path d="M34 55c0-18 12-28 26-28s26 10 26 28c-6-10-14-14-26-14s-20 4-26 14z" fill="#1B2A23"/>
+                <circle cx="50" cy="58" r="2.3" fill="#1B2A23"/><circle cx="70" cy="58" r="2.3" fill="#1B2A23"/>
+                <path d="M54 70c4 3 8 3 12 0" stroke="#8A5A3B" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+                <g stroke="#1B2A23" stroke-width="1.8" fill="none" opacity=".9">
+                  <rect x="43" y="52" width="13" height="10" rx="4"/><rect x="64" y="52" width="13" height="10" rx="4"/>
+                  <path d="M56 56h8"/>
+                </g>
+              </g>
+            </svg>
+          </div>
+          <h3>LIN Xiaotong</h3>
+          <p class="member-id">4589755</p>
+          <p class="member-role">Host · company &amp; story</p>
+          <p class="member-line">“Make the numbers mean something.”</p>
+        </article>
+
+        <article class="member">
+          <div class="member-ava">
+            <svg viewBox="0 0 120 120" role="img" aria-label="Cartoon avatar of WENG Zhichao">
+              <defs><clipPath id="avat2"><circle cx="60" cy="60" r="58"/></clipPath></defs>
+              <circle cx="60" cy="60" r="58" fill="#F0E7D6"/>
+              <g clip-path="url(#avat2)">
+                <path d="M4 126c7-27 28-40 56-40s49 13 56 40z" fill="#9B7412"/>
+                <path d="M46 80h28v16c0 8-28 8-28 0z" fill="#C98E5F"/>
+                <ellipse cx="60" cy="57" rx="24" ry="26" fill="#D9A06E"/>
+                <path d="M33 54c2-16 13-27 27-27 15 0 25 9 27 24-8-4-14-3-20-8-7 6-19 7-34 11z" fill="#241A16"/>
+                <circle cx="50" cy="58" r="2.3" fill="#241A16"/><circle cx="70" cy="58" r="2.3" fill="#241A16"/>
+                <path d="M53 71c5 3 9 3 14 0" stroke="#7A4A30" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+              </g>
+            </svg>
+          </div>
+          <h3>WENG Zhichao</h3>
+          <p class="member-id">4589896</p>
+          <p class="member-role">Database &amp; cost–benefit</p>
+          <p class="member-line">“Trust the pipeline, not the slide.”</p>
+        </article>
+
+        <article class="member">
+          <div class="member-ava">
+            <svg viewBox="0 0 120 120" role="img" aria-label="Cartoon avatar of LIM Mantung">
+              <defs><clipPath id="avat3"><circle cx="60" cy="60" r="58"/></clipPath></defs>
+              <circle cx="60" cy="60" r="58" fill="#DCE6EE"/>
+              <g clip-path="url(#avat3)">
+                <path d="M4 126c7-27 28-40 56-40s49 13 56 40z" fill="#2F6DB5"/>
+                <path d="M46 80h28v16c0 8-28 8-28 0z" fill="#B47B4E"/>
+                <ellipse cx="60" cy="57" rx="24" ry="26" fill="#C98E5F"/>
+                <g fill="#1D1712">
+                  <circle cx="38" cy="46" r="10"/><circle cx="48" cy="38" r="11"/><circle cx="60" cy="35" r="11"/>
+                  <circle cx="72" cy="38" r="11"/><circle cx="82" cy="46" r="10"/><circle cx="36" cy="58" r="7"/>
+                  <circle cx="84" cy="58" r="7"/>
+                </g>
+                <circle cx="50" cy="58" r="2.3" fill="#1D1712"/><circle cx="70" cy="58" r="2.3" fill="#1D1712"/>
+                <path d="M53 71c5 3 9 3 14 0" stroke="#6E4327" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+              </g>
+            </svg>
+          </div>
+          <h3>LIM Mantung</h3>
+          <p class="member-id">4592996</p>
+          <p class="member-role">API &amp; safety / GELSI</p>
+          <p class="member-line">“Every number needs a route.”</p>
+        </article>
+
+        <article class="member">
+          <div class="member-ava">
+            <svg viewBox="0 0 120 120" role="img" aria-label="Cartoon avatar of LAI Patten">
+              <defs><clipPath id="avat4"><circle cx="60" cy="60" r="58"/></clipPath></defs>
+              <circle cx="60" cy="60" r="58" fill="#EADFE8"/>
+              <g clip-path="url(#avat4)">
+                <path d="M4 126c7-27 28-40 56-40s49 13 56 40z" fill="#B4471F"/>
+                <path d="M46 80h28v16c0 8-28 8-28 0z" fill="#E3AE7E"/>
+                <ellipse cx="60" cy="57" rx="24" ry="26" fill="#EAB98F"/>
+                <path d="M33 60c-2-22 10-34 27-34s29 12 27 34c-4-8-7-16-13-20-3 10-12 14-24 15-6 1-11 3-17 5z" fill="#3A2418"/>
+                <path d="M36 52c-4 20-1 34 4 44-8-2-12-16-10-28zM84 52c4 20 1 34-4 44 8-2 12-16 10-28z" fill="#3A2418"/>
+                <circle cx="50" cy="59" r="2.3" fill="#3A2418"/><circle cx="70" cy="59" r="2.3" fill="#3A2418"/>
+                <path d="M54 71c4 3 8 3 12 0" stroke="#A0603C" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+              </g>
+            </svg>
+          </div>
+          <h3>LAI Patten</h3>
+          <p class="member-id">4001777</p>
+          <p class="member-role">Front end &amp; live demo</p>
+          <p class="member-line">“If it isn't shown, it isn't built.”</p>
+        </article>
+
+        <article class="member">
+          <div class="member-ava">
+            <svg viewBox="0 0 120 120" role="img" aria-label="Cartoon avatar of HUANG Haolin">
+              <defs><clipPath id="avat5"><circle cx="60" cy="60" r="58"/></clipPath></defs>
+              <circle cx="60" cy="60" r="58" fill="#E9E3D3"/>
+              <g clip-path="url(#avat5)">
+                <path d="M4 126c7-27 28-40 56-40s49 13 56 40z" fill="#6D5AA6"/>
+                <path d="M46 80h28v16c0 8-28 8-28 0z" fill="#C68A5A"/>
+                <ellipse cx="60" cy="57" rx="24" ry="26" fill="#E2AD7C"/>
+                <path d="M34 55c0-18 12-28 26-28s26 10 26 28c-7-9-15-13-26-13s-19 4-26 13z" fill="#21150F"/>
+                <circle cx="50" cy="58" r="2.3" fill="#21150F"/><circle cx="70" cy="58" r="2.3" fill="#21150F"/>
+                <path d="M53 71c5 3 9 3 14 0" stroke="#8A5233" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+                <g stroke="#21150F" stroke-width="1.8" fill="none" opacity=".9">
+                  <rect x="42" y="52" width="14" height="10" rx="4"/><rect x="64" y="52" width="14" height="10" rx="4"/>
+                  <path d="M56 56h8"/>
+                </g>
+              </g>
+            </svg>
+          </div>
+          <h3>HUANG Haolin</h3>
+          <p class="member-id">4455930</p>
+          <p class="member-role">Insights, ads &amp; conclusion</p>
+          <p class="member-line">“Sell the decision, not the chart.”</p>
+        </article>
+      </div>
+
+      <p class="team-foot">
+        <span><b>Company</b> Data Fanatics · Lingnan University</span>
+        <span><b>Product</b> Carbon Atlas</span>
+        <span><b>Tagline</b> See every tonne. Cut what matters.</span>
+        <span><b>Build</b> MySQL · Flask · HTML + ECharts · one page</span>
+      </p>
+    </section>
+
+    <!-- ======================= 06 METHOD ======================= -->
+    <section class="section" id="method" aria-labelledby="methodTitle">
+      <div class="sec-head">
+        <span class="sec-num">06 / Method</span>
+        <div>
+          <h2 id="methodTitle">Method, provenance &amp; responsibility.</h2>
+          <p class="sec-deck">
+            A dashboard is an argument about what counts. We state where the data comes from,
+            what it cannot tell you, and how the system itself is governed.
+          </p>
+        </div>
+        <span class="sec-meta">GELSI</span>
+      </div>
+
+      <div class="method-grid">
+        <div class="method-col">
+        <div class="panel">
+          <h3>Data provenance</h3>
+          <dl class="facts" id="factList">
+            <dt>Source</dt><dd>Carbon Monitor (carbonmonitor.org)</dd>
+            <dt>Unit</dt><dd>MtCO₂ per day, summed to period totals</dd>
+            <dt>Coverage</dt><dd id="factCoverage">—</dd>
+            <dt>Rows</dt><dd id="factRows">—</dd>
+            <dt>Database</dt><dd><code>carbon_lab.carbon_emission</code></dd>
+            <dt>Licence</dt><dd>Fair-use open data; cite arXiv:2004.13614</dd>
+          </dl>
+          <ol class="steps">
+            <li><code>mysql -u root -p</code> → run <code>Part_1_setup.sql</code></li>
+            <li><code>python3 app.py</code> → API on port 5001</li>
+            <li>Open <code>127.0.0.1:5001</code> → this brief</li>
+          </ol>
+          <p class="source-note">
+            Every figure is computed by SQL against the MySQL table, not hard-coded in the page.
+          </p>
+        </div>
+
+        <div class="panel">
+          <h3>What this data cannot tell you</h3>
+          <ul class="limits">
+            <li><b>2026 is partial.</b> It runs to 31 August, so it is compared with the same months of 2019 — never with a full year.</li>
+            <li><b>These are estimates.</b> Carbon Monitor models daily emissions from activity data; they are not metered values.</li>
+            <li><b>National averages hide a lot.</b> A country total says nothing about which regions or households emit most.</li>
+            <li><b>No per-capita view.</b> The dataset has no population column, so we do not divide by population or invent a ranking.</li>
+            <li><b>Living dataset.</b> Values are revised after release, so a later download can differ.</li>
+          </ul>
+        </div>
+
+        </div>
+        <div class="panel gelsi-panel">
+          <h3>GELSI check</h3>
+          <table class="gelsi">
+            <thead>
+              <tr><th scope="col">Letter</th><th scope="col">Question</th><th scope="col">How we answer it</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>G · Governance</td>
+                <td>Who is accountable for the numbers?</td>
+                <td>One owned pipeline: SQL → API → page. <code>/api/health</code> and the status pill expose outages; every chart names its source table.</td>
+              </tr>
+              <tr>
+                <td>E · Ethical</td>
+                <td>Could the display mislead?</td>
+                <td>Partial years are flagged and compared like-for-like; axes start at zero; no cherry-picked date ranges; uncertainty stated in plain language.</td>
+              </tr>
+              <tr>
+                <td>L · Legal</td>
+                <td>Are we allowed to use this?</td>
+                <td>Carbon Monitor is fair-use open data with a citation requirement (arXiv:2004.13614); no personal data is stored, so GDPR data-subject duties do not arise.</td>
+              </tr>
+              <tr>
+                <td>S · Social</td>
+                <td>Who is included or excluded?</td>
+                <td>Keyboard-accessible controls, high-contrast palette, no colour-only encoding, reduced-motion support, and a light theme that prints and projects well.</td>
+              </tr>
+              <tr>
+                <td>I · Implications</td>
+                <td>What changes if people act on it?</td>
+                <td>The brief shows sector and country concentration so effort goes where emissions are — while refusing to rank countries on per-capita terms the data cannot support.</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="source-note">
+            GELSI = Governance, Ethical, Legal, Social, Implications — the framework used by the
+            Yale Digital Ethics Center and the WEF Centre for the Fourth Industrial Revolution.
+          </p>
+        </div>
+      </div>
+
+      <div class="panel" style="margin-top:20px">
+        <h3 style="font-size:15px;margin:0 0 4px">Under the hood</h3>
+        <p class="panel-foot" style="margin:0">
+          Part 1 imports the CSV into MySQL with <code>LOAD DATA</code>. Part 2 exposes the data as JSON.
+          Part 3 is this page: HTML + Apache ECharts, fetching the API and drawing the charts.
+        </p>
+        <p class="api-list" id="apiList"></p>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <span>
+      Data: <a href="https://carbonmonitor.org/" target="_blank" rel="noopener">Carbon Monitor</a> ·
+      Cite arXiv:2004.13614 · Values are daily estimates, revised over time.
+    </span>
+    <span><b style="color:var(--ink)">Carbon Atlas</b> — See every tonne. Cut what matters. ·
+      Built by Data Fanatics · CDS3001 Group Project · Part 1 MySQL · Part 2 Flask API · Part 3 ECharts</span>
+  </div>
+</footer>
+
+<div class="story-bar" id="storyBar" hidden role="region" aria-label="Guided tour">
+  <div class="story-caption" id="storyCaption"></div>
+  <div class="story-dots" id="storyDots" aria-hidden="true"></div>
+  <button class="story-skip" id="storySkip" type="button">Skip</button>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="/static/echarts.min.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  /* =====================================================================
+     0. CONSTANTS + SMALL HELPERS
+     ===================================================================== */
+  // ---- brand ------------------------------------------------------------
+  const BRAND = {
+    product: "Carbon Atlas",
+    company: "Data Fanatics",
+    tagline: "See every tonne. Cut what matters.",
+    campaign: "37,856 million tonnes a year. Now find the part you can move.",
+  };
+  const THEME_KEY = "carbon-atlas-theme";
+
+  // ---- two palettes: a printed editorial brief, and a stage theme ------
+  const THEMES = {
+    light: {
+      ink: "#16211C", ink2: "#3B4A43", muted: "#5E6B63", line: "#DED9CC",
+      paper: "#F6F3EC", panel: "#FFFDF8", emerald: "#0E7C5A", emerald2: "#0A5943",
+      emeraldSoft: "#DCEBE3", vermilion: "#B4471F", ochre: "#9B7412", blue: "#2F6DB5",
+      globeOcean1: "#EAF2EB", globeOcean2: "#CFE0D6", globeLand: "#E4E1D5",
+      globeEdge: "rgba(246,243,236,.85)", globeGrid: "rgba(22,33,28,.075)",
+      globeLow: "#BEDCCB", globeHigh: "#0A4B37", globeDot: "#0E7C5A",
+      globeShadow: "rgba(22,33,28,.16)",
+      mapLand: "#ECE8DD", mapBorder: "#FBF9F2", mapHover: "#C9E2D4", mapSelected: "#DCEBE3",
+      splitLine: "#EFEBE0", zoomBg: "#F1EDE2", spark: "#93A398",
+      sector: { "Power": "#0E7C5A", "Industry": "#2F6DB5", "Ground Transport": "#B4471F", "Residential": "#9B7412", "International Aviation": "#6D5AA6", "Domestic Aviation": "#A34D7A" },
+      map: ["#EDF3EE", "#C2DCCB", "#82B697", "#378F68", "#0A4B37"],
+    },
+    stage: {
+      ink: "#F2EFE5", ink2: "#C7D2CA", muted: "#8CA096", line: "#2A3B32",
+      paper: "#0A1310", panel: "#0F1D17", emerald: "#43D6A4", emerald2: "#8CF0CB",
+      emeraldSoft: "#123326", vermilion: "#FF8A5C", ochre: "#E3B341", blue: "#82B4FF",
+      globeOcean1: "#0C1E17", globeOcean2: "#050D0A", globeLand: "#182A22",
+      globeEdge: "rgba(10,19,16,.9)", globeGrid: "rgba(242,239,229,.055)",
+      globeLow: "#1E4D3A", globeHigh: "#63E7B4", globeDot: "#F2C14E",
+      globeShadow: "rgba(0,0,0,.6)",
+      mapLand: "#16271F", mapBorder: "#0F1D17", mapHover: "#1F4A38", mapSelected: "#1B4A37",
+      splitLine: "#1E2E26", zoomBg: "#12211A", spark: "#4E6B5C",
+      sector: { "Power": "#43D6A4", "Industry": "#82B4FF", "Ground Transport": "#FF8A5C", "Residential": "#E3B341", "International Aviation": "#B7A6FF", "Domestic Aviation": "#FF9CCB" },
+      map: ["#14251D", "#1F4936", "#2E7A58", "#43B185", "#6FE8B8"],
+    },
+  };
+  let C = Object.assign({}, THEMES.light);
+  let SECTOR_COLORS = Object.assign({}, THEMES.light.sector);
+  let MAP_COLORS = THEMES.light.map.slice();
+
+  const SANS = '-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,"Helvetica Neue",Arial,sans-serif';
+  const SERIF = '"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif';
+  const MONO = '"SF Mono",ui-monospace,"Roboto Mono",Menlo,Consolas,monospace';
+  const EXCLUDE = ["WORLD", "EU27", "ROW"];
+  const TO_MAP = { "Czech Republic": "Czech Rep.", "Russian Federation": "Russia" };
+  const FROM_MAP = { "Czech Rep.": "Czech Republic", "Russia": "Russian Federation" };
+  const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  const REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const $ = (sel, root = document) => root.querySelector(sel);
+  const enc = encodeURIComponent;
+  const fmt = (n, d = 0) => (n === null || n === undefined || isNaN(n)) ? "—"
+    : new Intl.NumberFormat("en-US", { minimumFractionDigits: d, maximumFractionDigits: d }).format(n);
+  const pct = (n, d = 1) => (n === null || n === undefined || isNaN(n)) ? "—"
+    : (n > 0 ? "+" : "") + fmt(n, d) + "%";
+  const monthName = (m) => MONTHS[(m || 1) - 1];
+
+  // smooth number tween for the KPI strip (respects prefers-reduced-motion)
+  function countUp(el, to, decimals, suffix, plus) {
+    const from = Number(el.dataset.v || 0);
+    const start = performance.now();
+    const dur = REDUCED ? 1 : 520;
+    function step(now) {
+      const t = Math.min(1, (now - start) / dur);
+      const v = from + (to - from) * (1 - Math.pow(1 - t, 3));
+      el.textContent = (plus && v > 0 ? "+" : "") +
+        v.toLocaleString("en-US", { minimumFractionDigits: decimals, maximumFractionDigits: decimals }) +
+        (suffix || "");
+      if (t < 1) requestAnimationFrame(step);
+    }
+    el.dataset.v = to;
+    requestAnimationFrame(step);
+  }
+
+  async function getJSON(url) {
+    const res = await fetch(url, { headers: { "Accept": "application/json" } });
+    if (!res.ok) {
+      let detail = "HTTP " + res.status;
+      try { const j = await res.json(); detail = j.error || detail; } catch (_) { /* ignore */ }
+      throw new Error(detail);
+    }
+    return res.json();
+  }
+
+  // cache: one network request per key, even if two renderers ask at once
+  function cached(store, key, url) {
+    if (!store[key]) {
+      store[key] = getJSON(url).catch((err) => { delete store[key]; throw err; });
+    }
+    return store[key];
+  }
+
+  function daysInScope(country, year) {
+    const row = CY.find((r) => r.country === country && r.year === year);
+    return row ? row.days : (year === 2026 ? 243 : 365);
+  }
+
+  /* =====================================================================
+     1. STATE
+     ===================================================================== */
+  const S = { year: 2025, country: "WORLD", compare: "", scale: "abs", sort: { key: "total", dir: -1 } };
+  const CACHE = { daily: {}, monthly: {}, ytd: {}, sectors: {}, cmp: {} };
+  let META = null, HEALTH = null, INSIGHTS = null, CY = [], WORLD_MONTHLY = [];
+  let LAST_TABLE = [];        // for CSV export
+  let WORLD_GEO = null;       // used by the globe
+  let MAP_WORLD_TOTAL = 0;    // for map tooltips
+  let charts = {};
+  let refreshSeq = 0;
+  let LAST_TREND = null;
+
+  /* =====================================================================
+     2. BOOT
+     ===================================================================== */
+  async function boot() {
+    try {
+      const [meta, health, insights, cy, worldMonthly, worldGeo] = await Promise.all([
+        getJSON("/api/meta"),
+        getJSON("/api/health"),
+        getJSON("/api/insights"),
+        getJSON("/api/country_year"),
+        getJSON("/api/monthly?country=WORLD"),
+        fetch("/static/world.json").then((r) => { if (!r.ok) throw new Error("offline map"); return r.json(); }),
+      ]);
+      META = meta; HEALTH = health; INSIGHTS = insights; CY = cy; WORLD_MONTHLY = worldMonthly;
+      CACHE.monthly["WORLD"] = worldMonthly;
+      // Antarctica adds ~80 degrees of vertical extent and squeezes the map
+      // into a thin strip, so we drop it before registering the geoJSON.
+      worldGeo.features = worldGeo.features.filter(
+        (f) => f.properties && f.properties.name !== "Antarctica");
+      echarts.registerMap("world", worldGeo);
+      WORLD_GEO = worldGeo;
+
+      // restore the saved theme before the first render so charts are drawn once.
+      // A URL parameter wins: ?theme=stage is the deterministic setup for a live demo.
+      let savedTheme = "stage";
+      try { savedTheme = localStorage.getItem(THEME_KEY) || "stage"; } catch (_) { /* private mode */ }
+      const urlTheme = new URLSearchParams(location.search).get("theme");
+      if (urlTheme === "stage" || urlTheme === "light") savedTheme = urlTheme;
+      applyTheme(savedTheme, true);
+
+      readHash();
+      buildControls();
+      initCharts();
+      GLOBE.init(worldGeo);
+      await refresh();
+      if (S.country !== "WORLD") GLOBE.focus(S.country);
+      renderMethod();
+      hideLoading();
+    } catch (err) {
+      fail(err, false);
+    }
+  }
+
+  function hideLoading() {
+    const el = $("#loading");
+    el.classList.add("hide");
+    setTimeout(() => el.remove(), 500);
+    document.body.classList.remove("is-loading");
+  }
+
+  function showBanner(message, detail) {
+    const box = $("#errorBanner");
+    box.hidden = false;
+    box.innerHTML = "<b>" + message + "</b>" + (detail
+      ? "<br><span>" + detail + "</span>" : "");
+    box.scrollIntoView({ behavior: REDUCED ? "auto" : "smooth", block: "center" });
+  }
+
+  function fail(err, soft) {
+    const msg = (err && err.message) ? err.message : String(err);
+    if (soft) { showBanner("Could not refresh this view.", msg); return; }
+    const el = $("#loading");
+    el.innerHTML =
+      '<p style="max-width:56ch;line-height:1.7;text-align:left;text-transform:none;letter-spacing:0;font-family:inherit;font-size:14px;color:#3B4A43">' +
+      '<b style="color:#B4471F;font-size:16px">The dashboard could not load its data.</b><br><br>' +
+      "Start the API from the project folder:<br><code>python3 app.py</code><br><br>" +
+      "Then open <b>http://127.0.0.1:5001/</b>. If MySQL is not running, start it first. " +
+      "If the API is running, check the terminal: the password in <code>app.py</code> must match your MySQL root password." +
+      "<br><br><span style='font-family:monospace;font-size:12px;color:#5E6B63'>" + msg + "</span></p>";
+    const status = $("#statusPill");
+    status.classList.add("is-offline");
+    $("#statusText").textContent = "API offline";
+  }
+
+  /* =====================================================================
+     3. CONTROLS
+     ===================================================================== */
+  function buildControls() {
+    // country selector
+    const country = $("#countrySelect");
+    const real = META.countries.filter((c) => !EXCLUDE.includes(c));
+    const opt = (value, label) => {
+      const o = document.createElement("option");
+      o.value = value; o.textContent = label; return o;
+    };
+    country.append(opt("WORLD", "World"));
+    real.forEach((c) => country.append(opt(c, c)));
+    country.append(opt("EU27", "EU27 (aggregate)"));
+    country.append(opt("ROW", "Rest of world (aggregate)"));
+
+    // year pills
+    const years = $("#yearButtons");
+    META.years.forEach((y) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "chip";
+      b.dataset.year = y;
+      b.setAttribute("aria-pressed", "false");
+      const partial = !META.complete_years.includes(y);
+      b.innerHTML = y + (partial ? '<span class="ytd">YTD</span>' : "");
+      b.setAttribute("aria-label", y + (partial ? " (partial year)" : ""));
+      b.addEventListener("click", () => { stopPlay(); setYear(y); });
+      years.append(b);
+    });
+
+    // compare selector
+    const cmp = $("#compareSelect");
+    cmp.append(opt("", "— none —"));
+    real.forEach((c) => cmp.append(opt(c, c)));
+
+    // events
+    country.addEventListener("change", () => setCountry(country.value));
+    $("#themeBtn").addEventListener("click", toggleTheme);
+    $("#storyBtn").addEventListener("click", () => STORY.run());
+    $("#storySkip").addEventListener("click", () => STORY.stop());
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && STORY.running) STORY.stop();
+    });
+    cmp.addEventListener("change", () => { S.compare = cmp.value; refresh(); });
+    $("#playBtn").addEventListener("click", togglePlay);
+    $("#modeAbs").addEventListener("click", () => setScale("abs"));
+    $("#modeIdx").addEventListener("click", () => setScale("idx"));
+    $("#resetBtn").addEventListener("click", () => {
+      stopPlay(); S.compare = ""; S.country = "WORLD"; S.year = META.latest_complete_year;
+      refresh();
+    });
+    $("#shareBtn").addEventListener("click", copyLink);
+    $("#exportBtn").addEventListener("click", exportCSV);
+
+    // sortable table headers
+    document.querySelectorAll("#rankTable thead th[data-key]").forEach((th) => {
+      th.addEventListener("click", () => {
+        const key = th.dataset.key;
+        S.sort = { key, dir: S.sort.key === key ? -S.sort.dir : (key === "country" ? 1 : -1) };
+        renderTable(LAST_TABLE);
+      });
+    });
+  }
+
+  function syncControls() {
+    $("#countrySelect").value = S.country;
+    $("#compareSelect").value = S.compare;
+    document.querySelectorAll("#yearButtons .chip").forEach((b) => {
+      b.setAttribute("aria-pressed", b.dataset.year === String(S.year) ? "true" : "false");
+    });
+    $("#eyebrowYear").textContent = String(S.year);
+    $("#partialEvent").style.display = isPartial() ? "" : "none";
+  }
+
+  function isPartial() {
+    const y = CACHE.ytd[String(S.year)];
+    return !!(y && y.partial);
+  }
+
+  function setYear(y) { S.year = y; refresh(); }
+  function setScale(mode) {
+    if (S.scale === mode) return;
+    S.scale = mode;
+    $("#modeAbs").setAttribute("aria-pressed", mode === "abs" ? "true" : "false");
+    $("#modeIdx").setAttribute("aria-pressed", mode === "idx" ? "true" : "false");
+    if (LAST_TREND) renderTrend(LAST_TREND.monthly, LAST_TREND.cmp);
+  }
+  function setCountry(c) {
+    S.country = c;
+    if (typeof GLOBE !== "undefined" && GLOBE.ready) GLOBE.focus(c);
+    refresh();
+  }
+
+  /* ---- year animation (demo aid) ---- */
+  let playTimer = null;
+  function togglePlay() {
+    if (playTimer) { stopPlay(); return; }
+    const btn = $("#playBtn");
+    btn.dataset.playing = "true";
+    btn.textContent = "❚❚ Pause";
+    S.year = META.years[0];
+    refresh();
+    let i = 0;
+    playTimer = setInterval(() => {
+      i += 1;
+      if (i >= META.years.length) { stopPlay(); return; }
+      S.year = META.years[i];
+      refresh();
+    }, 1400);
+  }
+  function stopPlay() {
+    if (!playTimer) return;
+    clearInterval(playTimer);
+    playTimer = null;
+    const btn = $("#playBtn");
+    btn.dataset.playing = "false";
+    btn.textContent = "▶ Animate";
+  }
+
+  /* =====================================================================
+     4. URL STATE
+     ===================================================================== */
+  function readHash() {
+    const p = new URLSearchParams(location.hash.replace(/^#/, ""));
+    const year = parseInt(p.get("year"), 10);
+    S.year = META.years.includes(year) ? year : META.latest_complete_year;
+    const country = p.get("country");
+    S.country = country && META.countries.includes(country) ? country : "WORLD";
+    const compare = p.get("compare");
+    S.compare = compare && META.countries.includes(compare) && compare !== S.country ? compare : "";
+  }
+
+  function syncURL() {
+    const p = new URLSearchParams();
+    p.set("year", S.year);
+    p.set("country", S.country);
+    if (S.compare) p.set("compare", S.compare);
+    history.replaceState(null, "", "#" + p.toString());
+  }
+
+  async function copyLink() {
+    const url = location.origin + location.pathname + "#" + new URLSearchParams({
+      year: S.year, country: S.country, ...(S.compare ? { compare: S.compare } : {}),
+    }).toString();
+    try {
+      await navigator.clipboard.writeText(url);
+      toast("Link copied — it opens this exact view.");
+    } catch (_) {
+      toast(url);
+    }
+  }
+
+  function toast(message) {
+    const el = $("#toast");
+    el.textContent = message;
+    el.classList.add("show");
+    clearTimeout(toast._t);
+    toast._t = setTimeout(() => el.classList.remove("show"), 2600);
+  }
+
+  /* =====================================================================
+     5. DATA REFRESH + RENDER ORCHESTRATION
+     ===================================================================== */
+  async function refresh() {
+    const my = ++refreshSeq;
+    syncControls();
+    try {
+      const [ytd, daily, monthly, sectors] = await Promise.all([
+        cached(CACHE.ytd, String(S.year), "/api/country_ytd?year=" + S.year),
+        cached(CACHE.daily, S.country, "/api/daily?country=" + enc(S.country)),
+        cached(CACHE.monthly, S.country, "/api/monthly?country=" + enc(S.country)),
+        cached(CACHE.sectors, S.country + "|" + S.year,
+          "/api/sectors?country=" + enc(S.country) + "&year=" + S.year),
+      ]);
+
+      let cmp = null;
+      if (S.compare && S.compare !== S.country) {
+        cmp = await cached(CACHE.cmp, S.country + "|" + S.compare,
+          "/api/compare?countries=" + enc(S.country) + "," + enc(S.compare));
+      }
+      if (my !== refreshSeq) return;
+
+      renderHero(ytd, sectors);
+      renderMap();
+      renderTable(ytd);
+      renderSector(sectors);
+      renderWeekday(daily);
+      renderTrend(monthly, cmp);
+      renderFindings();
+      syncControls();
+      syncURL();
+    } catch (err) {
+      if (my === refreshSeq) fail(err, true);
+    }
+  }
+
+  /* =====================================================================
+     6. HERO
+     ===================================================================== */
+  function renderHero(ytd, sectors) {
+    const row = ytd.rows.find((r) => r.country === S.country) || { total: 0, change_vs_2019_pct: null };
+    const days = daysInScope(S.country, S.year);
+    const avg = days ? row.total / days : 0;
+    const period = ytd.partial ? "Jan–" + monthName(ytd.through_month) : "full year";
+    const scopeLabel = S.country === "WORLD" ? "the world" : S.country;
+
+    $("#kpiTotalLabel").textContent = (ytd.partial ? "Emissions · Jan–" + monthName(ytd.through_month) : "Emissions · full year") + " " + S.year;
+    countUp($("#kpiTotal"), row.total, row.total > 100 ? 0 : 2);
+    $("#kpiTotalSub").textContent = "MtCO₂ " + (ytd.partial ? "(partial year)" : "");
+
+    countUp($("#kpiDaily"), avg, avg > 10 ? 1 : 3);
+
+    const change = row.change_vs_2019_pct;
+    const el = $("#kpiChange");
+    countUp(el, change === null ? 0 : change, 1, "%", true);
+    el.className = "value " + (change > 0 ? "up" : change < 0 ? "down" : "");
+    $("#kpiChangeSub").textContent = "vs same period of 2019";
+
+    const sectorTotal = sectors.reduce((s, r) => s + r.total, 0) || 1;
+    const top = sectors[0] || { sector: "—", total: 0 };
+    $("#kpiSector").textContent = top.sector;
+    $("#kpiSectorSub").textContent = fmt(100 * top.total / sectorTotal, 1) + "% of emissions · " + period + " " + S.year;
+
+    const share = ytd.world_total ? 100 * row.total / ytd.world_total : 0;
+    let sentence;
+    if (S.country === "WORLD") {
+      sentence = "Global CO₂ reached <b>" + fmt(row.total, 0) + " MtCO₂</b> in " +
+        (ytd.partial ? "Jan–" + monthName(ytd.through_month) + " " : "") + S.year + " — <b>" +
+        pct(change) + "</b> versus the same period of 2019. <b>" + top.sector +
+        "</b> alone accounts for <b>" + fmt(100 * top.total / sectorTotal, 1) + "%</b> of it.";
+    } else {
+      sentence = "<b>" + S.country + "</b> emitted <b>" + fmt(row.total, 0) + " MtCO₂</b> in " +
+        (ytd.partial ? "Jan–" + monthName(ytd.through_month) + " " : "") + S.year + ", <b>" +
+        fmt(share, 1) + "%</b> of the world total, and <b>" + pct(change) +
+        "</b> versus the same period of 2019. <b>" + top.sector + "</b> is its largest sector (" +
+        fmt(100 * top.total / sectorTotal, 1) + "%).";
+    }
+    const headline = $("#headline");
+    headline.innerHTML = sentence;
+    headline.classList.remove("swap");
+    void headline.offsetWidth;
+    headline.classList.add("swap");
+  }
+
+  /* =====================================================================
+     7. MAP
+     ===================================================================== */
+  function renderMap() {
+    const rows = CY.filter((r) => r.year === S.year && !EXCLUDE.includes(r.country));
+    const max = Math.max.apply(null, rows.map((r) => r.total));
+    const world = CY.find((r) => r.country === "WORLD" && r.year === S.year);
+    MAP_WORLD_TOTAL = world ? world.total : 0;
+    const partial = S.year === 2026;
+
+    const data = rows.map((r) => ({
+      name: TO_MAP[r.country] || r.country,
+      value: r.total,
+      itemStyle: r.country === S.country
+        ? { areaColor: C.mapSelected, borderColor: C.ink, borderWidth: 1.6 }
+        : undefined,
+    }));
+
+    charts.map.setOption({
+      backgroundColor: "transparent",
+      animation: !REDUCED, animationDuration: 500, animationDurationUpdate: 650, animationEasingUpdate: "cubicOut",
+      tooltip: {
+        trigger: "item",
+        backgroundColor: C.ink,
+        borderWidth: 0,
+        padding: [9, 12],
+        textStyle: { color: C.paper, fontFamily: SANS, fontSize: 12.5 },
+        formatter: (p) => {
+          if (p.value === null || p.value === undefined || isNaN(p.value)) {
+            return "<b>" + p.name + "</b><br><span style='opacity:.7'>no data in this dataset</span>";
+          }
+          const share = MAP_WORLD_TOTAL ? (100 * p.value / MAP_WORLD_TOTAL).toFixed(1) : "0.0";
+          return "<b>" + p.name + "</b><br>" + fmt(p.value, 0) + " MtCO₂ · " +
+            (partial ? "Jan–Aug " : "") + S.year +
+            "<br><span style='opacity:.7'>" + share + "% of the world total</span>";
+        },
+      },
+      visualMap: {
+        type: "continuous", min: 0, max: max, left: 6, bottom: 10,
+        itemWidth: 9, itemHeight: 96, calculable: false,
+        text: ["high", "low"], textGap: 6,
+        textStyle: { color: C.muted, fontFamily: MONO, fontSize: 9.5 },
+        inRange: { color: MAP_COLORS },
+        formatter: (v) => fmt(v, 0),
+      },
+      series: [{
+        type: "map", map: "world", roam: true, zoom: 1.08,
+        center: [8, 14],
+        scaleLimit: { min: 0.85, max: 6 },
+        nameMap: {},
+        itemStyle: { areaColor: C.mapLand, borderColor: C.mapBorder, borderWidth: 0.7 },
+        emphasis: {
+          label: { show: true, color: C.ink, fontFamily: SANS, fontSize: 11 },
+          itemStyle: { areaColor: C.mapHover },
+        },
+        select: { disabled: true },
+        data: data,
+      }],
+    }, { notMerge: false, replaceMerge: ["series"] });
+
+    $("#mapNote").textContent = (partial ? "Jan–Aug " : "") + S.year + " · MtCO₂";
+    const gy = $("#globeYear");
+    if (gy) gy.textContent = S.year + (partial ? " · Jan–Aug" : " · full year");
+  }
+
+  /* =====================================================================
+     8. RANKING TABLE (+ sparklines + CSV)
+     ===================================================================== */
+  function sparkline(values, selected) {
+    if (!values.length) return "";
+    const w = 88, h = 22, pad = 2;
+    const min = Math.min.apply(null, values), max = Math.max.apply(null, values);
+    const span = (max - min) || 1;
+    const step = values.length > 1 ? (w - 2 * pad) / (values.length - 1) : 0;
+    const pts = values.map((v, i) => [pad + i * step, h - pad - ((v - min) / span) * (h - 2 * pad)]);
+    const d = pts.map((p, i) => (i ? "L" : "M") + p[0].toFixed(1) + "," + p[1].toFixed(1)).join(" ");
+    const last = pts[pts.length - 1];
+    const stroke = selected ? C.emerald2 : C.spark;
+    return '<svg class="spark" width="' + w + '" height="' + h + '" viewBox="0 0 ' + w + " " + h +
+      '" aria-hidden="true" focusable="false"><path d="' + d + '" fill="none" stroke="' + stroke +
+      '" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="' +
+      last[0].toFixed(1) + '" cy="' + last[1].toFixed(1) + '" r="2.1" fill="' + stroke + '"/></svg>';
+  }
+
+  function renderTable(ytd) {
+    LAST_TABLE = ytd;
+    const world = ytd.world_total || 0;
+    const rows = ytd.rows.filter((r) => !EXCLUDE.includes(r.country));
+
+    // rank once, by emissions (independent of the current sort)
+    const ranked = rows.slice().sort((a, b) => b.total - a.total);
+    const rankOf = new Map(ranked.map((r, i) => [r.country, i + 1]));
+
+    const years = META.complete_years;
+    const totals = new Map();          // country -> {year: total}
+    CY.forEach((r) => {
+      if (EXCLUDE.includes(r.country)) return;
+      if (!totals.has(r.country)) totals.set(r.country, {});
+      totals.get(r.country)[r.year] = r.total;
+    });
+
+    const view = rows.map((r) => ({
+      country: r.country,
+      total: r.total,
+      share: world ? 100 * r.total / world : 0,
+      change: r.change_vs_2019_pct,
+      rank: rankOf.get(r.country),
+    }));
+
+    const s = S.sort;
+    view.sort((a, b) => {
+      if (s.key === "country") return s.dir * a.country.localeCompare(b.country);
+      if (s.key === "rank") return s.dir * (a.rank - b.rank);
+      const av = s.key === "change" ? (a.change === null ? -1e9 : a.change) : a[s.key];
+      const bv = s.key === "change" ? (b.change === null ? -1e9 : b.change) : b[s.key];
+      return s.dir * (av - bv);
+    });
+
+    const tbody = $("#rankBody");
+    tbody.innerHTML = view.map((r, i) => {
+      const series = years.map((y) => {
+        const t = totals.get(r.country) || {};
+        return t[y] === undefined ? null : t[y];
+      }).filter((v) => v !== null);
+      const deltaClass = r.change === null ? "" : (r.change > 0 ? "pos" : "neg");
+      return '<tr style="--d:' + (i * 9) + 'ms" data-country="' + r.country + '" tabindex="0" aria-current="' +
+        (r.country === S.country ? "true" : "false") + '" aria-label="Focus on ' + r.country + '">' +
+        '<td class="l rk">' + r.rank + "</td>" +
+        '<td class="l country">' + r.country + "</td>" +
+        "<td>" + fmt(r.total, 0) + "</td>" +
+        '<td class="share">' + fmt(r.share, 1) + "%</td>" +
+        '<td class="' + deltaClass + '">' + pct(r.change) + "</td>" +
+        '<td class="sparkcell">' + sparkline(series, r.country === S.country) + "</td>" +
+        "</tr>";
+    }).join("");
+    tbody.classList.remove("fade");
+    void tbody.offsetWidth;
+    tbody.classList.add("fade");
+
+    // header sort indicators
+    document.querySelectorAll("#rankTable thead th[data-key]").forEach((th) => {
+      if (th.dataset.key === s.key) th.setAttribute("aria-sort", s.dir === 1 ? "ascending" : "descending");
+      else th.removeAttribute("aria-sort");
+    });
+
+    $("#tableNote").textContent = (ytd.partial ? "Jan–" + monthName(ytd.through_month) + " " : "") + S.year;
+    $("#tableFoot").textContent = ytd.partial
+      ? "2026 is partial: totals and the 2019 comparison cover January–August only. Scroll for all countries; sparklines show 2019–2025."
+      : "Click a row to focus the brief on that country. Scroll for all " + rows.length + " countries; sparklines show 2019–2025.";
+  }
+
+  // row activation (mouse + keyboard). Delegated once.
+  document.addEventListener("click", (e) => {
+    const tr = e.target.closest("#rankBody tr[data-country]");
+    if (tr) setCountry(tr.dataset.country);
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    const tr = e.target.closest("#rankBody tr[data-country]");
+    if (tr) { e.preventDefault(); setCountry(tr.dataset.country); }
+  });
+
+  function exportCSV() {
+    if (!LAST_TABLE) return;
+    const rows = LAST_TABLE.rows.filter((r) => !EXCLUDE.includes(r.country));
+    const lines = [["country", "year", "total_mtco2", "share_of_world_pct", "change_vs_2019_pct"].join(",")];
+    rows.forEach((r) => {
+      const share = LAST_TABLE.world_total ? (100 * r.total / LAST_TABLE.world_total).toFixed(2) : "";
+      lines.push([r.country, S.year, r.total, share,
+        r.change_vs_2019_pct === null ? "" : r.change_vs_2019_pct].join(","));
+    });
+    const blob = new Blob([lines.join("\n")], { type: "text/csv;charset=utf-8" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "carbon-compass-" + S.year + ".csv";
+    a.click();
+    URL.revokeObjectURL(a.href);
+    toast("CSV exported for " + S.year + ".");
+  }
+
+  /* =====================================================================
+     9. SECTOR BARS
+     ===================================================================== */
+  function renderSector(sectors) {
+    const total = sectors.reduce((s, r) => s + r.total, 0) || 1;
+    const rows = sectors.slice().sort((a, b) => a.total - b.total); // ECharts draws bottom-up
+    const partial = isPartial();
+    const label = (S.country === "WORLD" ? "World" : S.country) + " · " + S.year + (partial ? " (Jan–Aug)" : "");
+    $("#sectorNote").textContent = label;
+
+    charts.sector.setOption({
+      animation: !REDUCED, animationDuration: 500, animationDurationUpdate: 650, animationEasingUpdate: "cubicOut",
+      grid: { left: 2, right: 96, top: 4, bottom: 4, containLabel: true },
+      tooltip: {
+        trigger: "item", backgroundColor: C.ink, borderWidth: 0, padding: [9, 12],
+        textStyle: { color: C.paper, fontFamily: SANS, fontSize: 12.5 },
+        formatter: (p) => "<b>" + p.name + "</b><br>" + fmt(p.value, 0) + " MtCO₂ · " +
+          fmt(100 * p.value / total, 1) + "%",
+      },
+      xAxis: { type: "value", show: false, max: Math.max.apply(null, sectors.map((r) => r.total)) * 1.28 },
+      yAxis: {
+        type: "category",
+        data: rows.map((r) => r.sector),
+        axisLine: { show: false }, axisTick: { show: false },
+        axisLabel: { color: C.ink, fontFamily: SANS, fontSize: 12.5 },
+      },
+      series: [{
+        type: "bar",
+        barWidth: 17,
+        data: rows.map((r) => ({
+          value: r.total,
+          itemStyle: { color: SECTOR_COLORS[r.sector] || C.muted, borderRadius: [0, 2, 2, 0] },
+        })),
+        label: {
+          show: true, position: "right", distance: 8,
+          color: C.muted, fontFamily: MONO, fontSize: 10.5,
+          formatter: (p) => fmt(p.value, 0) + " · " + fmt(100 * p.value / total, 1) + "%",
+        },
+      }],
+    }, { notMerge: false, replaceMerge: ["series"] });
+
+    const first = sectors[0], second = sectors[1];
+    const topTwo = first && second ? (100 * (first.total + second.total) / total) : null;
+    $("#sectorTakeaway").innerHTML = topTwo
+      ? "<b>" + first.sector + "</b> and <b>" + second.sector + "</b> together account for <b>" +
+        fmt(topTwo, 1) + "%</b> of emissions in this view. The remaining four sectors make up the rest."
+      : "Sector totals for the selected view.";
+  }
+
+  /* =====================================================================
+     10. WEEKDAY RHYTHM
+     ===================================================================== */
+  function renderWeekday(daily) {
+    const year = String(S.year);
+    const sum = [0, 0, 0, 0, 0, 0, 0], count = [0, 0, 0, 0, 0, 0, 0];
+    daily.forEach((r) => {
+      if (r.day.slice(0, 4) !== year) return;
+      const dow = new Date(r.day + "T00:00:00").getDay();
+      sum[dow] += r.total; count[dow] += 1;
+    });
+    const order = [1, 2, 3, 4, 5, 6, 0];            // Mon … Sun
+    const labels = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+    const values = order.map((d) => count[d] ? sum[d] / count[d] : 0);
+    const partial = isPartial();
+
+    charts.weekday.setOption({
+      animation: !REDUCED, animationDuration: 500, animationDurationUpdate: 650, animationEasingUpdate: "cubicOut",
+      grid: { left: 2, right: 6, top: 18, bottom: 4, containLabel: true },
+      tooltip: {
+        trigger: "axis", axisPointer: { type: "shadow" },
+        backgroundColor: C.ink, borderWidth: 0, padding: [9, 12],
+        textStyle: { color: C.paper, fontFamily: SANS, fontSize: 12.5 },
+        formatter: (ps) => "<b>" + ps[0].axisValue + "</b><br>" + fmt(ps[0].value, 1) + " MtCO₂ per day",
+      },
+      xAxis: {
+        type: "category", data: labels,
+        axisLine: { lineStyle: { color: C.line } }, axisTick: { show: false },
+        axisLabel: { color: C.muted, fontFamily: MONO, fontSize: 10.5 },
+      },
+      yAxis: {
+        type: "value", min: 0,
+        axisLabel: { color: C.muted, fontFamily: MONO, fontSize: 10,
+          formatter: (v) => fmt(v, 0) },
+        splitLine: { lineStyle: { color: C.splitLine } },
+      },
+      series: [{
+        type: "bar", barWidth: "54%",
+        data: values.map((v, i) => ({
+          value: v,
+          itemStyle: {
+            color: i >= 5 ? C.ochre : C.emerald,
+            borderRadius: [2, 2, 0, 0],
+          },
+        })),
+      }],
+    }, { notMerge: false, replaceMerge: ["series"] });
+
+    const mon = values[0], sun = values[6];
+    const diff = mon ? 100 * (sun / mon - 1) : null;
+    $("#weekdayTakeaway").innerHTML = diff === null ? "Daily averages for the selected year." :
+      "Sunday emissions average <b>" + fmt(Math.abs(diff), 1) + "% " +
+      (diff < 0 ? "below" : "above") + " Monday</b> — a weekly rhythm from commuting, offices and industry. " +
+      (partial ? "2026 covers January–August only." : "");
+  }
+
+  /* =====================================================================
+     11. MONTHLY TREND (+ comparison)
+     ===================================================================== */
+  function renderTrend(monthly, cmp) {
+    LAST_TREND = { monthly, cmp };
+    $("#modeAbs").setAttribute("aria-pressed", S.scale === "abs" ? "true" : "false");
+    $("#modeIdx").setAttribute("aria-pressed", S.scale === "idx" ? "true" : "false");
+    const indexed = S.scale === "idx";
+    const labels = monthly.map((r) => r.month);
+    const scope = S.country === "WORLD" ? "World" : S.country;
+
+    // 2019 average month = 100, so countries of very different size can be compared
+    const baseline = (rows) => {
+      const base = rows.filter((r) => r.month.slice(0, 4) === "2019");
+      return base.length ? base.reduce((s, r) => s + r.total, 0) / base.length : null;
+    };
+    const base1 = baseline(monthly);
+    const asValue = (total, base) =>
+      indexed && base ? +(100 * total / base).toFixed(1) : total;
+
+    const primary = {
+      name: scope,
+      type: "line", smooth: false, showSymbol: false,
+      data: monthly.map((r) => asValue(r.total, base1)),
+      lineStyle: { width: 2.2, color: C.emerald },
+      itemStyle: { color: C.emerald },
+      areaStyle: {
+        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+          { offset: 0, color: "rgba(14,124,90,.22)" },
+          { offset: 1, color: "rgba(14,124,90,0)" },
+        ]),
+      },
+      markArea: {
+        silent: true,
+        itemStyle: { color: "rgba(180,71,31,.10)" },
+        label: {
+          show: true, position: "insideTop", color: C.vermilion,
+          fontFamily: MONO, fontSize: 9.5, padding: [3, 0],
+        },
+        data: [[{ name: "COVID-19 lockdowns", xAxis: "2020-03" }, { xAxis: "2020-05" }]],
+      },
+    };
+
+    const series = [primary];
+    if (cmp && cmp.countries) {
+      const other = cmp.countries.find((c) => c !== S.country);
+      if (other && cmp.series[other]) {
+        const map = {}, otherRows = cmp.series[other];
+        otherRows.forEach((r) => { map[r.month] = r.total; });
+        const base2 = baseline(otherRows);
+        series.push({
+          name: other,
+          type: "line", smooth: false, showSymbol: false,
+          data: labels.map((m) => (map[m] === undefined ? null : asValue(map[m], base2))),
+          lineStyle: { width: 1.8, color: C.vermilion, type: "solid" },
+          itemStyle: { color: C.vermilion },
+        });
+      }
+    }
+
+    charts.trend.setOption({
+      animation: !REDUCED, animationDuration: 500, animationDurationUpdate: 650, animationEasingUpdate: "cubicOut",
+      grid: { left: 6, right: 14, top: 34, bottom: 58, containLabel: true },
+      legend: series.length > 1
+        ? { top: 0, right: 0, icon: "roundRect", itemWidth: 10, itemHeight: 3,
+            textStyle: { color: C.ink2, fontFamily: SANS, fontSize: 11.5 } }
+        : { show: false },
+      tooltip: {
+        trigger: "axis",
+        backgroundColor: C.ink, borderWidth: 0, padding: [9, 12],
+        textStyle: { color: C.paper, fontFamily: SANS, fontSize: 12.5 },
+        valueFormatter: (v) => (v === null || v === undefined ? "no data"
+          : indexed ? fmt(v, 1) + " (index)" : fmt(v, 0) + " MtCO₂"),
+      },
+      xAxis: {
+        type: "category", data: labels, boundaryGap: false,
+        axisLine: { lineStyle: { color: C.line } }, axisTick: { show: false },
+        axisLabel: {
+          color: C.muted, fontFamily: MONO, fontSize: 10,
+          interval: (idx) => idx % 6 === 0,
+          formatter: (v) => v.slice(0, 4),
+        },
+      },
+      yAxis: {
+        type: "value", scale: true,
+        axisLabel: { color: C.muted, fontFamily: MONO, fontSize: 10, formatter: (v) => fmt(v, 0) },
+        splitLine: { lineStyle: { color: C.splitLine } },
+      },
+      dataZoom: [
+        { type: "inside", throttle: 60 },
+        { type: "slider", height: 16, bottom: 14, borderColor: "transparent",
+          backgroundColor: C.zoomBg, fillerColor: C.emeraldSoft,
+          handleStyle: { color: C.emerald }, textStyle: { color: C.muted, fontFamily: MONO, fontSize: 9 },
+          dataBackground: { lineStyle: { color: C.line }, areaStyle: { color: C.splitLine } },
+          selectedDataBackground: { lineStyle: { color: C.emerald }, areaStyle: { color: C.emeraldSoft } } },
+      ],
+      series: series,
+    }, { notMerge: false, replaceMerge: ["series"] });
+
+    $("#trendTitle").textContent = "Monthly emissions · " + scope +
+      (indexed ? " · indexed to 2019 = 100" : "");
+
+    const values = monthly.map((r) => r.total);
+    let low = monthly[0], high = monthly[0];
+    monthly.forEach((r) => {
+      if (r.total < low.total) low = r;
+      if (r.total > high.total) high = r;
+    });
+    const lowIsCovid = low.month === "2020-04" || low.month.slice(0, 4) === "2020";
+    $("#trendTakeaway").innerHTML =
+      "Lowest month: <b>" + low.month + "</b> (" + fmt(low.total, 0) + " MtCO₂)" +
+      (lowIsCovid ? ", the COVID-19 trough" : "") +
+      ". Highest month: <b>" + high.month + "</b> (" + fmt(high.total, 0) + " MtCO₂)" +
+      (high.month.slice(0, 4) === "2026" ? ", a complete month even though the year is partial" : "") +
+      (indexed ? " Indexed view: the 2019 average month = 100, so lines of different size can be compared by shape." : "") +
+      ". " + (S.compare ? "The second line shows " + S.compare + (indexed ? " on its own 2019 baseline." : " on the same scale.") : "");
+  }
+
+  /* =====================================================================
+     12. FINDINGS
+     ===================================================================== */
+  function monthTotal(monthly, month) {
+    const row = monthly.find((r) => r.month === month);
+    return row ? row.total : null;
+  }
+
+  function renderFindings() {
+    const ann = {};
+    INSIGHTS.annual.forEach((r) => { ann[r.year] = r; });
+    const worldMonthly = WORLD_MONTHLY;
+    const covid = INSIGHTS.covid_low;
+    const apr19 = monthTotal(worldMonthly, "2019-04");
+    const covidVs = apr19 ? 100 * (covid.total / apr19 - 1) : null;
+    const d2020 = ann[2019] && ann[2020] ? 100 * (ann[2020].total / ann[2019].total - 1) : null;
+    const d2021 = ann[2020] && ann[2021] ? 100 * (ann[2021].total / ann[2020].total - 1) : null;
+    const d2025 = ann[2019] && ann[2025] ? 100 * (ann[2025].total / ann[2019].total - 1) : null;
+    const secs = INSIGHTS.sectors || [];
+    const topTwo = secs.length >= 1
+      ? 100 * (secs[0].total + (secs[1] ? secs[1].total : 0)) /
+        secs.reduce((s, r) => s + r.total, 0)
+      : null;
+    const ytd = INSIGHTS.ytd || {};
+
+    const cards = [
+      {
+        cls: "c-verm", big: pct(covidVs),
+        title: "The 2020 shock",
+        text: "April 2020 was the lowest month on record: <b>" + fmt(covid.total, 0) +
+          " MtCO₂</b>, " + fmt(Math.abs(covidVs), 1) + "% below April 2019. Global emissions fell <b>" +
+          fmt(Math.abs(d2020), 1) + "%</b> across 2020.",
+      },
+      {
+        cls: "", big: pct(d2021),
+        title: "Rebound, then records",
+        text: "Emissions jumped back <b>" + fmt(d2021, 1) + "%</b> in 2021. Every year since has been higher than 2019 — 2025 ended <b>" +
+          fmt(d2025, 1) + "%</b> above it.",
+      },
+      {
+        cls: "c-blue", big: fmt(topTwo, 1) + "%",
+        title: "Two sectors, most of it",
+        text: "<b>" + (secs[0] ? secs[0].sector : "Power") + "</b> (" +
+          fmt(secs[0] ? secs[0].share_pct : 0, 1) + "%) and <b>" +
+          (secs[1] ? secs[1].sector : "Industry") + "</b> (" +
+          fmt(secs[1] ? secs[1].share_pct : 0, 1) + "%) dominate. Transport is the third-largest at <b>" +
+          fmt(secs[2] ? secs[2].share_pct : 0, 1) + "%</b>.",
+      },
+      {
+        cls: "c-ochre", big: fmt(INSIGHTS.top_country.share_pct, 1) + "%",
+        title: "One country, a third",
+        text: "<b>" + INSIGHTS.top_country.country + "</b> emitted " +
+          fmt(INSIGHTS.top_country.total, 0) + " MtCO₂ in " + INSIGHTS.latest_complete_year +
+          " — <b>" + fmt(INSIGHTS.top_country.share_pct, 1) +
+          "%</b> of the world total on its own.",
+      },
+      {
+        cls: "", big: pct(INSIGHTS.faller.pct),
+        title: "Biggest mover, 2025",
+        text: "<b>" + INSIGHTS.faller.country + "</b> fell " +
+          fmt(Math.abs(INSIGHTS.faller.pct), 1) + "% year on year while <b>" +
+          INSIGHTS.riser.country + "</b> rose " + fmt(INSIGHTS.riser.pct, 1) +
+          "%. Changes are year-on-year, countries above 100 MtCO₂.",
+      },
+      {
+        cls: "c-blue", big: pct(ytd.change_pct),
+        title: "2026 so far",
+        text: "January–" + monthName(ytd.months) + " 2026 is <b>" + fmt(Math.abs(ytd.change_pct || 0), 1) +
+          "%</b> " + ((ytd.change_pct || 0) > 0 ? "above" : "below") +
+          " the same months of 2019 (<b>" + fmt(ytd.total, 0) + " MtCO₂</b>). The year is incomplete, so we never compare it with a full year.",
+      },
+    ];
+
+    $("#findingsGrid").innerHTML = cards.map((c) =>
+      '<article class="finding ' + c.cls + '">' +
+      '<div class="big">' + c.big + "</div>" +
+      "<h3>" + c.title + "</h3>" +
+      "<p>" + c.text + "</p></article>"
+    ).join("");
+  }
+
+  /* =====================================================================
+     13. METHOD PANEL
+     ===================================================================== */
+  function renderMethod() {
+    $("#factCoverage").textContent = META.first_day + " → " + META.last_day;
+    $("#factRows").textContent = fmt(META.row_count, 0) + " rows · " +
+      META.countries.length + " countries/regions · " + META.sectors.length + " sectors";
+    $("#statusPill").classList.remove("is-offline");
+    $("#statusText").textContent = "API live · " + fmt(META.row_count, 0) + " rows · to " + META.last_day;
+
+    const routes = [
+      ["/api/sectors", "sector totals (tutorial)"],
+      ["/api/monthly", "monthly series (tutorial)"],
+      ["/api/country_year", "map + sparklines"],
+      ["/api/country_ytd", "KPIs, ranking, like-for-like 2019"],
+      ["/api/daily", "weekly rhythm"],
+      ["/api/compare", "two-country overlay"],
+      ["/api/insights", "the six findings"],
+      ["/api/health", "status pill"],
+    ];
+    $("#apiList").innerHTML = routes.map((r) =>
+      "<span>" + r[0] + "</span> · " + r[1]
+    ).join("<br>");
+  }
+
+  /* =====================================================================
+     14. CHARTS INIT
+     ===================================================================== */
+  function initCharts() {
+    charts.map = echarts.init($("#mapChart"), null, { renderer: "canvas" });
+    charts.sector = echarts.init($("#sectorChart"), null, { renderer: "canvas" });
+    charts.weekday = echarts.init($("#weekdayChart"), null, { renderer: "canvas" });
+    charts.trend = echarts.init($("#trendChart"), null, { renderer: "canvas" });
+
+    charts.map.on("click", (p) => {
+      const db = FROM_MAP[p.name] || p.name;
+      if (META.countries.includes(db) && !EXCLUDE.includes(db)) setCountry(db);
+    });
+
+    let raf = null;
+    window.addEventListener("resize", () => {
+      if (raf) cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        Object.keys(charts).forEach((k) => charts[k].resize());
+      });
+    });
+  }
+
+  /* =====================================================================
+     14b. THEME, GLOBE AND STORY  (the "stage" experience layer)
+     ===================================================================== */
+
+  function setThemeUI(stage) {
+    const btn = $("#themeBtn");
+    if (!btn) return;
+    btn.setAttribute("aria-pressed", stage ? "true" : "false");
+    btn.textContent = stage ? "☀ Day" : "◐ Stage";
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute("content", stage ? "#0A1310" : "#F6F3EC");
+  }
+
+  function applyTheme(mode, skipRefresh) {
+    const stage = mode === "stage";
+    document.documentElement.setAttribute("data-theme", stage ? "stage" : "light");
+    C = Object.assign({}, stage ? THEMES.stage : THEMES.light);
+    SECTOR_COLORS = Object.assign({}, C.sector);
+    MAP_COLORS = C.map.slice();
+    try { localStorage.setItem(THEME_KEY, stage ? "stage" : "light"); } catch (_) { /* ignore */ }
+    setThemeUI(stage);
+    if (!skipRefresh) refresh().catch(function () { /* banner already shown */ });
+  }
+
+  function toggleTheme() {
+    applyTheme(document.documentElement.getAttribute("data-theme") === "stage" ? "light" : "stage");
+  }
+
+  // --- the hero globe: real country geometry, orthographic projection ------
+  const GLOBE = (function () {
+    const D2R = Math.PI / 180;
+    var cv = null, ctx = null, dpr = 1;
+    var cw = 0, ch = 0, R = 1, cx = 0, cy = 0;
+    var land = [], ready = false, raf = null, lastT = 0;
+    var rot = -1.62, vel = 0.00018, tilt = 16 * D2R;
+    var dragging = false, lastX = 0, lastY = 0, moved = 0;
+    var hover = null, hoverAt = 0, tip = null, stageEl = null;
+    var colorState = new Map(), radiusState = new Map();
+    var targetRot = null, targetTilt = null, pauseUntil = 0;
+    var lastHit = 0;
+
+    function hex(v) {
+      if (!v || v[0] !== "#" || v.length < 7) return [0, 0, 0];
+      return [parseInt(v.slice(1, 3), 16), parseInt(v.slice(3, 5), 16), parseInt(v.slice(5, 7), 16)];
+    }
+    function mix(a, b, t) {
+      var pa = hex(a), pb = hex(b);
+      return "rgb(" + Math.round(pa[0] + (pb[0] - pa[0]) * t) + "," +
+        Math.round(pa[1] + (pb[1] - pa[1]) * t) + "," +
+        Math.round(pa[2] + (pb[2] - pa[2]) * t) + ")";
+    }
+    function project(lon, lat) {
+      var l = lon * D2R + rot, ph = lat * D2R;
+      var cph = Math.cos(ph), sph = Math.sin(ph), cl = Math.cos(l), sl = Math.sin(l);
+      var st = Math.sin(tilt), ct = Math.cos(tilt);
+      var x = cph * sl;
+      var y = ct * sph - st * cph * cl;
+      var z = st * sph + ct * cph * cl;
+      return [cx + x * R, cy - y * R, z];
+    }
+    function resize() {
+      cv = document.getElementById("globeCanvas");
+      if (!cv) return;
+      stageEl = cv.parentNode;
+      tip = document.getElementById("globeTip");
+      var r = cv.getBoundingClientRect();
+      if (!r.width) return;
+      cw = r.width; ch = r.height;
+      dpr = Math.min(2, window.devicePixelRatio || 1);
+      cv.width = Math.round(cw * dpr);
+      cv.height = Math.round(ch * dpr);
+      ctx = cv.getContext("2d");
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      cx = cw / 2; cy = ch / 2;
+      R = Math.min(cw, ch) * 0.43;
+    }
+    function build(geo) {
+      land = [];
+      (geo.features || []).forEach(function (f) {
+        var mapName = f.properties && f.properties.name;
+        if (!mapName) return;
+        var db = FROM_MAP[mapName] || mapName;
+        var g = f.geometry;
+        if (!g || !g.type) return;
+        var polys = g.type === "Polygon" ? [g.coordinates] : g.coordinates;
+        var rings = [];
+        polys.forEach(function (poly) {
+          poly.forEach(function (ring) {
+            if (!ring || ring.length < 6) return;
+            var step = Math.max(1, Math.round(ring.length / 64));
+            var pts = [];
+            for (var i = 0; i < ring.length; i += step) pts.push(ring[i]);
+            if (pts.length >= 3) rings.push(pts);
+          });
+        });
+        if (!rings.length) return;
+        rings.sort(function (a, b) { return b.length - a.length; });
+        if (rings.length > 16) rings.length = 16;
+        var big = rings[0], sx = 0, sy = 0;
+        big.forEach(function (p) { sx += p[0]; sy += p[1]; });
+        land.push({ name: mapName, db: db, rings: rings, centroid: [sx / big.length, sy / big.length] });
+      });
+      ready = true;
+      resize();
+      if (!raf) raf = requestAnimationFrame(frame);
+    }
+    function valueOf(db) {
+      for (var i = 0; i < CY.length; i++) {
+        if (CY[i].country === db && CY[i].year === S.year) return CY[i].total;
+      }
+      return null;
+    }
+    function maxValue() {
+      var m = 0;
+      for (var i = 0; i < CY.length; i++) {
+        if (CY[i].year === S.year && EXCLUDE.indexOf(CY[i].country) < 0 && CY[i].total > m) m = CY[i].total;
+      }
+      return m || 1;
+    }
+    function mixArr(a, b, t) {
+      return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t];
+    }
+    function colorArr(val, max) {
+      if (val === null || val === undefined) return hex(C.globeLand);
+      var t = Math.max(0, Math.min(1, Math.log10(val + 10) / Math.log10(max + 10)));
+      return mixArr(hex(C.globeLow), hex(C.globeHigh), t);
+    }
+    function smoothColor(db, target) {
+      var cur = colorState.get(db);
+      if (!cur || REDUCED) cur = target.slice();
+      else cur = [cur[0] + (target[0] - cur[0]) * 0.16,
+                  cur[1] + (target[1] - cur[1]) * 0.16,
+                  cur[2] + (target[2] - cur[2]) * 0.16];
+      colorState.set(db, cur);
+      return "rgb(" + Math.round(cur[0]) + "," + Math.round(cur[1]) + "," + Math.round(cur[2]) + ")";
+    }
+    function frame(t) {
+      var dt = lastT ? Math.min(50, t - lastT) : 16;
+      lastT = t;
+      if (!dragging) {
+        if (targetRot !== null) {
+          rot += (targetRot - rot) * 0.075;
+          if (targetTilt !== null) tilt += (targetTilt - tilt) * 0.075;
+          if (Math.abs(targetRot - rot) < 0.002) { targetRot = null; targetTilt = null; }
+        } else {
+          if (Math.abs(vel) > 0.00002) { rot += vel * dt; vel *= 0.93; }
+          if (!REDUCED && !hover && performance.now() > pauseUntil) rot += 0.000155 * dt;
+        }
+      } else {
+        vel *= 0.9;
+      }
+      draw();
+      raf = requestAnimationFrame(frame);
+    }
+    function graticule() {
+      for (var lat = -60; lat <= 60; lat += 30) {
+        ctx.beginPath();
+        var pen = false;
+        for (var lon = -180; lon <= 180; lon += 5) {
+          var p = project(lon, lat);
+          if (p[2] > 0.02) { if (!pen) { ctx.moveTo(p[0], p[1]); pen = true; } else ctx.lineTo(p[0], p[1]); }
+          else pen = false;
+        }
+        ctx.stroke();
+      }
+      for (var lon2 = -180; lon2 < 180; lon2 += 30) {
+        ctx.beginPath();
+        var pen2 = false;
+        for (var la = -80; la <= 80; la += 4) {
+          var q = project(lon2, la);
+          if (q[2] > 0.02) { if (!pen2) { ctx.moveTo(q[0], q[1]); pen2 = true; } else ctx.lineTo(q[0], q[1]); }
+          else pen2 = false;
+        }
+        ctx.stroke();
+      }
+    }
+    function draw() {
+      if (!ctx) return;
+      ctx.clearRect(0, 0, cw, ch);
+      // soft halo
+      var halo = ctx.createRadialGradient(cx, cy, R * 0.55, cx, cy, R * 1.24);
+      halo.addColorStop(0, C.emeraldSoft);
+      halo.addColorStop(1, "rgba(0,0,0,0)");
+      ctx.globalAlpha = 0.55;
+      ctx.fillStyle = halo;
+      ctx.beginPath(); ctx.arc(cx, cy, R * 1.25, 0, Math.PI * 2); ctx.fill();
+      ctx.globalAlpha = 1;
+      // ocean
+      var oc = ctx.createRadialGradient(cx - R * 0.35, cy - R * 0.42, R * 0.08, cx, cy, R);
+      oc.addColorStop(0, C.globeOcean1);
+      oc.addColorStop(1, C.globeOcean2);
+      ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2);
+      ctx.fillStyle = oc; ctx.fill();
+      ctx.save();
+      ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.clip();
+      ctx.strokeStyle = C.globeGrid;
+      ctx.lineWidth = 0.7;
+      graticule();
+      // land
+      var max = maxValue();
+      ctx.lineJoin = "round";
+      land.forEach(function (f) {
+        var val = valueOf(f.db);
+        var selected = f.db === S.country;
+        var fill = smoothColor(f.db, colorArr(val, max));
+        f.rings.forEach(function (ring) {
+          var pts = [], i;
+          for (i = 0; i < ring.length; i++) pts.push(project(ring[i][0], ring[i][1]));
+          var vis = 0;
+          for (i = 0; i < pts.length; i++) if (pts[i][2] > 0.02) vis++;
+          if (vis < 3) return;
+          if (vis === pts.length) {
+            ctx.beginPath();
+            ctx.moveTo(pts[0][0], pts[0][1]);
+            for (i = 1; i < pts.length; i++) ctx.lineTo(pts[i][0], pts[i][1]);
+            ctx.closePath();
+            ctx.fillStyle = fill;
+            ctx.globalAlpha = val === null ? 0.78 : 1;
+            ctx.fill();
+            ctx.globalAlpha = 1;
+            ctx.strokeStyle = selected ? C.globeDot : C.globeEdge;
+            ctx.lineWidth = selected ? 1.8 : 0.75;
+            ctx.stroke();
+          } else {
+            ctx.beginPath();
+            var pen = false;
+            for (i = 0; i < pts.length; i++) {
+              if (pts[i][2] > 0.02) {
+                if (!pen) { ctx.moveTo(pts[i][0], pts[i][1]); pen = true; } else ctx.lineTo(pts[i][0], pts[i][1]);
+              } else pen = false;
+            }
+            ctx.strokeStyle = C.globeEdge; ctx.lineWidth = 0.7; ctx.stroke();
+          }
+        });
+      });
+      // emitter dots
+      var tops = CY.filter(function (r) { return r.year === S.year && EXCLUDE.indexOf(r.country) < 0; })
+        .sort(function (a, b) { return b.total - a.total; }).slice(0, 10);
+      tops.forEach(function (r) {
+        var f = null;
+        for (var i = 0; i < land.length; i++) if (land[i].db === r.country) { f = land[i]; break; }
+        if (!f) return;
+        var p = project(f.centroid[0], f.centroid[1]);
+        if (p[2] <= 0.08) return;
+        var targetRad = 2 + 3.6 * Math.log10(r.total + 10) / Math.log10(max + 10);
+        var rad = radiusState.get(r.country);
+        if (rad === undefined || REDUCED) rad = targetRad;
+        else rad += (targetRad - rad) * 0.16;
+        radiusState.set(r.country, rad);
+        ctx.beginPath(); ctx.arc(p[0], p[1], rad + 3.5, 0, Math.PI * 2);
+        ctx.globalAlpha = 0.14; ctx.fillStyle = C.globeDot; ctx.fill(); ctx.globalAlpha = 1;
+        ctx.beginPath(); ctx.arc(p[0], p[1], rad, 0, Math.PI * 2);
+        ctx.fillStyle = C.globeDot; ctx.fill();
+      });
+      // limb shadow + rim
+      var sh = ctx.createRadialGradient(cx - R * 0.22, cy - R * 0.26, R * 0.4, cx, cy, R);
+      sh.addColorStop(0, "rgba(0,0,0,0)");
+      sh.addColorStop(1, C.globeShadow);
+      ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.fillStyle = sh; ctx.fill();
+      ctx.restore();
+      ctx.strokeStyle = C.globeGrid; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.stroke();
+    }
+    function ringVisible(ring) {
+      var vis = 0;
+      for (var i = 0; i < ring.length; i += 3) {
+        if (project(ring[i][0], ring[i][1])[2] > 0.05) vis++;
+      }
+      return vis > 2;
+    }
+    function pointInRing(px, py, ring) {
+      var inside = false;
+      for (var i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+        var a = project(ring[i][0], ring[i][1]);
+        var b = project(ring[j][0], ring[j][1]);
+        if (a[2] <= 0 || b[2] <= 0) continue;
+        if (((a[1] > py) !== (b[1] > py)) &&
+            (px < (b[0] - a[0]) * (py - a[1]) / (b[1] - a[1]) + a[0])) inside = !inside;
+      }
+      return inside;
+    }
+    function hitTest(px, py) {
+      for (var i = land.length - 1; i >= 0; i--) {
+        var f = land[i];
+        for (var r = 0; r < f.rings.length; r++) {
+          if (!ringVisible(f.rings[r])) continue;
+          if (pointInRing(px, py, f.rings[r])) return f;
+        }
+      }
+      return null;
+    }
+    function showTip(e) {
+      if (!tip) return;
+      if (!hover) { tip.classList.remove("show"); return; }
+      var val = valueOf(hover.db);
+      var world = null;
+      for (var i = 0; i < CY.length; i++) if (CY[i].country === "WORLD" && CY[i].year === S.year) world = CY[i].total;
+      var sub = val === null
+        ? '<span class="tip-muted">no data in this dataset</span>'
+        : fmt(val, 0) + " MtCO₂ · " + (world ? fmt(100 * val / world, 1) + "% of world" : "");
+      tip.innerHTML = "<b>" + hover.db + "</b><br>" + sub;
+      var rect = cv.getBoundingClientRect();
+      var x = Math.min(rect.width - 150, Math.max(10, e.clientX - rect.left + 16));
+      var y = Math.max(10, e.clientY - rect.top - 20);
+      tip.style.left = x + "px";
+      tip.style.top = y + "px";
+      tip.classList.add("show");
+    }
+    function bind() {
+      cv = document.getElementById("globeCanvas");
+      if (!cv) return;
+      stageEl = cv.parentNode;
+      tip = document.getElementById("globeTip");
+      cv.addEventListener("pointerdown", function (e) {
+        dragging = true; moved = 0;
+        lastX = e.clientX; lastY = e.clientY;
+        vel = 0;
+        try { cv.setPointerCapture(e.pointerId); } catch (_) { /* ignore */ }
+        cv.classList.add("grabbing");
+      });
+      cv.addEventListener("pointermove", function (e) {
+        if (dragging) {
+          var dx = e.clientX - lastX, dy = e.clientY - lastY;
+          lastX = e.clientX; lastY = e.clientY;
+          moved += Math.abs(dx) + Math.abs(dy);
+          rot += dx * 0.0075;
+          tilt = Math.max(-18 * D2R, Math.min(42 * D2R, tilt + dy * 0.0038));
+          vel = dx * 0.00012;
+          return;
+        }
+        var now = performance.now();
+        if (now - lastHit < 55) return;
+        lastHit = now;
+        var r = cv.getBoundingClientRect();
+        hover = hitTest(e.clientX - r.left, e.clientY - r.top);
+        cv.style.cursor = hover ? "pointer" : "grab";
+        showTip(e);
+      });
+      cv.addEventListener("pointerup", function (e) {
+        dragging = false;
+        cv.classList.remove("grabbing");
+        if (moved < 7) {
+          var r = cv.getBoundingClientRect();
+          var f = hitTest(e.clientX - r.left, e.clientY - r.top);
+          if (f && META.countries.indexOf(f.db) >= 0 && EXCLUDE.indexOf(f.db) < 0) {
+            if (STORY.running) STORY.stop();
+            setCountry(f.db);
+          }
+        }
+      });
+      cv.addEventListener("pointerleave", function () {
+        dragging = false; hover = null; cv.classList.remove("grabbing");
+        if (tip) tip.classList.remove("show");
+      });
+    }
+    function focusCountry(db) {
+      if (!ready || !db || db === "WORLD") return;
+      var f = null;
+      for (var i = 0; i < land.length; i++) if (land[i].db === db) { f = land[i]; break; }
+      if (!f) return;
+      var lon = f.centroid[0], lat = f.centroid[1];
+      var want = -lon * D2R;
+      var diff = ((want - rot + Math.PI) % (Math.PI * 2) + Math.PI * 2) % (Math.PI * 2) - Math.PI;
+      targetRot = rot + diff;
+      targetTilt = Math.max(-0.18, Math.min(0.62, lat * D2R));
+      pauseUntil = performance.now() + 3500;
+    }
+    function init(geo) {
+      build(geo);
+      bind();
+      var rz = null;
+      window.addEventListener("resize", function () {
+        if (rz) cancelAnimationFrame(rz);
+        rz = requestAnimationFrame(resize);
+      });
+    }
+    return {
+      init: init,
+      focus: focusCountry,
+      resize: resize,
+      get ready() { return ready; },
+    };
+  })();
+
+  // --- guided story mode: a 30-second auto-tour of the brief --------------
+  const STORY = (function () {
+    var running = false, stopFlag = false;
+    function sleep(ms) { return new Promise(function (r) { setTimeout(r, REDUCED ? Math.min(ms, 300) : ms); }); }
+    var steps = [
+      {
+        cap: "<b>2019</b> — before the shock. The world emitted 36,397 MtCO₂.",
+        hold: 2600,
+        act: async function () { S.year = 2019; S.country = "WORLD"; S.compare = ""; S.scale = "abs"; await refresh(); },
+      },
+      {
+        cap: "<b>2020</b> — the world locked down. Emissions fell 5.0%.",
+        hold: 2800,
+        act: async function () { S.year = 2020; await refresh(); },
+      },
+      {
+        cap: "<b>2025</b> — back above 2019, by 4.0%.",
+        hold: 2800,
+        act: async function () { S.year = 2025; await refresh(); },
+      },
+      {
+        cap: "<b>China</b> alone is 31.9% of the world total.",
+        hold: 2600,
+        act: async function () { S.country = "China"; await refresh(); },
+      },
+      {
+        cap: "The <b>United States</b>: 5,036 MtCO₂ — 13.3%.",
+        hold: 2400,
+        act: async function () { S.country = "United States"; await refresh(); },
+      },
+      {
+        cap: "Compare by shape: both indexed to <b>2019 = 100</b>.",
+        hold: 3200,
+        act: async function () { S.compare = "India"; S.scale = "idx"; await refresh(); },
+      },
+      {
+        cap: "Now — <b>what the numbers say</b>.",
+        hold: 3200,
+        act: async function () {
+          var el = document.getElementById("findings");
+          if (el) el.scrollIntoView({ behavior: REDUCED ? "auto" : "smooth", block: "start" });
+        },
+      },
+    ];
+    async function run() {
+      if (running) return;
+      running = true; stopFlag = false;
+      document.body.classList.add("story");
+      var bar = document.getElementById("storyBar");
+      var cap = document.getElementById("storyCaption");
+      var dots = document.getElementById("storyDots");
+      if (!bar || !cap || !dots) { running = false; return; }
+      dots.innerHTML = steps.map(function () { return "<i></i>"; }).join("");
+      bar.hidden = false;
+      for (var i = 0; i < steps.length && !stopFlag; i++) {
+        dots.querySelectorAll("i").forEach(function (d, j) { d.classList.toggle("on", j === i); });
+        cap.innerHTML = steps[i].cap;
+        cap.classList.remove("swap");
+        void cap.offsetWidth;
+        cap.classList.add("swap");
+        try { await steps[i].act(); } catch (_) { /* keep the tour alive */ }
+        await sleep(steps[i].hold);
+      }
+      stop();
+    }
+    function stop() {
+      running = false; stopFlag = true;
+      document.body.classList.remove("story");
+      var bar = document.getElementById("storyBar");
+      if (bar) bar.hidden = true;
+    }
+    return { run: run, stop: stop, get running() { return running; } };
+  })();
+
+  /* =====================================================================
+     15. GO
+     ===================================================================== */
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", boot);
+  } else {
+    boot();
+  }
+})();
+</script>
+</body>
+</html>

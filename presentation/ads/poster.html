@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Carbon Atlas — A3 poster</title>
+<style>
+  /* ---------- page ---------- */
+  @page { size: A3 portrait; margin: 0; }
+  @media print {
+    html, body { margin: 0; padding: 0; }
+    .sheet { box-shadow: none !important; }
+  }
+  :root{
+    --paper:#F7F5F0; --ink:#14201B; --ink-soft:#3A4A43; --gray:#6E7A73;
+    --emerald:#0E7C5A; --emerald-l:#2E9A78; --tint:#E4EFE9;
+    --vermilion:#C2521F; --ochre:#A97E12; --line:#D9D3C4; --card:#FCFAF5;
+  }
+  * { box-sizing: border-box; }
+  html, body { background:#E8E4DA; margin:0; padding:0; }
+  body { font-family: "Helvetica Neue", Arial, sans-serif; color:var(--ink);
+         -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .sheet{
+    width:297mm; height:420mm; margin:0 auto; background:var(--paper);
+    padding:15mm 17mm 12mm; display:flex; flex-direction:column;
+    position:relative; overflow:hidden;
+  }
+  .serif{ font-family: Georgia, "Times New Roman", serif; }
+  .n2{ letter-spacing:0; font-size:66%; line-height:0; vertical-align:-.12em; }
+
+  /* ---------- masthead ---------- */
+  .mast{ display:flex; align-items:center; gap:5mm; padding-bottom:4mm;
+         border-bottom:0.6pt solid var(--line); }
+  .mast svg{ width:19mm; height:19mm; flex:none; }
+  .wordmark{ font-family: Georgia, serif; font-weight:700; font-size:15pt;
+             letter-spacing:.34em; text-transform:uppercase; }
+  .mast .meta{ margin-left:auto; text-align:right; font-size:7.6pt;
+               letter-spacing:.14em; text-transform:uppercase; color:var(--gray);
+               line-height:1.7; }
+
+  /* ---------- headline ---------- */
+  .head{ margin-top:9mm; }
+  .kicker{ font-size:8.4pt; letter-spacing:.26em; text-transform:uppercase;
+           color:var(--emerald); font-weight:700; display:flex; align-items:center; gap:3mm; }
+  .kicker::before{ content:""; width:9mm; height:2.6pt; background:var(--vermilion); flex:none; }
+  .kicker > span{ letter-spacing:.26em; }
+  h1{ font-family:Georgia, serif; font-weight:700; font-size:42pt; line-height:1.1;
+      margin:4mm 0 0; letter-spacing:-.012em; }
+  h1 em{ font-style:italic; color:var(--emerald); }
+  .deck{ font-size:12.6pt; line-height:1.5; color:var(--ink-soft);
+         max-width:210mm; margin:5mm 0 0; }
+  .deck b{ color:var(--ink); }
+
+  /* ---------- stat band ---------- */
+  .stats{ display:grid; grid-template-columns:repeat(3,1fr); margin:8mm 0 0;
+          border-top:2.2pt solid var(--ink); border-bottom:0.6pt solid var(--line); }
+  .stat{ padding:4mm 5mm 4mm 0; }
+  .stat + .stat{ border-left:0.6pt solid var(--line); padding-left:5mm; }
+  .stat .n{ font-family:Georgia, serif; font-size:25pt; line-height:1; letter-spacing:-.01em; }
+  .stat .n small{ font-size:11pt; letter-spacing:0; }
+  .stat .k{ font-size:7.6pt; letter-spacing:.16em; text-transform:uppercase;
+            color:var(--gray); margin-top:1.6mm; }
+  .stat.em .n{ color:var(--emerald); } .stat.ve .n{ color:var(--vermilion); }
+  .stat.oc .n{ color:var(--ochre); }
+
+  /* ---------- product preview ---------- */
+  .preview{ flex:1; display:flex; flex-direction:column; margin-top:7mm; min-height:0; }
+  .preview .cap{ font-size:7pt; letter-spacing:.18em; text-transform:uppercase;
+                 color:var(--gray); margin-bottom:2mm; display:flex; gap:3mm; }
+  .preview .cap i{ font-style:normal; color:var(--vermilion); font-weight:700; }
+  .ui{ flex:1; border:1.1pt solid var(--ink); background:var(--card);
+       display:flex; flex-direction:column; min-height:0; }
+  .ui .bar{ display:flex; align-items:center; gap:3mm; padding:2.4mm 4mm;
+            border-bottom:0.6pt solid var(--line); font-size:6.9pt;
+            letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft); }
+  .ui .bar b{ color:var(--ink); letter-spacing:.16em; }
+  .ui .bar .pill{ margin-left:auto; border:0.6pt solid var(--emerald);
+                  color:var(--emerald); padding:.8mm 2.4mm; border-radius:9mm;
+                  font-size:6.2pt; letter-spacing:.1em; }
+  .ui .body{ display:grid; grid-template-columns:1.42fr 1fr; gap:0; flex:1; min-height:0; }
+  .pane{ padding:3.6mm 4mm; min-height:0; display:flex; flex-direction:column; }
+  .pane + .pane{ border-left:0.6pt solid var(--line); }
+  .ptitle{ font-size:6.8pt; letter-spacing:.18em; text-transform:uppercase;
+           color:var(--gray); display:flex; justify-content:space-between; }
+  .kpi{ font-family:Georgia, serif; font-size:21pt; line-height:1; margin-top:1.6mm; }
+  .kpi span{ font-size:9pt; font-family:"Helvetica Neue",Arial,sans-serif;
+             color:var(--emerald); letter-spacing:.02em; margin-left:2mm; }
+  .unit{ font-size:6.8pt; color:var(--gray); letter-spacing:.1em; margin-top:1mm; }
+
+  .bars{ margin-top:3mm; display:flex; flex-direction:column; gap:1.9mm; }
+  .brow{ display:grid; grid-template-columns:30mm 1fr 10mm; align-items:center;
+         gap:2.4mm; font-size:6.9pt; color:var(--ink-soft); }
+  .track{ height:3.4mm; background:#EDE9DF; position:relative; }
+  .fill{ position:absolute; inset:0 auto 0 0; background:var(--emerald); }
+  .fill.alt{ background:var(--emerald-l); } .fill.ve{ background:var(--vermilion); }
+  .brow .v{ text-align:right; font-variant-numeric:tabular-nums; color:var(--ink); }
+
+  table.rank{ width:100%; border-collapse:collapse; margin-top:2.6mm; font-size:7pt; }
+  table.rank td{ padding:1.5mm 0; border-bottom:0.5pt solid var(--line);
+                 font-variant-numeric:tabular-nums; }
+  table.rank td:last-child{ text-align:right; }
+  table.rank tr:first-child td{ border-top:0.5pt solid var(--line); }
+  table.rank .c{ color:var(--ink-soft); }
+  table.rank .n{ text-align:right; color:var(--ink); font-weight:700; }
+  table.rank .d{ text-align:right; color:var(--emerald); width:13mm; }
+
+  .grid40{ display:grid; grid-template-columns:repeat(13,1fr); gap:1.4mm; margin-top:2.6mm; }
+  .grid40 i{ display:block; aspect-ratio:1; background:var(--tint); }
+  .grid40 i:nth-child(-n+5){ background:var(--emerald); }
+  .gridcap{ font-size:6.2pt; color:var(--gray); letter-spacing:.08em; margin-top:1.6mm; }
+  .pull{ margin-top:auto; border-top:0.6pt solid var(--line); padding-top:3.4mm;
+         font-family:Georgia, serif; font-style:italic; font-size:11pt; line-height:1.35;
+         color:var(--ink-soft); max-width:92%; }
+  .pull span{ display:block; font-family:"Helvetica Neue",Arial,sans-serif; font-style:normal;
+              font-size:5.9pt; letter-spacing:.18em; text-transform:uppercase;
+              color:var(--emerald); margin-bottom:1.6mm; }
+  .chips{ margin-top:3.4mm; padding-top:0; display:flex; flex-wrap:wrap; gap:1.8mm; }
+  .chips span{ border:0.6pt solid var(--line); color:var(--ink-soft); font-size:6.2pt;
+               letter-spacing:.06em; padding:1.1mm 2.2mm; }
+  .health{ margin-top:5mm; }
+  .health div{ display:flex; justify-content:space-between; font-size:6.8pt;
+               padding:1.2mm 0; border-bottom:0.5pt solid var(--line); color:var(--ink-soft); }
+  .health b{ color:var(--ink); font-variant-numeric:tabular-nums; }
+
+  .find{ display:grid; grid-template-columns:1fr 1fr; gap:0;
+         border-top:0.6pt solid var(--line); }
+  .fc{ padding:3mm 4mm; font-size:7.2pt; line-height:1.45; }
+  .fc + .fc{ border-left:0.6pt solid var(--line); }
+  .fc b{ display:block; font-size:6.4pt; letter-spacing:.16em; color:var(--emerald);
+         text-transform:uppercase; margin-bottom:1.2mm; }
+  .fc span{ color:var(--ink); } .fc strong{ color:var(--ink); font-weight:700; }
+  .spark{ width:100%; height:auto; display:block; margin-top:2.5mm; }
+  .spark text{ font-family:"Helvetica Neue",Arial,sans-serif; font-size:6px;
+               letter-spacing:.06em; fill:#6E7A73; }
+  .spark .grid{ stroke:#D9D3C4; stroke-width:.7; stroke-dasharray:2 3; }
+
+  .method{ display:grid; grid-template-columns:1.1fr 1fr 1fr; border-top:0.6pt solid var(--line); }
+  .method > div{ padding:2.8mm 4mm; font-size:6.6pt; color:var(--ink-soft); line-height:1.4; }
+  .method > div + div{ border-left:0.6pt solid var(--line); }
+  .method b{ display:block; font-size:5.9pt; letter-spacing:.17em; text-transform:uppercase;
+             color:var(--emerald); margin-bottom:.9mm; }
+
+  /* ---------- call to action ---------- */
+  .cta{ margin-top:7mm; display:grid; grid-template-columns:1fr auto; align-items:end;
+        gap:6mm; border-top:2.2pt solid var(--ink); padding-top:4mm; }
+  .cta .big{ font-family:Georgia, serif; font-size:17pt; line-height:1.2; }
+  .cta .sub{ font-size:8.4pt; color:var(--ink-soft); margin-top:1.8mm; letter-spacing:.02em; }
+  .cta .btn{ background:var(--emerald); color:#F7F5F0; font-size:9pt; font-weight:700;
+             letter-spacing:.06em; padding:4.2mm 7mm; text-align:center; }
+  .cta .btn small{ display:block; font-weight:400; font-size:6.6pt; letter-spacing:.12em;
+                   opacity:.86; margin-top:1mm; }
+
+  /* ---------- footer ---------- */
+  .foot{ margin-top:4.5mm; display:flex; align-items:flex-start; gap:4mm;
+         font-size:6.4pt; color:var(--gray); line-height:1.5; }
+  .foot .src{ max-width:205mm; }
+  .foot .sig{ margin-left:auto; text-align:right; letter-spacing:.12em;
+              text-transform:uppercase; }
+  .wm{ position:absolute; right:-34mm; bottom:-34mm; width:100mm; opacity:.04;
+       pointer-events:none; }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <!-- masthead -->
+  <div class="mast">
+    <svg viewBox="0 0 1200 1200" aria-label="Carbon Atlas logo">
+      <circle cx="600" cy="600" r="548" fill="none" stroke="#14201B" stroke-width="5"/>
+      <circle cx="600" cy="600" r="516" fill="none" stroke="#D9D3C4" stroke-width="2.5"/>
+      <ellipse cx="600" cy="600" rx="222" ry="548" fill="none" stroke="#0E7C5A" stroke-width="11" opacity=".9"/>
+      <ellipse cx="600" cy="600" rx="548" ry="222" fill="none" stroke="#14201B" stroke-width="7" opacity=".38"/>
+      <line x1="52" y1="600" x2="1148" y2="600" stroke="#14201B" stroke-width="5" opacity=".3"/>
+      <path d="M600 168l99 336-99-66-99 66z" fill="#0E7C5A"/>
+      <circle cx="600" cy="600" r="74" fill="#F7F5F0" stroke="#14201B" stroke-width="5"/>
+      <circle cx="600" cy="600" r="28" fill="#14201B"/>
+      <circle cx="600" cy="600" r="9" fill="#C2521F"/>
+    </svg>
+    <div class="wordmark">Carbon Atlas</div>
+    <div class="meta">Team Data Fanatics<br>Lingnan University · CDS3001<br>27 November 2026</div>
+  </div>
+
+  <!-- headline -->
+  <div class="head">
+    <div class="kicker"><span>See every tonne. Cut what matters.</span></div>
+    <h1>37,856 million tonnes a year.<br><em>Now find the part you can move.</em></h1>
+    <p class="deck">The world emitted <b>37,856 MtCO<sub class="n2">2</sub></b> in 2025 — 4.0% more than in 2019.
+      The data is public. The decision is not. Carbon Atlas turns <b>655,200 rows</b> of daily,
+      country-by-sector open data into one screen: map, ranking, sector mix, trend, findings.</p>
+  </div>
+
+  <!-- stats -->
+  <div class="stats">
+    <div class="stat em"><div class="n">37,856 <small>MtCO<sub class="n2">2</sub></small></div><div class="k">World total · 2025</div></div>
+    <div class="stat ve"><div class="n">+4.0<small>%</small></div><div class="k">Since 2019 · 36,397 → 37,856</div></div>
+    <div class="stat oc"><div class="n">61<small>%</small></div><div class="k">Emitted by five countries</div></div>
+  </div>
+
+  <!-- product preview -->
+  <div class="preview">
+    <div class="cap"><i>Product preview</i> schematic of the dashboard · offline, local assets</div>
+    <div class="ui">
+      <div class="bar">
+        <b>Global CO<sub class="n2">2</sub> brief</b> <span>2019 – 2026</span>
+        <span class="pill">655,200 rows · local</span>
+      </div>
+      <div class="body">
+        <div class="pane">
+          <div class="ptitle"><span>World total · 2025</span><span>+4.0% vs 2019</span></div>
+          <div class="kpi">37,856 <span>MtCO<sub class="n2">2</sub></span></div>
+          <div class="unit">six sectors · 39 country / region series</div>
+
+          <div class="ptitle" style="margin-top:4.4mm">Sector mix · 2025</div>
+          <div class="bars">
+            <div class="brow"><span>Power</span><span class="track"><i class="fill" style="width:100%"></i></span><span class="v">35.6%</span></div>
+            <div class="brow"><span>Industry</span><span class="track"><i class="fill" style="width:94.1%"></i></span><span class="v">33.5%</span></div>
+            <div class="brow"><span>Ground transport</span><span class="track"><i class="fill alt" style="width:51.1%"></i></span><span class="v">18.2%</span></div>
+            <div class="brow"><span>Residential</span><span class="track"><i class="fill alt" style="width:25.3%"></i></span><span class="v">9.0%</span></div>
+            <div class="brow"><span>Int'l aviation</span><span class="track"><i class="fill ve" style="width:7.6%"></i></span><span class="v">2.7%</span></div>
+            <div class="brow"><span>Domestic aviation</span><span class="track"><i class="fill ve" style="width:3.1%"></i></span><span class="v">1.1%</span></div>
+          </div>
+
+          <div class="ptitle" style="margin-top:4.6mm"><span>Annual total</span><span>2019 – 2026</span></div>
+          <svg class="spark" viewBox="0 0 500 172" role="img" aria-label="Annual world CO2 totals 2019 to 2026">
+            <line class="grid" x1="0" y1="46" x2="500" y2="46"/>
+            <line class="grid" x1="0" y1="78" x2="500" y2="78"/>
+            <line class="grid" x1="0" y1="110" x2="500" y2="110"/>
+            <polyline fill="none" stroke="#0E7C5A" stroke-width="2.3" points="16,42.7 78,57.5 140,42.7 202,38.5 264,34.6 326,32.5 388,30.8"/>
+            <polyline fill="none" stroke="#0E7C5A" stroke-width="1.7" stroke-dasharray="3 3" points="388,30.8 468,135.6"/>
+            <g fill="#0E7C5A"><circle cx="16" cy="42.7" r="2.1"/><circle cx="78" cy="57.5" r="2.1"/><circle cx="140" cy="42.7" r="2.1"/><circle cx="202" cy="38.5" r="2.1"/><circle cx="264" cy="34.6" r="2.1"/><circle cx="326" cy="32.5" r="2.1"/><circle cx="388" cy="30.8" r="2.1"/><circle cx="388" cy="30.8" r="2.9"/></g>
+            <circle cx="468" cy="135.6" r="2.9" fill="#FCFAF5" stroke="#0E7C5A" stroke-width="1.7"/>
+            <g text-anchor="middle"><text x="16" y="164">2019</text><text x="78" y="164">2020</text><text x="140" y="164">2021</text><text x="202" y="164">2022</text><text x="264" y="164">2023</text><text x="326" y="164">2024</text><text x="388" y="164">2025</text><text x="468" y="164" text-anchor="end">2026*</text></g>
+          </svg>
+          <div class="unit" style="margin-top:1.4mm">* 2026 is partial: 1 Jan – 31 Aug, 25,014 MtCO<sub class="n2">2</sub>.</div>
+          <div class="pull"><span>Design note</span>The chart is not the brief &mdash; the sentence under it is.</div>
+          <div class="chips">
+            <span>DEEP LINK · ?country=CHN&amp;year=2025</span>
+            <span>CSV EXPORT</span>
+            <span>KEYBOARD + REDUCED MOTION</span>
+          </div>
+        </div>
+        <div class="pane">
+          <div class="ptitle"><span>Ranking · 2025</span><span>MtCO<sub class="n2">2</sub></span></div>
+          <table class="rank">
+            <tr><td class="c">China</td><td class="n">12,089</td><td class="d">31.9%</td></tr>
+            <tr><td class="c">United States</td><td class="n">5,036</td><td class="d">13.3%</td></tr>
+            <tr><td class="c">India</td><td class="n">3,309</td><td class="d">8.7%</td></tr>
+            <tr><td class="c">Russia</td><td class="n">1,670</td><td class="d">4.4%</td></tr>
+            <tr><td class="c">Japan</td><td class="n">978</td><td class="d">2.6%</td></tr>
+          </table>
+          <div class="ptitle" style="margin-top:4.2mm"><span>Coverage</span><span>39 series</span></div>
+          <div class="grid40">
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          </div>
+          <div class="gridcap">one cell per series · filled = 2025 top-5 emitters</div>
+          <div class="ptitle" style="margin-top:4.4mm"><span>Data health</span><span>API</span></div>
+          <div class="health">
+            <div><span>rows imported</span><b>655,200</b></div>
+            <div><span>range</span><b>2019-01-01 → 2026-08-31</b></div>
+            <div><span>partial year</span><b>2026 flagged</b></div>
+          </div>
+        </div>
+      </div>
+      <div class="find">
+        <div class="fc"><b>Finding 01</b><span>Power plus industry are <strong>69.1%</strong> of world emissions — the brief opens there, not on a country league table.</span></div>
+        <div class="fc"><b>Finding 02</b><span>2026 is partial: raw-year comparison would fake a <strong>~31% drop</strong>. The brief compares like-for-like months.</span></div>
+      </div>
+      <div class="method">
+        <div><b>Source</b>Carbon Monitor · open data · arXiv:2004.13614</div>
+        <div><b>Unit</b>MtCO<sub class="n2">2</sub> per day, summed to MtCO<sub class="n2">2</sub> per year</div>
+        <div><b>Caveat</b>2026 is partial · 1 Jan – 31 Aug only</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- call to action -->
+  <div class="cta">
+    <div>
+      <div class="big">Ask us for a 15-minute walkthrough.</div>
+      <div class="sub">Runs offline on a laptop at 127.0.0.1:5001 — no cloud account, no tracking, no personal data.
+        CSV · MySQL · Flask JSON · one page.</div>
+    </div>
+    <div class="btn">BOOK A DEMO<small>27 NOV 2026 · LINGNAN UNIVERSITY</small></div>
+  </div>
+
+  <!-- footer -->
+  <div class="foot">
+    <div class="src">Data: Carbon Monitor (carbonmonitor.org), fair-use open data, cited as arXiv:2004.13614.
+      Data to 2026-08-31; it is a living dataset and values change. 2026 figures cover 1 Jan – 31 Aug only.
+      Figures are rounded; percentage shares are of the same 2025 world total.</div>
+    <div class="sig">Data Fanatics · Lingnan University CDS3001<br>See every tonne. Cut what matters.</div>
+  </div>
+
+  <svg class="wm" viewBox="0 0 1200 1200" aria-hidden="true">
+    <circle cx="600" cy="600" r="548" fill="none" stroke="#14201B" stroke-width="14"/>
+    <ellipse cx="600" cy="600" rx="222" ry="548" fill="none" stroke="#14201B" stroke-width="12" opacity=".7"/>
+    <ellipse cx="600" cy="600" rx="548" ry="222" fill="none" stroke="#14201B" stroke-width="8" opacity=".45"/>
+    <path d="M600 168l99 336-99-66-99 66z" fill="#14201B"/>
+  </svg>
+</div>
+</body>
+</html>
