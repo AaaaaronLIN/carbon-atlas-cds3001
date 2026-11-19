@@ -3,6 +3,8 @@
 **公司 / Company：Data Fanatics** · **产品 / Product：Carbon Atlas** · **Tagline：See every tonne. Cut what matters.**
 Lingnan University · CDS3001 Databases and Data Warehouses · 2026-11-27 18:00 HKT 提交
 
+**GitHub repo（public）**：<https://github.com/AaaaaronLIN/carbon-atlas-cds3001>
+
 > 这是给组员看的**项目主页**：所有交付物、当前进度、剩余任务、演示怎么用都在这里。新组员请从本页开始。
 
 ---
@@ -34,7 +36,8 @@ Lingnan University · CDS3001 Databases and Data Warehouses · 2026-11-27 18:00 
 | ![Deck](assets/screenshots/deck-contact-final.png) | ![Comparison](assets/screenshots/comparison-current.png) |
 
 > 更多截图在 `assets/screenshots/`；deck 内嵌媒体说明见 `deliverable/` 与 `presentation/scripts/00_run_of_show.zh.md`。
-> **发布到 GitHub（让组员在线看）**：见 [`docs/PUBLISH_TO_GITHUB.md`](docs/PUBLISH_TO_GITHUB.md)。
+> **GitHub 仓库地址 / 日常操作（clone、push、邀请组员）**：见 [`docs/PUBLISH_TO_GITHUB.md`](docs/PUBLISH_TO_GITHUB.md)。
+> 最终 Moodle 提交 ZIP 不在 repo 里（体积原因）；repo 的 `code/` + `deliverable/` 已包含全部必交文件，ZIP 由 Lead 另外打包发群。
 
 ---
 
