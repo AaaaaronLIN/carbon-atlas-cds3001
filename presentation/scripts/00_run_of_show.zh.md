@@ -23,7 +23,7 @@
 
 | 顯示名 | 角色 | 負責評分項 | 分段秒數 | 實際口述（估） |
 | --- | --- | --- | --- | --- |
-| **LIN Xiaotong (4589755)** | Host / Company & story | #1、#2、全部轉場、3 個互動、Q&A 主持 | 103 | **109 s**（含 Beat 3 poll 6 s） |
+| **LIN Xiaotong (4589755)** | Host / Company & story | #1、#2、全部轉場、2 個互動、Q&A 主持 | 103 | **109 s**（含 3:37 產品 bridge 6 s） |
 | **WENG Zhichao (4589896)** | Database (Part 1) & cost–benefit | #3、#8 | 92 | **92 s** |
 | **LIM Mantung (4592996)** | API (Part 2) & Safety/GELSI | #4、#9 | 95 | **95 s** |
 | **LAI Patten (4001777)** | Front end (Part 3) & demo A 旁白 | #5、#6a | 100（42 + 58） | **94 s**（42 + 52） |
@@ -42,7 +42,7 @@
 | 3 | Part 1 code | 10% | 42 | WENG Zhichao | S4 |
 | 4 | Part 2 code | 10% | 42 | LIM Mantung | S5 |
 | 5 | Part 3 code | 10% | 42 | LAI Patten | S6 |
-| 6a | Dashboard demo A：S7 live 前段（globe → map → ranking）＋ Beat 3 poll | 10%（與 6b 合計） | 58 | LAI Patten | S7 live（页面 0:00–0:44；fallback 录屏） |
+| 6a | Dashboard demo A：S7 live 前段（globe → map → ranking）＋ 產品 bridge | 10%（與 6b 合計） | 58 | LAI Patten | S7 live（页面 0:00–0:44；fallback 录屏） |
 | 6b | Dashboard demo B：live 后半（sector/weekday → trend/compare/Index → findings → Method/GELSI）＋ S12 客製化 | ↑ | 53 | HUANG Haolin | 浏览器 live → 5:21 回 PPT → S12 |
 | 7 | Ad campaign（海報 → S13 內嵌音訊 30 s → 內嵌影片 45 s） | 10% | 80 | HUANG Haolin | S13 |
 | 8 | Cost–Benefit | 10% | 50 | WENG Zhichao | S14 |
@@ -68,7 +68,7 @@
 | 3 | Part 1 code | 42 | **1:31 – 2:13** | WENG | S4 | CREATE TABLE + LOAD DATA（@dummy、STR_TO_DATE）＋大字 655,200＋驗證列＋Workbench 截圖 | 指 SQL 三段 → 指 655,200 → 指驗證列 | *"Mantung, make it a URL."* | — |
 | 4 | Part 2 code | 42 | **2:13 – 2:55** | LIM | S5 | run_sql helper、/api/sectors、JSON 範例、SAFE BY DEFAULT、JSON 截圖 | 指 helper → 指 endpoint → 指 JSON → 指安全兩行 | *"Patten, draw it."* | — |
 | 5 | Part 3 code | 42 | **2:55 – 3:37** | LAI | S6 | fetch/map/setOption 程式、browser→Flask→MySQL 流程、本機 assets | 指 fetch → 指 rows.map → 指 markPoint → 指流程圖 | *"That is the code. Let me open the live build."* | — |
-| 6a | Dashboard demo A（live 前半） | 58 | **3:37 – 4:35** | LAI（＋LIN poll 6 s） | **S7 → 浏览器 live**（页面 0:00–0:44） | live：Stage hero／globe → map → ranking；LAI 控鼠标 | LIN：**"Hands up — India or Russia: who emitted more in 2025?"** → **"India — 3,309. Russia — 1,670."**；LAI：3:43 接麦 → **3:48 [Alt+Tab 浏览器]** → 页面 0:00 旁白 | *"That is the where."*（live 继续） | **Beat 3 举手 poll（6 s）** |
+| 6a | Dashboard demo A（live 前半） | 58 | **3:37 – 4:35** | LAI（＋LIN poll 6 s） | **S7 → 浏览器 live**（页面 0:00–0:44） | live：Stage hero／globe → map → ranking；LAI 控鼠标 | LIN（3:37–3:43）：**"Remember the number: 37,856 million tonnes a year. Patten — show us where it comes from."**；LAI：3:43 接麦 → **3:48 [Alt+Tab 浏览器]** → 页面 0:00 旁白 | *"That is the where."*（live 继续） | **產品 bridge（6 s，非互動）** |
 | T2 | → demo B | 4 | **4:35 – 4:39** | LIN | 浏览器 live | 页面停在 ranking 尾段；不停 | 不出手 | *"Patten has the where. Haolin, the what and the when."* | — |
 | 6b | Dashboard demo B（live 后半） | 53 | **4:39 – 5:32** | HUANG | **浏览器 live → S12** | live：sector → weekday → trend/compare/Index → findings → Method/GELSI；5:21 Alt+Tab 回 PPT | [POINT] live；LAI 控鼠标；5:21 LAI 回 PPT，HUANG [ADVANCE S12] | *"The product is done. Now the campaign."*（接 S13） | — |
 | 7 | Ad campaign | 80 | **5:32 – 6:52** | HUANG | S13 | 海報圖＋AUDIO 0:30 卡＋VIDEO 0:45 卡＋共用句子 | [POINT 海報] → **[PLAY audio，內嵌]** 30 s → **[PLAY video，內嵌]** 45 s → 指共用句 | *"One message, three media."*（接 T3） | 媒體播放（30 + 45 s） |
@@ -104,7 +104,7 @@
 
 | 成員 | 分段分配 | 實際口述（含 video voiceover／poll） | 判定（85–110；host ≤115） |
 | --- | --- | --- | --- |
-| LIN Xiaotong | 50 + 38 + 15 = **103 s** | **109 s**（Beat 3 poll 6 s） | ✅ host 上限內 |
+| LIN Xiaotong | 50 + 38 + 15 = **103 s** | **109 s**（3:37 bridge 6 s） | ✅ host 上限內 |
 | WENG Zhichao | 42 + 50 = **92 s** | **92 s** | ✅ |
 | LIM Mantung | 42 + 53 = **95 s** | **95 s** | ✅ |
 | LAI Patten | 42 + 58 = **100 s** | **94 s**（42 + 開場 5 + 旁白 47） | ✅ |
@@ -114,7 +114,7 @@
 | **全場** | 488 + 75 | **563 s = 9:23** | ✅ |
 
 - **90 s demo（live 或 fallback 录屏）是 6a + 6b 的背景画面**，旁白叠在上面，不另外加时间；它不是「第 4 段媒体」。
-- Beat 3 poll 的 5 s 由 host 在 6a 內帶，所以 LAI 的實際口述比 6a 分段少 5 s；兩人都仍在 85–110 內。
+- 3:37 的產品 bridge 6 s 由 host 在 6a 內帶，所以 LAI 的實際口述比 6a 分段少 6 s；兩人都仍在 85–110 內。
 
 ### 2.2 Buffer 計算
 
@@ -142,7 +142,7 @@
 | **D2** | 6a live ranking 段 | LAI | *"The view changes the URL, so a colleague can open exactly what you cited. One click exports the current view."* | **約 7 s** | live/录屏都有 ranking 画面；rubric 不要求逐个互动。 |
 
 - 仍落後 >15 s：刪 **D3**（WENG，成本段）*"A managed-cloud option adds HK$3,000 a year: break-even 24.4 months, net 28,254."*（約 5 s）。
-- **絕對不可刪**：三個互動、S15 五列、廣告 75 s、結論金句、S7 live（失败时用录屏）。
+- **絕對不可刪**：兩個互動、S15 五列、廣告 75 s、結論金句、S7 live（失败时用录屏）。
 
 ### 3.2 超前時（只加這兩段）
 
@@ -242,11 +242,11 @@
 | 檔案 | 用途 |
 | --- | --- |
 | `00_run_of_show.zh.md` | 本文件：時間軸、秒數核算、Fallback 調節、Q&A 交接、場地 pre-flight |
-| `01_host_LIN_Xiaotong.md` | Host 全稿：開場、需求、3 個互動、4 段轉場、Q&A 主持、收尾 |
+| `01_host_LIN_Xiaotong.md` | Host 全稿：開場、需求、2 個互動、3:37 產品 bridge、4 段轉場、Q&A 主持、收尾 |
 | `02_WENG_Zhichao.md` | Part 1 code + Cost–Benefit |
 | `03_LIM_Mantung.md` | Part 2 code + Safety & Responsibility（GELSI） |
 | `04_LAI_Patten.md` | Part 3 code + demo A（S7 live 前段；fallback 录屏） |
 | `05_HUANG_Haolin.md` | Demo B（live 后段旁白）+ Ad campaign（S13 内嵌媒体）+ Conclusion |
 | `06_qa_cheatsheet.zh.md` | 10 題 Q&A（英文答案＋中文註記＋證據 pointer） |
-| `07_interaction_plan.zh.md` | 3 個互動 beat＋PPT 媒體失敗 fallback |
+| `07_interaction_plan.zh.md` | 2 個互動 beat＋PPT 媒體失敗 fallback |
 | `08_host_cue_card.md` | Host 一頁 A4 cue card（後台／排練用，不上台） |

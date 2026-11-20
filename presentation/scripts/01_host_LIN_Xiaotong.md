@@ -3,7 +3,7 @@
 > **角色**：Host / Company & story / account lead。**主持全場**，包括開場、需求、4 段轉場、Q&A 主持、收尾。
 > **負責評分項**：#1 Company intro + logo + 成員介紹 + 卡通頭像（5%）· #2 User Requirements（5%）· Presentation Skills（10%，貫穿全場）。
 > **投影片**：S1、S2（開場／團隊）→ S3（需求）→ 4 段轉場 → S17（Q&A）。
-> **說話時間**：50 + 38 + 15 轉場 = **103 秒**分段；加 Beat 3 poll 6 s = **實際約 109 秒**（host 上限 115）。
+> **說話時間**：50 + 38 + 15 轉場 = **103 秒**分段；加產品 bridge 6 s = **實際約 109 秒**（host 上限 115）。
 > **Q&A**：1 分鐘主持（另計）。**台上不可帶筆記**；本檔與 `08_host_cue_card.md` 只作排練與後台使用。
 
 **朗讀圖例**：[PAUSE] = 停頓 1–2 秒 · [POINT …] = 用手掌指向畫面 · [ADVANCE] = 按下一頁 · [Alt+Tab] = LAI 切浏览器/live · **粗體** = 加重音 · ⏱ = 相對秒數（以本節開始為 0:00）。
@@ -79,16 +79,15 @@
 | **T3** | **6:52–6:55** | S13 → S14，交給 WENG | **"Weng, the business case."** | 廣告剛播完，音量先確認降下來再開口。 |
 | **T4** | **9:18–9:23** | S16 → S17，收尾＋交 Q&A | **"Thank you. We're happy to take questions."** | [ADVANCE] 到 S17；站回中間，面向評審。 |
 
-**C2 · 進入 demo 前的互動（3:37–3:43，6 s；Beat 3，不計入 15 s 轉場）**
+**C2 · 進入 demo 前的產品 bridge（3:37–3:43，6 s；不計入 15 s 轉場）**
 
-> LAI 此时已完成浏览器预热（3:37 前）；你面向观众：
-> **"Hands up — India or Russia: who emitted more in 2025?"** [PAUSE 2]
-> **"India — 3,309. Russia — 1,670."** [PAUSE]
-> （LAI 在 3:43 接麦，3:48 Alt+Tab 到浏览器；你退半步。）
+> 面向觀眾：
+> **"Remember the number: 37,856 million tonnes a year. Patten — show us where it comes from."**
+> （LAI 3:43 接麥；你退半步。）
 
 【中文註記 — 為什麼這樣講才有分】
 - Presentation Skills（10%）評「團隊合作」與「流暢度」；四段短轉場讓評審看到「每個人都被介紹、每個人都接得上」，而不是一人包辦。
-- **Beat 3 是举手 poll**：只有你的声音；LAI 趁这 6 秒完成浏览器切换准备（不要在台上操作）。
+- **3:37 是產品 bridge，不是互動**：只說一句，把畫面交給 LAI；不要問觀眾問題。
 - 轉場不要說 "Now let's move on to the next part, which is about cost-benefit analysis…" 這種長句；短句才像主持，也才不會吃掉別人的時間。
 - T2 的 "where / what / when" 直接對應 demo A/B 的分工，評審一聽就知道你們兩個人在講不同的 rubric 子項。
 
@@ -148,7 +147,7 @@
 - [ ] 50 秒開場能**不看稿**從 "Good afternoon" 講到 "no notes"（可用手機錄一次，對秒）；tagline 改成 **See every tonne. Cut what matters.**
 - [ ] 38 秒需求段能說出「猜 2025 vs 2019」＋五個問題＋「route and view」收句。
 - [ ] 4 段轉場逐字背熟（T1–T4），每段 ≤4 秒；T2 時 live 继续、不要切回 PPT。
-- [ ] 三個互動全練：Beat 1 開場 poll、Beat 2 猜 2019、Beat 3 印度 vs 俄羅斯（6 秒，LAI 准备浏览器时）。
+- [ ] 兩個互動全練：Beat 1 開場 poll、Beat 2 猜 2019；3:37 只練產品 bridge。
 - [ ] Q&A routing 表背熟（資料→WENG、API→LIM、頁面／live/fallback→LAI、廣告→HUANG、倫理→LIM）。
 - [ ] S17 問題能一字不差背出；知道要在**其他組 Q&A** 問，不是在本組 Q&A。
 - [ ] 全場只拿 cue card 在後台；**上台雙手空空**（Lecture 17：不可使用筆記）。

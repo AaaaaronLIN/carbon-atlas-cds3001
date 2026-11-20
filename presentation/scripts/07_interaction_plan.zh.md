@@ -1,4 +1,4 @@
-# 07 · Interaction Plan（3 個互動 beat）＋ Live / Media Failure Fallback（v3）
+# 07 · Interaction Plan（2 個互動 beat）＋ Live / Media Failure Fallback（v3）
 
 > 這份文件給三種人看：**host**（誰說話／何時救場）、**操作者**（誰按什麼）、**計時者**（容許秒數）。
 > **v3 場地事實**：Windows 教室電腦 + 浏览器；Mac 跑 Flask/MySQL；S7 优先 live（tunnel/LAN），失败 5 秒切 S7 录屏；有声音输出；USB 备份。
@@ -51,44 +51,17 @@
 
 ---
 
-## Beat 3 · 舉手：印度 vs 俄羅斯（Demo A 前的 PowerPoint-safe poll）
+## 3:37 · 產品 bridge（不是互動）
 
 | 項目 | 內容 |
 | --- | --- |
 | 位置 | 時鐘 **3:37–3:43**（6a 的頭 6 秒） |
 | 秒數預算 | **6 s**；硬上限 8 s |
-| 操作者 | **LAI**：在这 6 秒 [ADVANCE] 到 S7、把浏览器标签页准备好（**不说话**）；**host**：问与答；**HUANG**：不动，准备 4:39 接手旁白 |
-| 目的 | 让评委参与；同时给 LAI 一个自然的“准备浏览器”窗口。 |
+| 操作者 | **LIN** 說一句；**LAI** 趁這 6 秒把瀏覽器準備好（不說話） |
+| 為什麼 | 不加第三個互動；用一句產品數字把畫面交給 demo，同時給 LAI 準備時間。 |
 
 **Host 逐字**
-> **"Hands up — India or Russia: who emitted more in 2025?"** [PAUSE 2]
-> **"India — 3,309. Russia — 1,670."** [PAUSE]
-
-**預期反應**：可能喊 "Russia"（直覺認為俄羅斯更大）、"India"、或沉默。處理方式：
-- 有人喊 "Russia" → **"Good guess — India, 3,309. Russia, 1,670. Nearly double."**（3,309 / 1,670 約 2 倍）
-- 有人喊 "India" → **"Correct — 3,309 versus 1,670."**
-- 完全沉默 → host 直接自答上面兩句，**不要重問**。
-
-**Fallback 重點**：這題只用已核實數字（India 3,309、Russia 1,670，2025 世界排名第 3 與第 4），不延伸、不報其他國家百分比。
-
-**超時處理**：6 秒一到，host 收（"India — 3,309" 那句講完就停）；LAI 在 3:43 必須接麥克風說誠實開場句，**不能靠 poll 拖延**。
-
-**為什麼這樣設計**：v3 是 live，但 6 秒內不可能让观众上台点击；举手 poll 仍是零风险互动，答案（India 8.7%、Russia 4.4%）会在 S7 live ranking 段再次出现。
-
----
-
-## 互動時間總帳
-
-| Beat | 位置 | 預算 | 硬上限 | 超時處理 |
-| --- | --- | --- | --- | --- |
-| 1 開場舉手 poll | 0:06–0:16 | 10 s | 12 s | 刪第二問 |
-| 2 猜 2025 vs 2019 | 0:50–1:00 | 10 s | 12 s | 只說答案，接 requirements |
-| 3 印度 vs 俄羅斯 | 3:37–3:43 | 6 s | 8 s | 講完「India — 3,309」就收 |
-| **合計** | — | **26 s** | **32 s** | — |
-
-> 三個 beat 都已含在 563 s 骨架內（Beat 1 在 50 s、Beat 2 在 38 s、Beat 3 在 6a 的 58 s；6a 內 poll 6 s、LAI 52 s）。**若任何 beat 超出硬上限，從該段後面的內容扣**（見 `00` 第 3 節 D1/D2），不延長全場。
-
----
+> **"Remember the number: 37,856 million tonnes a year. Patten — show us where it comes from."**
 
 ## Live / Media Failure Fallback（v3 核心備援）
 

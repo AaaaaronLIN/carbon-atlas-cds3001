@@ -1,6 +1,15 @@
 # Changelog
 
-## 2026-11-20 · v4.4（当前）
+## 2026-11-20 · v5.0（当前）
+- **流程简化**：8 个步骤按顺序走；互动从 3 个减到 **2 个，全部由 LIN 带**；3:37 改为 6 秒产品 bridge（不是互动）
+- **英文稿重写**：短句、口语化；每页顶部明确写“这一段主要讲什么（中文）”；英文正文不再混中文/cue
+- **新主文件**：`Carbon_Atlas_Run_Sheet_and_Scripts.pdf`（9 页）
+  - p1 8 步流程 + 2 互动 + 规则；p2 LIN 稿；p3 LIN 互动/交接/Q&A；p4 WENG；p5 LIM；p6 LAI；p7–8 HUANG；p9 Q&A/检查/评分
+- **每人 packs**：`Team_Script_Packs.zip`
+- 旧版 10 页 handout / 纯英文稿 / Team_Member_Packs 已退役
+- Q&A：向其他组提问移到对方 Q&A；deck S17 / 讲稿 / ZIP 同步
+
+## 2026-11-20 · v4.4
 - **Q&A 提问时机修正**：S17 的“向其他组提问”不在我们自己的 1 分钟 Q&A 问；改到下一组/其他组 Q&A 举手问（课程硬性要求，否则扣分）
 - S17 标题改 “OUR QUESTION FOR ANOTHER GROUP”；host T4 改 “Thank you. We're happy to take questions.”
 - **新增纯英文逐字稿** `English_Verbatim_Scripts.pdf`（7 页）：正文只有英文，顶部保留中文任务；每页一人

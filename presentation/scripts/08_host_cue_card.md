@@ -19,7 +19,7 @@
 | **1:28** | **T1** | **WENG** | **"The data starts in MySQL — Zichao."**（指他、退半步） |
 | **2:13** | 看 WENG | **LIM** | （WENG 自己交棒） |
 | **2:55** | 看 LIM | **LAI** | （LIM 自己交棒） |
-| **3:37** | **Beat 3 poll** | LAI 准备浏览器 | **"Hands up — in 2025, did India or Russia emit more?"** → "India — 3,309. Russia — 1,670."（5 s 收） |
+| **3:37** | **產品 bridge** | LAI 准备浏览器 | **"Remember the number: 37,856 million tonnes a year. Patten — show us where it comes from."**（6 s 收） |
 | **3:43** | LAI 開場 | — | 你退半步，**不要**說話；LAI 说 live 开場句 |
 | **3:48** | LAI Alt+Tab 到浏览器 | — | live 页面 0:00；你站在侧边看画面 |
 | **4:35** | **T2** | **HUANG** | **"Patten has the where. Haolin, the what and the when."**（live 继续，不要切回） |
@@ -36,7 +36,7 @@
 | --- | --- | --- |
 | 0:06 舉手 | "Quick show of hands: who has read a carbon number this week?" | "No hands — fine. 37,856 million tonnes in 2025. What's missing is where it comes from." |
 | 0:50 猜 2019 | "Quick guess — 2025 versus 2019: up or down? And by how much?" | "I'll answer it: up 4.0% — 36,397 to 37,856. Eight years, no real decline." |
-| 3:37 印俄 | "Hands up — in 2025, did India or Russia emit more?" | "India — 3,309. Russia — 1,670."（喊錯也直接給答案，不停留） |
+| 3:37 bridge | "Remember the number: 37,856 million tonnes a year. Patten — show us where it comes from." | 一句帶過，交 LAI；不問觀眾 |
 
 ## 🎤 Q&A（9:23–10:23，開場已由 T4 帶出）
 
