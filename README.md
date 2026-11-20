@@ -94,17 +94,14 @@ python3 app.py
 - 45 s 视频草稿：[`deliverable/carbon_atlas_ad_45s.mp4`](deliverable/carbon_atlas_ad_45s.mp4)
 - **Patten 录音指南**：[`presentation/ads/voice_recording_sheet_Patten.md`](presentation/ads/voice_recording_sheet_Patten.md)
 
-### 3.5 最终背稿本（打印版，9 页）
+### 3.5 最终背稿本（连续章节版，8 页）
 - **每页分工总表（2 页）**：[`presentation/Slide_Ownership_Map.pdf`](presentation/Slide_Ownership_Map.pdf)
-  - 每页：谁负责 / 多久 / 讲什么；第二页每人职责卡
-- **主文件（A4 可打印）**：[`presentation/Carbon_Atlas_Run_Sheet_and_Scripts.pdf`](presentation/Carbon_Atlas_Run_Sheet_and_Scripts.pdf)
-  - p1 8 个步骤 + 1 个互动 + 全组规则
-  - p2 LIN 英文稿；p3 LIN 互动/交接/Q&A
-  - p4 WENG；p5 LIM；p6 LAI；p7–8 HUANG；p9 Q&A/检查/评分覆盖
-- **每人单独 pack（可直接发人）**：[`presentation/Team_Script_Packs.zip`](presentation/Team_Script_Packs.zip)
-  - LIN 4 页 · WENG/LIM/LAI 3 页 · HUANG 4 页
-- **怎么用**：每人只背自己的英文页；每页顶部有中文“这一段主要讲什么”，底部是交接/Q&A。唯一互动在 0:06（天气 vs 碳排放），0:50 后直接进入用户需求。**转场由各讲者自己收句、自己交下一位；LIN 不做技术转场。**
-- 旧版 10 页 handout、纯英文稿、Team_Member_Packs 已退役，不再作为排练依据。
+  - 5 个连续章节；每页谁负责/多久/讲什么；每人职责卡
+- **主文件（A4 可打印）**：[`presentation/Carbon_Atlas_Chapters_and_Scripts.pdf`](presentation/Carbon_Atlas_Chapters_and_Scripts.pdf)
+  - p1 5 章节 + 时间/评分/规则；p2 LIN；p3 LIN 互动/Q&A；p4 WENG（全部代码）；p5 LAI（完整 demo）；p6 HUANG（客制化/广告/成本）；p7 LIM（GELSI/结论）；p8 Q&A/检查/评分
+- **每人单独 pack**：[`presentation/Team_Script_Packs.zip`](presentation/Team_Script_Packs.zip)
+  - LIN 4 页 · WENG/LAI/HUANG/LIM 各 3 页
+- **唯一互动**：0:06 天气 vs 碳排放（LIN）；**demo 只有一个旁白**（LAI），live/90s 录屏/S8–S11 截图用同一份稿。
 
 ### 3.6 Q&A 的“向其他组提问”
 - 课程要求：**每组至少向其他组问一个问题，否则扣分**（p.20 + 录音补充）。
@@ -184,8 +181,8 @@ carbon-atlas-cds3001/
 │  ├─ 00_STATUS.md · 01_DECISIONS.md · 02_TODO_OWNERS.md · CHANGELOG.md
 │  └─ PUBLISH_TO_GITHUB.md
 ├─ presentation/              ← 讲稿、run-of-show、广告脚本、成本 xlsx
-│  ├─ Carbon_Atlas_Run_Sheet_and_Scripts.pdf ← 9 页 A4 背稿本（8 步 + 1 互动 + 每人英文稿）
-│  ├─ Slide_Ownership_Map.pdf ← 2 页每页分工/时长表
+│  ├─ Carbon_Atlas_Chapters_and_Scripts.pdf ← 8 页 A4 章节背稿本（5 章节 + 1 互动）
+│  ├─ Slide_Ownership_Map.pdf ← 2 页章节/每页分工/时长表
 │  ├─ Team_Script_Packs.zip ← 5 人各自 Script Pack
 │  ├─ scripts/                ← 9 份讲稿（host/5 人/Q&A/cue card/interaction）
 │  └─ ads/                    ← 海报源文件、音频/视频脚本、Patten 录音稿、媒体文件

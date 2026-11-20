@@ -1,6 +1,13 @@
 # Changelog
 
-## 2026-11-20 · v5.3（当前）
+## 2026-11-20 · v6.0（当前）
+- **改为 5 个连续章节**：LIN S1–S3 · WENG S4–S6 · LAI S7 · HUANG S12–S14 · LIM S15–S16；每人不再跳页
+- 章节顺序：Why → How built → See it work → Why worth it → Responsible/close
+- **LAI 一个人讲完整 demo**；HUANG 不再分担 demo B
+- **fallback 只有一份稿**：live / 90s 录屏 / S8–S11 截图都用 LAI 同一份旁白；录屏不足 90s 时删 weekday/compare 两句
+- 新增 `Carbon_Atlas_Chapters_and_Scripts.pdf`（8 页）；更新 `Slide_Ownership_Map.pdf` / packs / scripts / ZIP
+
+## 2026-11-20 · v5.3
 - **转场改为讲者自己完成**：LIN 不再负责 T1–T4 技术转场；3:37 bridge 改由 LAI 说
 - WENG 收 S4 → LIM；LIM 收 S5 → LAI；LAI 收 6a → HUANG；HUANG 收 S13 → WENG；WENG 收 S14 → LIM；LIM 收 S15 → HUANG；HUANG 收 S16 → LIN Q&A
 - 更新 `Slide_Ownership_Map.pdf` / 9 页 run sheet / packs / scripts / ZIP
