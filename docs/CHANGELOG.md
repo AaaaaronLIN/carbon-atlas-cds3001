@@ -1,6 +1,13 @@
 # Changelog
 
-## 2026-11-20 · v6.0（当前）
+## 2026-11-20 · v6.1（当前）
+- Fallback 明确：live 失败 → “I'll show the recorded build.” → S7 90s 录屏（同一份 LAI 稿）→ HUANG **12+Enter** 跳 S12
+- 录屏也失败 → S8–S11 截图（同一份稿）；讲完 S11 → S12
+- 中场失败：4:00 前播录屏；4:00 后切当前 S8–S11，不重播
+- 更新 operator card / playbook / 8 页 chapters PDF / packs / ZIP
+- S8–S11 已加 BACKUP 标签
+
+## 2026-11-20 · v6.0
 - **改为 5 个连续章节**：LIN S1–S3 · WENG S4–S6 · LAI S7 · HUANG S12–S14 · LIM S15–S16；每人不再跳页
 - 章节顺序：Why → How built → See it work → Why worth it → Responsible/close
 - **LAI 一个人讲完整 demo**；HUANG 不再分担 demo B

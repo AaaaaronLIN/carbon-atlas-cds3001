@@ -240,7 +240,7 @@ macOS 如果开了防火墙：
 
 1. **T-2 天**：Mac 本地 + tunnel 在手机 4G 打开成功；截一张手机成功图发群；
 2. **T-1 天**：教室/类似 Windows 上打开 tunnel URL，F11，跑一遍 90 秒 click cue；用手机计时，必须 **90±3 秒**；
-3. **全组 dress**：从 S7 前一句开始，LAI 切浏览器，HUANG 接，5:21 回 PPT，继续 S8；全程 9:23 ±5 秒；
+3. **全组 dress**：从 S7 前一句开始，LAI 切浏览器，HUANG 接，5:21 回 PPT，HUANG 12+Enter 到 S12；全程 9:23 ±5 秒；
 4. **失败演练**：故意断网/关 tunnel，从 live 切回视频，计时 ≤5 秒；
 5. 把 click cue 打印一张给 LAI（`LIVE_DEMO_OPERATOR_CARD.md`）。
 
@@ -294,3 +294,26 @@ macOS 如果开了防火墙：
 ## 12. 如果你要“完全离线”的 live（进阶，需提前说）
 
 可以另做一个 **static snapshot 版**（把同一份数据冻结成 JSON，双击 `index.html` 即可打开，不需要 MySQL/网络）。这需要额外开发/测试；当前最稳的 fallback 仍是 **S7 录屏 + U 盘**。
+
+---
+
+## 5.6 Fallback 逐步骤（LAI + HUANG）
+
+### A. 网页 5 秒打不开
+1. LAI：**“I'll show the recorded build.”**
+2. Alt+Tab 回 PPT（S7）
+3. 点 S7 的 90 秒视频 poster；录屏无声，LAI 继续同一份 demo 稿
+4. 视频结束 / 5:21：**HUANG 按 `12` + Enter 跳 S12**（不要按 →，否则会到 S8）
+
+### B. 录屏也播不了
+1. LAI：**“Let me walk you through the screens.”**
+2. HUANG 按 → 到 **S8**，依次 **S9 → S10 → S11**
+3. LAI 用同一份稿按 Where/What/When/Findings 讲
+4. 讲完 S11，按 → 到 **S12**
+
+### C. live 中途卡住
+- 4:00 前：按 A 播录屏；
+- 4:00 后：按 B，直接切当前对应的 S8–S11，不重播整段；
+- 一句 “I'll show the recorded build.” 后继续。
+
+**绝对不要**：刷新页面、重启 MySQL/tunnel、开 terminal、在台上输 URL、按 → 从 S7 到 S8。
