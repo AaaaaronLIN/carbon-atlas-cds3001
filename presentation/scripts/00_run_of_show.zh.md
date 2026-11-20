@@ -1,4 +1,4 @@
-# CARBON ATLAS · 最終簡報 Run of Show（9:23 + 1 分鐘 Q&A）· v2（真實場地版）
+# CARBON ATLAS · 最終簡報 Run of Show（9:23 + 1 分鐘 Q&A）· v3（live 優先，fallback 錄屏）
 
 > **公司 / 團隊**：Data Fanatics · Lingnan University · CDS3001
 > **產品**：Carbon Atlas（舊名 Carbon Compass 一律不再使用）
@@ -8,16 +8,16 @@
 > **語言**：全英文 · **不可使用筆記** · 每位成員都要發言 · 手機靜音
 > **角色設定**：我們是 account team，台下是「香港上市公司的 sustainability team」，評審是 panel。Host 用 account lead 的語氣主持整場。
 
-**場地與媒體（v2 確認）**
+**場地與媒體（v3 決策）**：S7 優先現場 live（Mac Flask+MySQL → 教室瀏覽器 tunnel/LAN）；失敗 5 秒內切 S7 的 90 秒錄屏；完整操作見 `LIVE_DEMO_PLAYBOOK.zh.md` / `LIVE_DEMO_OPERATOR_CARD.md`。
 
 | 項目 | 事實 | 對簡報的影響 |
 | --- | --- | --- |
-| 教室電腦 | **Windows** | 所有操作只能靠 PowerPoint：上一頁、播放內嵌媒體、雷射筆 |
-| 可顯示的程式 | **只有 PowerPoint**（依經驗） | **沒有瀏覽器、沒有本機伺服器、不保證 MySQL / Python** |
-| 檔案傳輸 | 可用 USB 複製 | 上台前把**最終 PPTX（含所有內嵌媒體）＋ PDF 備份**放入 USB |
-| 音效 | **有聲音輸出** | S13 的 30 s 音訊與 45 s 影片**直接播**；音量 pre-flight 設 70% |
-| Demo 方式 | **S7 內嵌 90 秒預錄影片**（在我們機器上真實跑 MySQL build 的 Stage 主題螢幕錄影） | 6a + 6b 邊播邊旁白；**不再有任何 live 點擊** |
-| 備援畫面 | S8–S11 截圖、`out/screenshots/atlas/*.png`、deck PDF | 影片／媒體不播時立即切換 |
+| 教室電腦 | **Windows** | PowerPoint + 浏览器；Mac 跑 Flask/MySQL，Windows 只负责打开 URL |
+| 可顯示的程式 | **PowerPoint + Chrome/Edge** | 浏览器用于 S7 live；其他页仍用 PPT |
+| 檔案傳輸 | USB | 最终 PPTX（含 S7 录屏/S13 媒体）+ PDF + 独立 mp4/mp3 备份 |
+| 音效 | **有声音输出** | S13 的 30 s 音频与 45 s 视频直接播；音量 pre-flight 设 70% |
+| Demo 方式 | **S7 live 90 秒**（Mac 跑真实 Flask+MySQL；Windows 浏览器通过 tunnel/LAN 打开） | 6a+6b live 旁白；失败 5 秒内切回 S7 内嵌录屏；操作见 `LIVE_DEMO_OPERATOR_CARD.md` |
+| 备援画面 | S7 90 秒录屏、S8–S11 截图、deck PDF | live 打不开/断网 → Alt+Tab 回 PPT 播 S7 录屏；再不行切 S8–S11 |
 
 **成員（顯示格式固定）**
 
@@ -29,7 +29,7 @@
 | **LAI Patten (4001777)** | Front end (Part 3) & demo A 旁白 | #5、#6a | 100（42 + 58） | **94 s**（42 + 52） |
 | **HUANG Haolin (4455930)** | Demo B 旁白、ad campaign、conclusion | #6b、#7、#10 | 98 | **98 s**（53 + 5 + 40） |
 
-- **總長 563 s = 9:23**（含 90 s demo 錄影的旁白 + 75 s 廣告媒體）。Q&A 1 分鐘另計。
+- **總長 563 s = 9:23**（含 90 s live demo 的旁白 + 75 s 廣告媒體；fallback 是同長度錄屏）。Q&A 1 分鐘另計。
 - 每人實際口述 92–109 s，全部在 85–110（host 上限 115）之內。
 - 6a 的 58 s 由 **host poll（6 s）＋ LAI 旁白（52 s）** 共用；LAI 的分段仍計 58 s／100 s。
 
@@ -42,8 +42,8 @@
 | 3 | Part 1 code | 10% | 42 | WENG Zhichao | S4 |
 | 4 | Part 2 code | 10% | 42 | LIM Mantung | S5 |
 | 5 | Part 3 code | 10% | 42 | LAI Patten | S6 |
-| 6a | Dashboard demo A：S7 錄影前段（globe → map → ranking）＋ Beat 3 poll | 10%（與 6b 合計） | 58 | LAI Patten | S7 內嵌 90 s 影片（0:00–0:44） |
-| 6b | Dashboard demo B：錄影後段（sector/weekday → trend/compare/Index → findings → Method/GELSI）＋ S12 客製化 | ↑ | 53 | HUANG Haolin | S7 影片（0:48–1:30）→ S12 |
+| 6a | Dashboard demo A：S7 live 前段（globe → map → ranking）＋ Beat 3 poll | 10%（與 6b 合計） | 58 | LAI Patten | S7 live（页面 0:00–0:44；fallback 录屏） |
+| 6b | Dashboard demo B：live 后半（sector/weekday → trend/compare/Index → findings → Method/GELSI）＋ S12 客製化 | ↑ | 53 | HUANG Haolin | 浏览器 live → 5:21 回 PPT → S12 |
 | 7 | Ad campaign（海報 → S13 內嵌音訊 30 s → 內嵌影片 45 s） | 10% | 80 | HUANG Haolin | S13 |
 | 8 | Cost–Benefit | 10% | 50 | WENG Zhichao | S14 |
 | 9 | Safety & Responsibility（GELSI） | 10% | 53 | LIM Mantung | S15 |
@@ -57,7 +57,7 @@
 
 ## 1. 精確時間軸（含累計時鐘、畫面、播放動作、交接句）
 
-> **投影片編號固定 S1–S17**（deck 已重整品牌，頁序不變）。Demo 不再切瀏覽器：**6a 在 S7 按「PLAY」播內嵌影片，6b 讓同一段影片播完**。
+> **投影片編號固定 S1–S17**（deck 已重整品牌，頁序不變）。**Demo v3：S7 优先 live**——3:48 Alt+Tab 到浏览器（页面 0:00），5:21 Alt+Tab 回 PPT；失败 5 秒内切回 S7 的 90 秒錄屏。
 > 「交接句」是該段最後一句英文；下一段的人接著開口。
 
 | # | 評分項 | 秒 | 累計時鐘 | 講者 | 投影片 | 台上畫面 | 播放／操作 | 交接句（English，照念） | 互動 |
@@ -67,10 +67,10 @@
 | T1 | → Part 1 | 3 | **1:28 – 1:31** | LIN | S3 → S4 | 交棒畫面 | [ADVANCE] | *"The data starts in MySQL — Zichao."* | — |
 | 3 | Part 1 code | 42 | **1:31 – 2:13** | WENG | S4 | CREATE TABLE + LOAD DATA（@dummy、STR_TO_DATE）＋大字 655,200＋驗證列＋Workbench 截圖 | 指 SQL 三段 → 指 655,200 → 指驗證列 | *"Mantung, make it a URL."* | — |
 | 4 | Part 2 code | 42 | **2:13 – 2:55** | LIM | S5 | run_sql helper、/api/sectors、JSON 範例、SAFE BY DEFAULT、JSON 截圖 | 指 helper → 指 endpoint → 指 JSON → 指安全兩行 | *"Patten, draw it."* | — |
-| 5 | Part 3 code | 42 | **2:55 – 3:37** | LAI | S6 | fetch/map/setOption 程式、browser→Flask→MySQL 流程、本機 assets | 指 fetch → 指 rows.map → 指 markPoint → 指流程圖 | *"That is the code. Here is the recording."* | — |
-| 6a | Dashboard demo A（前半段錄影） | 58 | **3:37 – 4:35** | LAI（＋LIN poll 6 s） | **S7（90 s 內嵌影片 0:00–0:44）** | 影片：Stage 主題 hero／globe → map → ranking table | LIN：**"Hands up — India or Russia: who emitted more in 2025?"** → **"India — 3,309. Russia — 1,670."**；LAI：3:43 接麥克風 → 誠實開場句 → **3:51 [PLAY video]** → 指畫面旁白 | *"That is the where."*（接 T2；影片繼續播） | **Beat 3 舉手 poll（6 s）** |
-| T2 | → demo B | 4 | **4:35 – 4:39** | LIN | S7（影片繼續） | 影片播到約 0:44–0:48，不停 | 不出手 | *"Patten has the where. Haolin, the what and the when."* | — |
-| 6b | Dashboard demo B（後半段錄影） | 53 | **4:39 – 5:32** | HUANG | **S7 影片 0:48–1:30 → S12** | 影片：sector bars → weekday → trend/compare/Index → findings → Method/GELSI（約 5:21 播完）→ S12 客製化對照 | [POINT] 影片；影片結束（約 5:21）[ADVANCE to S12]；指 S12 表格 | *"The product is done. Now the campaign."*（接 S13） | — |
+| 5 | Part 3 code | 42 | **2:55 – 3:37** | LAI | S6 | fetch/map/setOption 程式、browser→Flask→MySQL 流程、本機 assets | 指 fetch → 指 rows.map → 指 markPoint → 指流程圖 | *"That is the code. Let me open the live build."* | — |
+| 6a | Dashboard demo A（live 前半） | 58 | **3:37 – 4:35** | LAI（＋LIN poll 6 s） | **S7 → 浏览器 live**（页面 0:00–0:44） | live：Stage hero／globe → map → ranking；LAI 控鼠标 | LIN：**"Hands up — India or Russia: who emitted more in 2025?"** → **"India — 3,309. Russia — 1,670."**；LAI：3:43 接麦 → **3:48 [Alt+Tab 浏览器]** → 页面 0:00 旁白 | *"That is the where."*（live 继续） | **Beat 3 举手 poll（6 s）** |
+| T2 | → demo B | 4 | **4:35 – 4:39** | LIN | 浏览器 live | 页面停在 ranking 尾段；不停 | 不出手 | *"Patten has the where. Haolin, the what and the when."* | — |
+| 6b | Dashboard demo B（live 后半） | 53 | **4:39 – 5:32** | HUANG | **浏览器 live → S12** | live：sector → weekday → trend/compare/Index → findings → Method/GELSI；5:21 Alt+Tab 回 PPT | [POINT] live；LAI 控鼠标；5:21 LAI 回 PPT，HUANG [ADVANCE S12] | *"The product is done. Now the campaign."*（接 S13） | — |
 | 7 | Ad campaign | 80 | **5:32 – 6:52** | HUANG | S13 | 海報圖＋AUDIO 0:30 卡＋VIDEO 0:45 卡＋共用句子 | [POINT 海報] → **[PLAY audio，內嵌]** 30 s → **[PLAY video，內嵌]** 45 s → 指共用句 | *"One message, three media."*（接 T3） | 媒體播放（30 + 45 s） |
 | T3 | → cost–benefit | 3 | **6:52 – 6:55** | LIN | S13 → S14 | 交棒畫面 | [ADVANCE] | *"Weng, the business case."* | — |
 | 8 | Cost–Benefit | 50 | **6:55 – 7:45** | WENG | S14 | 成本/效益表＋三個 KPI（≈17 個月、2.17:1、+HK$37,254）＋「not claiming」虛線框＋假設句 | 指表 → 指 KPI → 指虛線框 | *"Mantung, the responsibility side."* | — |
@@ -81,21 +81,20 @@
 
 **總計：50 + 38 + 3 + 42 + 42 + 42 + 58 + 4 + 53 + 80 + 3 + 50 + 53 + 40 + 5 = 563 s = 9:23。**
 
-**S7 影片時鐘（單獨記，避免旁白對不上畫面）**
+**S7 live 時鐘（頁面時間 ↔ 實際時鐘）**
 
-| 影片時間 | 實際時鐘 | 畫面 | 誰旁白 |
+| 頁面時間 | 實際時鐘 | 畫面 | 誰旁白 |
 | --- | --- | --- | --- |
-| 0:00 | **3:51**（6a 的第 14 秒按 PLAY） | Stage 主題 hero／globe 旋轉 | LAI |
-| 0:12 | 4:03 | 世界地圖 + country focus | LAI |
-| 0:28 | 4:19 | ranking table、sparkline、vs 2019 欄 | LAI |
-| 0:44 | **4:35** | 影片播到 ranking 尾段 → 進 T2 | LAI 收句；LIN T2 |
-| 0:48 | **4:39** | 影片：sector／weekday 開始 | HUANG |
-| 1:00 | 4:51 | sector（Power／Industry） | HUANG |
-| 1:08 | 4:59 | trend、compare、Index | HUANG |
-| 1:20 | 5:11 | findings、Method／GELSI | HUANG |
-| 1:30 | **5:21** | 影片結束，切 S12（S12 到 5:32） | HUANG |
+| 0:00 | **3:48**（Alt+Tab 到浏览器） | live hero／globe | LAI |
+| 0:14 | 4:02 | Where + China | LAI |
+| 0:26 | 4:14 | ranking、sparkline、vs 2019 | LAI |
+| 0:44 | **4:32** | ranking 尾段 → T2 | LAI 收句；LIN T2 |
+| 0:51 | **4:39** | What / India | HUANG |
+| 1:02 | 4:50 | trend、compare、Index | HUANG |
+| 1:20 | 5:08 | findings、Method／GELSI | HUANG |
+| 1:30 | **5:18** | live 收尾；**5:21 回 PPT** | LAI 切；HUANG 接 S12 |
 
-> **對不上時的補救**：旁白以「畫面現在顯示什麼」為準，不以秒數為準；影片比預期慢 2–3 s 就直接跳到下一個畫面關鍵詞講（見 `07` 的「旁白落後」處理）。
+> **對不上時的補救**：旁白以「页面现在显示什么」为准，不以秒数为准；live 点慢 2–3 s 就跳到下一个画面关键词；失败 5 秒内切回 S7 录屏（见 `07` 的 live fallback）。
 
 ---
 
@@ -114,7 +113,7 @@
 | 廣告媒體 | 30 s 音訊 + 45 s 影片 | **75 s** | — |
 | **全場** | 488 + 75 | **563 s = 9:23** | ✅ |
 
-- 90 s demo 錄影是 **6a + 6b 的背景畫面**，旁白疊在影片上，不另外加時間；它不是「第 4 段媒體」。
+- **90 s demo（live 或 fallback 录屏）是 6a + 6b 的背景画面**，旁白叠在上面，不另外加时间；它不是「第 4 段媒体」。
 - Beat 3 poll 的 5 s 由 host 在 6a 內帶，所以 LAI 的實際口述比 6a 分段少 5 s；兩人都仍在 85–110 內。
 
 ### 2.2 Buffer 計算
@@ -126,38 +125,38 @@
 | 規則硬上限 10:00 | 600 s | **37 s** |
 | 目標帶下限 9:18 | 558 s | 計劃比下限多 5 s，屬安全中位 |
 
-- 媒體時間固定：**90 s demo 錄影**（6a+6b 內）＋**75 s 廣告**（S13 內）。
-- 若影片播放比預期慢：旁白照「畫面」走，不要加速；時間由 6b 後面約 14 s 的 S12 段吸收。
+- 媒體時間固定：**90 s demo（live/录屏）**（6a+6b 内）＋**75 s 广告**（S13 内）。
+- 若 live 点击比预期慢：旁白照「画面」走，不要加速/催 LAI；时间由 6b 后面约 14 s 的 S12 段吸收。
 
 ---
 
 ## 3. 臨場調節：落後 / 超前怎麼辦
 
-**原則**：每段秒數是上限；落後時只刪不影響 rubric 證據的句子；**不能因為影片播放就跳過口述內容**（S7 是唯一 demo 證據）。
+**原則**：每段秒數是上限；落後時只刪不影響 rubric 證據的句子；**不能因為 live/录屏播放就跳過口述內容**（S7 是唯一 demo 證據）。
 
 ### 3.1 落後時（先刪這兩句）
 
 | # | 位置 | 講者 | 刪掉的英文句 | 省下 | 為什麼可以刪 |
 | --- | --- | --- | --- | --- | --- |
-| **D1** | 6b 影片完結後（S12 前） | HUANG | *"Not a re-skin: ranking table, Index compare, findings, Method — ours."* | **約 6 s** | S12 的對照表仍在畫面；S15/S16 會再回扣「not a re-skin」。 |
-| **D2** | 6a 錄影 ranking 段 | LAI | *"The view changes the URL, so a colleague can open exactly what you cited. One click exports the current view."* | **約 7 s** | 影片本身有 ranking 畫面；rubric 不要求逐個互動。 |
+| **D1** | 6b live 收尾（S12 前） | HUANG | *"Not a re-skin: ranking table, Index compare, findings, Method — ours."* | **約 6 s** | S12 的對照表仍在畫面；S15/S16 會再回扣「not a re-skin」。 |
+| **D2** | 6a live ranking 段 | LAI | *"The view changes the URL, so a colleague can open exactly what you cited. One click exports the current view."* | **約 7 s** | live/录屏都有 ranking 画面；rubric 不要求逐个互动。 |
 
 - 仍落後 >15 s：刪 **D3**（WENG，成本段）*"A managed-cloud option adds HK$3,000 a year: break-even 24.4 months, net 28,254."*（約 5 s）。
-- **絕對不可刪**：三個互動、S15 五列、廣告 75 s、結論金句、S7 影片本身。
+- **絕對不可刪**：三個互動、S15 五列、廣告 75 s、結論金句、S7 live（失败时用录屏）。
 
 ### 3.2 超前時（只加這兩段）
 
 | # | 位置 | 講者 | 加的口述／動作 | 增加 | 素材來源（已核實） |
 | --- | --- | --- | --- | --- | --- |
-| **E1** | 6a 錄影 ranking 段 | LAI | [POINT 影片] *"India is 8.7% — third — and Russia 4.4% — fourth. Five countries are 61%."* | **約 7 s** | India 3,309（8.7%）、Russia 1,670（4.4%）、top five 61.0% |
-| **E2** | 6b 錄影 trend 段 | HUANG | [POINT 影片] *"April 2020 was the lowest month in our snapshot: 2,477 MtCO₂ — 14.3% below April 2019."* | **約 6 s** | 已核實 2020-04 數字 |
+| **E1** | 6a live ranking 段 | LAI | [POINT 画面] *"India is 8.7% — third — and Russia 4.4% — fourth. Five countries are 61%."* | **約 7 s** | India 3,309（8.7%）、Russia 1,670（4.4%）、top five 61.0% |
+| **E2** | 6b live trend 段 | HUANG | [POINT 画面] *"April 2020 was the lowest month in our snapshot: 2,477 MtCO₂ — 14.3% below April 2019."* | **約 6 s** | 已核實 2020-04 數字 |
 
-- 超前 >13 s：不要加新內容；把「前五大國家 = 61.0%」這類已講過的數字留給 Q&A；或讓影片多播 2 秒再開口。
-- **不要**為了填時間重播影片或重講已播過的畫面。
+- 超前 >13 s：不要加新内容；把「前五大国家 = 61.0%」这类讲过的数字留给 Q&A；live 不要为了填时间乱点。
+- **不要**为了填时间重播录屏或重讲已播过的画面。
 
 ### 3.3 超時紅線（給 HUANG 的計時器）
 
-- **5:21** 影片還沒播完 → 立刻切 S12（影片可在 PowerPoint 按暫停），照 D1 講，接廣告。
+- **5:21** live 还没收尾 → LAI 立刻 Alt+Tab 回 PPT，照 D1 讲，接广告。
 - **8:38** 還沒進 S16 → 直接結論，跳過 E1/E2。
 - **9:18** 還沒講完結論最後一句 → 直接說金句 + 交 host，剪掉「next, honestly」。
 - **9:30** 一定停；Q&A 由 host 接手。
@@ -178,11 +177,11 @@
 
 | 題目類型 | 主答 | 補一句 | 證據 pointer |
 | --- | --- | --- | --- |
-| 為什麼 demo 是錄影？／為什麼不即場跑？ | **LAI** | LIN（場地限制） | S7 影片、S8–S11 備援截圖、`07` fallback |
+| 為什麼 demo 是 live？网络坏了怎么办？ | **LAI** | LIN（场地/网络） | S7 live、S7 录屏 fallback、S8–S11 截图、`07` fallback |
 | 資料從哪來 / 可不可信 / 2026 partial | **WENG** | LIM（API 一致性） | S11 Method、`/api/health`、`/api/country_ytd` |
 | 成本 / 效益 / 售價 / 利潤 | **WENG** | — | S14、`cost_benefit.xlsx` Assumptions |
 | API / SQL injection / JSON 503 / 安全 | **LIM** | WENG（DB 權限） | S5、`app.py` `run_sql()`、`/api/health` |
-| Dashboard / UX / 客製化 / 無障礙 | **LAI** | HUANG（findings） | S12、S7 影片、Method 面板 |
+| Dashboard / UX / 客製化 / 無障礙 | **LAI** | HUANG（findings） | S12、S7 live/录屏、Method 面板 |
 | GELSI / 倫理 / 法律 / 社會責任 | **LIM** | LIN（補充治理） | S15、L19 GELSI 框架、Method 面板 |
 | 廣告 / 品牌 / 故事 / 結論 | **HUANG** | LIN（pitch 框架） | S13、`ads/` 三份腳本 |
 | 「這和 bonus dashboard 有何不同？」 | **LIM 或 LAI**（誰近誰答） | HUANG | S12、`shots/atlas/deck1-stage-hero.png` 等截圖 |
@@ -207,14 +206,15 @@
 
 | 項目 | 負責人 | 檢查內容 | 失敗備案 |
 | --- | --- | --- | --- |
-| USB / 檔案 | WENG | USB 內有：**最終 `Carbon_Atlas_Deck.pptx`（含 S7 影片、S13 音訊＋影片）**、`Carbon_Atlas_Deck.pdf`、`out/screenshots/atlas/*.png` 備援圖 | 用 PDF 簡報；截圖用備援圖 |
-| 教室電腦 | HUANG | 提前到場把 PPTX 複製到桌面；確認 PowerPoint 開得起來、16:9、影片／音訊**內嵌可播** | 用 PDF；影片失敗見 `07` |
+| USB / 檔案 | WENG | USB 內有：**最终 `Carbon_Atlas_Deck.pptx`（含 S7 录屏、S13 音频+视频）**、`Carbon_Atlas_Deck.pdf`、独立 90 s mp4、A3 海报 | 用 PDF；live 失败切录屏 |
+| 教室電腦 | HUANG | 提前到場复制 PPTX；确认 PowerPoint 16:9、S7/S13 媒体可播；浏览器打开 live URL、F11、缩放 90% | 用 PDF；live 失败切录屏 |
 | 音量 | HUANG | 播 5 秒 S13 音訊測音量，設 70%；確認喇叭有聲 | 提高系統音量；再不行口述三媒體句 |
-| S7 影片 | LAI | 開到 S7，試播 3 秒再按暫停到第一幀；確認 90 s 版本、Stage 主題、字幕清楚 | 用 S8–S11 截圖（`07` 的錄影失敗 fallback） |
+| S7 live | LAI | 开 S7；浏览器 live 页已预热；按 operator card 走一遍 90 秒 cue | 用 S7 录屏 + S8–S11 截图（`07` fallback） |
 | S13 媒體 | HUANG | 試播 audio 3 秒、video 3 秒；確認聲音與畫面 | 口述三媒體內容（`07`） |
 | 簡報模式 | HUANG | Slide Show 全螢幕、Presenter View 關閉（評審只看投影）；游標隱藏 | 用 F5 |
 | 海報 | HUANG | A3 已印、面朝觀眾、放在講台側 | 用 PDF 版 A3 |
-| MySQL / API | — | **不需要**：場地不跑瀏覽器、不跑 server；不要嘗試在教室電腦啟動 | 不處理 |
+| Mac + live 服务 | LAI | Mac 充电、MySQL/Flask 已跑、tunnel/LAN URL 已生成；**手机 4G 打开 URL** 验证 | 切 S7 录屏 |
+| 浏览器 | LAI | Chrome/Edge 已开 URL；F11；Ctrl+Shift+B；预热 Team/Method | 切录屏 |
 | 手機 | 全員 | 靜音（Lecture 17 p.20 明說電話響會扣分） | — |
 | 筆記 | 全員 | 台上不帶紙本；cue card 只留在後台／排練 | — |
 
@@ -243,8 +243,8 @@
 | `01_host_LIN_Xiaotong.md` | Host 全稿：開場、需求、3 個互動、4 段轉場、Q&A 主持、收尾 |
 | `02_WENG_Zhichao.md` | Part 1 code + Cost–Benefit |
 | `03_LIM_Mantung.md` | Part 2 code + Safety & Responsibility（GELSI） |
-| `04_LAI_Patten.md` | Part 3 code + demo A（S7 90 s 錄影前段旁白） |
-| `05_HUANG_Haolin.md` | Demo B（錄影後段旁白）+ Ad campaign（S13 內嵌媒體）+ Conclusion |
+| `04_LAI_Patten.md` | Part 3 code + demo A（S7 live 前段；fallback 录屏） |
+| `05_HUANG_Haolin.md` | Demo B（live 后段旁白）+ Ad campaign（S13 内嵌媒体）+ Conclusion |
 | `06_qa_cheatsheet.zh.md` | 10 題 Q&A（英文答案＋中文註記＋證據 pointer） |
 | `07_interaction_plan.zh.md` | 3 個互動 beat＋PPT 媒體失敗 fallback |
 | `08_host_cue_card.md` | Host 一頁 A4 cue card（後台／排練用，不上台） |

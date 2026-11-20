@@ -4,7 +4,7 @@
 > **投影片**：S4（655,200 rows land in MySQL）· S14（What it costs, what it returns）。
 > **說話時間**：42 + 50 = **92 秒**（目標 85–110）。**台上不可帶筆記**；本檔只作排練用。
 > **Q&A 主答**：資料從哪來／可不可信／2026 partial／成本效益／售價利潤。
-> **v2 場地**：demo 是 S7 的 90 秒錄影；Part 1 段不需要碰 server 或瀏覽器；成本模型的 hosting 假設（build 跑在 laptop、hosting 為零）不變。
+> **v3 場地**：demo 是 S7 的 live 90 秒（Mac 跑 Flask/MySQL；教室浏览器打开 tunnel/LAN），失败切 S7 录屏；Part 1 段不需要碰 server/浏览器；成本模型的 hosting 假设（build 跑在 laptop、hosting 为零）不变。
 
 **朗讀圖例**：[PAUSE] = 停頓 1 秒 · [POINT …] = 指向畫面 · ⏱ = 相對秒數。
 

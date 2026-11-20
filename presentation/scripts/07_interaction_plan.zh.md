@@ -1,7 +1,7 @@
-# 07 · Interaction Plan（3 個互動 beat）＋ PPT 媒體 Failure Fallback（v2 場地版）
+# 07 · Interaction Plan（3 個互動 beat）＋ Live / Media Failure Fallback（v3）
 
 > 這份文件給三種人看：**host**（誰說話／何時救場）、**操作者**（誰按什麼）、**計時者**（容許秒數）。
-> **v2 場地事實**：Windows 教室電腦、**只有 PowerPoint**、沒有瀏覽器／本機伺服器／MySQL；有聲音輸出；檔案可經 USB 複製。
+> **v3 場地事實**：Windows 教室電腦 + 浏览器；Mac 跑 Flask/MySQL；S7 优先 live（tunnel/LAN），失败 5 秒切 S7 录屏；有声音输出；USB 备份。
 > 原則：互動是節奏，不是風險。任何互動**最多 10 秒**；觀眾不接球，host 用準備好的數據自答，**不冷場、不重複問**。
 
 ---
@@ -57,8 +57,8 @@
 | --- | --- |
 | 位置 | 時鐘 **3:37–3:43**（6a 的頭 6 秒） |
 | 秒數預算 | **6 s**；硬上限 8 s |
-| 操作者 | **LAI**：在這 6 秒 [ADVANCE] 到 S7、把游標放上內嵌影片的 PLAY 鍵（**不說話**）；**host**：問與答；**HUANG**：不動，準備 4:39 接手旁白 |
-| 目的 | 在沒有滑鼠、沒有瀏覽器的課室裡，仍然讓評審參與；同時給 LAI 一個自然的「準備影片」窗口。 |
+| 操作者 | **LAI**：在这 6 秒 [ADVANCE] 到 S7、把浏览器标签页准备好（**不说话**）；**host**：问与答；**HUANG**：不动，准备 4:39 接手旁白 |
+| 目的 | 让评委参与；同时给 LAI 一个自然的“准备浏览器”窗口。 |
 
 **Host 逐字**
 > **"Hands up — India or Russia: who emitted more in 2025?"** [PAUSE 2]
@@ -73,7 +73,7 @@
 
 **超時處理**：6 秒一到，host 收（"India — 3,309" 那句講完就停）；LAI 在 3:43 必須接麥克風說誠實開場句，**不能靠 poll 拖延**。
 
-**為什麼這樣設計**：v2 沒有 live demo，不可能再讓觀眾「點國家」；舉手 poll 是零設備、零風險的替代互動，而且答案是排名表上的真實數字（India 8.7%、Russia 4.4%），評審之後在 S7 錄影的 ranking 段會再看到同一組數字。
+**為什麼這樣設計**：v3 是 live，但 6 秒內不可能让观众上台点击；举手 poll 仍是零风险互动，答案（India 8.7%、Russia 4.4%）会在 S7 live ranking 段再次出现。
 
 ---
 
@@ -90,41 +90,39 @@
 
 ---
 
-## PPT 媒體 Failure Fallback（v2 核心備援）
+## Live / Media Failure Fallback（v3 核心備援）
 
-> 場地只有 PowerPoint，沒有瀏覽器／server 可以「切換」。所以所有 fallback 都是：**一句誠實英文 + 切到哪一頁截圖 + 繼續講**。**不要**找檔案、不要開其他程式、不要重開電腦。
+> 主方案是 **live**（Mac Flask+MySQL → 教室浏览器 tunnel/LAN）；fallback 是 **S7 的 90 秒錄屏 + S8–S11 截圖**。所有 fallback 都是：**一句誠實英文 + 5 秒內切回 PPT + 繼續講**。不要找檔案、不要開 terminal、不要在台上修 network。
 
-### ① S7 90 秒 demo 錄影不播／卡住（LAI）
+### ① S7 live 打不开／断网（LAI）
 
-**判斷**：按 PLAY 後 2 秒仍停在第一幀、黑畫面、或播放中途卡住超過 2 秒。
-**LAI 逐字（Lead 指定的 fallback 句）**
-> **"The recording will not play on this machine — the same view is on this slide."** [ADVANCE 到 S8]
+**判断**：Alt+Tab 后 5 秒页面仍空白/转圈，或 URL 报错。
+**LAI 逐字**
+> **"I'll show the recorded build."** [Alt+Tab 回 PPT → 点 S7 海报，播 90 秒錄屏]
 **做法**：
-1. [ADVANCE] 到 **S8**（world map + ranking table 截圖）。
-2. 照 6a 的台詞講 **globe／map／ranking** 三段（約 40 s），把 [POINT 影片] 改成指 S8 的地圖與表格。
-3. 收句 **"That is the where."** → host T2 → HUANG 用 **S9–S12 截圖**講 6b（同一套台詞，把 [POINT 影片] 改成 [POINT 截圖]），S12 照講。
-4. **不要**重播、不要找影片檔、不要開播放器；整個 fallback 仍守在 563 s 內（截圖版內容等長）。
+1. 5 秒内没出来就切；不要在台上刷新 URL/重启 tunnel。
+2. 用录屏按原 6a/6b 旁白讲完 90 秒；5:21 正常切 S12。
+3. 若录屏也不播：切 S8–S11 截图讲（见 ②）；全程仍守 563 s。
 
-### ② 影片中途卡住／跳回桌面（HUANG 或 LAI）
+### ② live 中途卡住／浏览器跳走（LAI 或 HUANG）
 
-- 卡住超過 2 秒：**HUANG 立刻 [ADVANCE] 到 S9**（sector/weekday 截圖），說 **"The recording is still loading — the same panels are here."** 然後照 6b 台詞講 S9 → S10 → S11 → S12。
-- PowerPoint 跳回桌面：**"One second — the slides are still open."** Alt+Tab 回 PowerPoint，繼續；**不要**重開簡報。
-- 影片有聲但畫面全黑：當作影片失敗，走 ①。
+- 页面卡住 >2 s：LAI 立刻 **Alt+Tab 回 PPT → 点 S7 录屏**；HUANG 继续同一段旁白，不要等。
+- 浏览器跳到别的标签/桌面：Alt+Tab 回 PPT，先播录屏；**不要**在台上找标签页。
+- live 页面有图但 API 报错（status pill 红）：切 S7 录屏；不要假装数据正常。
 
 ### ③ S13 內嵌音訊／影片不播（HUANG）
 
-**判斷**：按 PLAY 後 2 秒無聲／無畫面。
-**HUANG 逐字 — 一句版（先說這句，再進長版）**
+（保留原 v2 文案，不变）
+**判断**：按 PLAY 后 2 秒无声/无画面。
+**一句版**：
 > **"The media are embedded on this slide — in one line: the poster, the audio and the video all say 37,856 million tonnes a year; now find the part you can move."**
-**長版（若時間仍要填滿 80 s）**
-> **"The media are embedded on this slide — let me give you what they say. The poster gives you one number and one move. The thirty seconds of audio open on 37,856 million tonnes a year, and end on the same line. The forty-five-second video is a screen recording of the build you just saw: map, ranking, sectors, then the caveats. One message, three media: 37,856 million tonnes a year. Now find the part you can move."**
-> （約 30–35 秒；接著指 S13 三張卡，各補一句用途，補到 80 s 再交 T3。）
+**长版（约 30–35 秒）**：见 `05_HUANG_Haolin.md` B 段 fallback；然后指 S13 三张卡补到 80 s。
 
 ### ④ 整份簡報開不起來／PowerPoint 當機（全員）
 
-- WENG 拿 USB 上的 **`Carbon_Atlas_Deck.pdf`** 開 PDF 版，流程與秒數不變；S7/S13 的媒體改由口述。
-- 若連 PDF 都開不了：host 收在 9:18–9:30，把時間留給 Q&A 的完整答案（Q2、Q6、Q9 都能補回技術深度）。
-- **不要**在台上重開電腦超過 20 秒；不要嘗試連任何 server（場地沒有）。
+- WENG 用 USB 的 **`Carbon_Atlas_Deck.pdf`** 开 PDF 版；流程/秒数不变，S7/S13 媒体改口述。
+- 若 PDF 也开不了：host 收在 9:18–9:30，把时间留给 Q&A 的技术深度。
+- **不要**在台上重开电脑超过 20 秒。
 
 ### ⑤ 其他現場故障 → 對應句
 
@@ -132,9 +130,9 @@
 | --- | --- | --- |
 | 投影比例／畫面被切 | HUANG | **"One second — the projector is cropping the page; the content is fine."**（5 秒內解決） |
 | 麥克風沒聲 | Host | 提高音量、用腹式發聲；不要說「can you hear me」超過一次 |
-| 有人電話響 | Host | 不點名、不評論，繼續；Lecture 17 明說電話響會扣分，**排練時就全部靜音** |
+| 有人電話響 | Host | 不點名、不評論，繼續；排練時全部靜音 |
 | 超時（>9:30） | Host | **"Let me stop there — the numbers are on the slide, and we will take your questions."** 直接接 Q&A |
-| 影片比例怪（4:3 被拉闊） | LAI | 不修正；繼續旁白（評審看到的是 dashboard 畫面，不是電影） |
+| 浏览器分辨率不匹配 | LAI | Ctrl+- 到 80/90%；不在台上改系统设置 |
 
 ---
 
@@ -142,9 +140,9 @@
 
 | 角色 | 人 | 手上控制 | 不可以做 |
 | --- | --- | --- | --- |
-| S7 demo 錄影 | **LAI** | [ADVANCE] 到 S7、按 **PLAY**、盯播放；卡住時通知 HUANG | 不重播、不找檔案、不開瀏覽器 |
-| 簡報 + S13 媒體 + 計時 | **HUANG** | PowerPoint 切頁、S13 內嵌音訊／影片 PLAY、音量、計時器 | 不在媒體播放中說話；不重開簡報 |
-| USB / 檔案 | **WENG** | 開場前確認 USB 有最終 PPTX＋PDF＋備援截圖；**不碰任何 server** | 不在台上找檔案、不開 terminal |
-| 主持／互動／Q&A | **LIN** | 全場節奏、三個 poll、Q&A 路由 | 不搶答技術題（交主答） |
+| S7 live | **LAI** | Alt+Tab 到浏览器、F11、按 operator card 点击；失败 5 秒切回 PPT 播录屏 | 不在台上重启 MySQL/tunnel/找文件 |
+| 简报 + S13 媒体 + 计时 | **HUANG** | PowerPoint 切页、S13 内嵌音频/视频 PLAY、音量、计时器 | 不在媒体播放中说话；不重开简报 |
+| USB / 檔案 | **WENG** | 开场前确认 USB 有最终 PPTX+PDF+独立 mp4/mp3+截图 | 不在台上找文件、不碰 Mac |
+| 主持 / 互动 / Q&A | **LIN** | 全场节奏、三个 poll、Q&A 路由 | 不抢答技术题（交主答） |
 
-> **v1 的「實機 demo」段落已作廢**：場地不跑瀏覽器／MySQL，任何人都不應在台上嘗試啟動 server 或開 `127.0.0.1:5001`。
+> **v3 原则**：live 是加分项，fallback 是底线；教室网络/浏览器任何一步失败，5 秒内切 S7 录屏，不在台上 debug。Mac 由 LAI 在台下控制。

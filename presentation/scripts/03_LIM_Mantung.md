@@ -4,7 +4,7 @@
 > **投影片**：S5（One helper, nine JSON routes）· S15（GELSI: the risks we can actually see）。
 > **說話時間**：42 + 53 = **95 秒**（目標 85–110）。**台上不可帶筆記**；本檔只作排練用。
 > **Q&A 主答**：API／SQL injection／JSON 503／安全；GELSI／倫理／法律／社會責任；亦可答「客製化 vs reference」。
-> **v2 場地**：demo 是 S7 的 90 秒錄影；Part 2／GELSI 段不需要碰 server 或瀏覽器。Q&A 被問「MySQL 掛掉怎麼辦」時，先答系統行為（JSON 503／status pill），再交 LAI 補「demo 是錄影、錄影失敗切截圖」。
+> **v3 場地**：demo 是 S7 的 live 90 秒（Mac 跑 Flask/MySQL；教室浏览器打开 tunnel/LAN URL），失败切回 S7 录屏。Part 2/GELSI 段不需要碰 server。Q&A 被问「MySQL 挂掉怎么办」时，先答系统行为（JSON 503/status pill），再交 LAI 补「live 失败切录屏」。
 
 **朗讀圖例**：[PAUSE] = 停頓 1 秒 · [POINT …] = 指向畫面 · ⏱ = 相對秒數。
 
@@ -30,7 +30,7 @@
 - Part 2（10%）評分要求：**說清楚 SQL 如何經 API 變成 JSON，並展示回傳結果；不可略過資料庫連接與 API 行為**。這段四件事：helper（連接＋參數化查詢）、九條路由同一個 pattern、真實 JSON、錯誤行為（JSON 503）——正好是「DB 連接、SQL→JSON、API 行為」。
 - **重要更正**：deck S5 的 JSON 範例數字是 **WORLD 2025** 總量（Power 13,492 / Industry 12,663 / Ground transport 6,884），不是 China（China 2025 全年只有 12,089，不可能是 13,492）。所以講稿說 **world**；deck 的 JSON 標籤也要改成 `country=WORLD`（見 `00` 第 6 節）。
 - 不要念九條路由的名字；「nine routes, one pattern」比逐條念好記。若評審要看路由清單，指畫面下方的 /api 清單。
-- JSON 503 這句是安全題的伏筆：Q&A 被問「MySQL 掛掉怎麼辦」時，就是這個行為讓頁面可以解釋錯誤、不會爆 HTML；v2 由 LAI 補一句「demo 是錄影，錄影失敗我們切 S8–S11 截圖」。
+- JSON 503 這句是安全題的伏筆：Q&A 被問「MySQL 掛掉怎麼辦」時，就是這個行為讓頁面可以解釋錯誤、不會爆 HTML；v3 由 LAI 補一句「live 失敗切 S7 錄屏，再不行切 S8–S11 截圖」。
 
 **忘詞備援**：只記兩句：**"One helper, nine routes."** 和 **"SQL does the arithmetic; the page only draws."**
 
@@ -77,7 +77,7 @@
 - **Q&A 主答題目**：
   1. 「SQL injection／安全？」→ *"Every query is parameterised — PyMySQL placeholders, values passed as parameters, never string-concatenated. The API is read-only: no INSERT or UPDATE routes. If MySQL fails, the API returns JSON 503 instead of an HTML stack trace, so the page can explain it. And it runs on localhost, not the public internet."*
   2. 「有處理個人資料嗎？」→ *"No personal data at all. Carbon Monitor is national and sector daily totals; there is no person in the dataset, so GDPR data-subject duties do not arise."*
-  3. 「API 壞掉頁面會怎樣？」→ *"The page shows a status pill and an error banner with the reason; it does not silently show stale numbers. And the demo you saw is a recording of the build — if the recording failed, we would switch to the backup slides, not fake a live run."*
+  3. 「API 壞掉頁面會怎樣？」→ *"The page shows a status pill and an error banner with the reason; it does not silently show stale numbers. The live demo uses the same API; if the classroom network fails, the same build plays from the embedded recording, not a fake live run."*
   4. 「GELSI 為何用 Yale/WEF 的框架？」→ *"It is the framework from Lecture 19 — governance, ethical, legal, social, implications — and we used it as a checklist against our own features, not as decoration."*
   5. 「客製化 vs reference？」→ 見 `06_qa_cheatsheet.zh.md` Q1/Q9（可與 LAI 分工）。
 

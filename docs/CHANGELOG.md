@@ -1,6 +1,11 @@
 # Changelog
 
-## 2026-11-20 · v3.5（当前）
+## 2026-11-20 · v3.6（当前）
+- **最终决定：S7 优先现场 live**（Mac Flask+MySQL → 教室浏览器 tunnel/LAN），S7 内嵌 90 秒录屏为 5 秒 fallback
+- 9 份讲稿全部改为 live cue：`00` run-of-show / `01` host / `02` WENG / `03` LIM / `04` LAI / `05` HUANG / `06` Q&A / `07` fallback / `08` cue card
+- S7 caption 已同步；live 失败流程写入 `07` 和 `LIVE_DEMO_PLAYBOOK.zh.md`
+
+## 2026-11-20 · v3.5
 - 用 5 位成员的真实头像作 likeness 参考，重画 **原创卡通头像**（仍符合 rubric 的 "Cartoon profile picture"）：
   LIN 黑发侧分/深色西装、WENG 乱发+圆眼镜+花衬衫、LIM 短发+西装领带、HUANG 卷发+方框眼镜、Patten 刘海+方框眼镜+绿色 hoodie
 - 网站 Team 区、Deck S2、PDF Team 页全部同步；LAI 角色更新为 **FRONT END & LIVE DEMO**

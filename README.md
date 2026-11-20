@@ -94,13 +94,13 @@ python3 app.py
 - 45 s 视频草稿：[`deliverable/carbon_atlas_ad_45s.mp4`](deliverable/carbon_atlas_ad_45s.mp4)
 - **Patten 录音指南**：[`presentation/ads/voice_recording_sheet_Patten.md`](presentation/ads/voice_recording_sheet_Patten.md)
 
-### 3.5 现场 live 网站演示（可选，拿更高分）
+### 3.5 现场 live 网站演示（已决定：S7 优先 live，录屏 fallback）
 - 完整手册（TA 版，含 tunnel / 热点 / 90 秒操作 / 失败处理）：[`presentation/LIVE_DEMO_PLAYBOOK.zh.md`](presentation/LIVE_DEMO_PLAYBOOK.zh.md)
 - 操作卡（LAI 打印一张）：[`presentation/LIVE_DEMO_OPERATOR_CARD.md`](presentation/LIVE_DEMO_OPERATOR_CARD.md)
 - Mac 一键起 Flask：`DB_PASSWORD='...' tools/start_live_demo.sh`
 - 公网 HTTPS URL：`tools/start_tunnel.sh`（Cloudflare quick tunnel，今天已实测 `/api/health` 200）
 - 预检：`python3 tools/live_demo_check.py https://xxxx.trycloudflare.com`
-- 失败 5 秒内切回 S7 的 90 秒录屏（已内嵌，U 盘也有独立 mp4）。
+- 失败 5 秒内切回 S7 的 90 秒录屏（已内嵌，U 盘也有独立 mp4）；讲稿 `presentation/scripts/` 已改为 live 版。
 
 **一句话**：Mac 跑 MySQL + Flask → `cloudflared` 给一个 `https://...trycloudflare.com` → 教室 Windows 浏览器打开；如果教室网络挡，切回 S7 录屏。
 

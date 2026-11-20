@@ -6,7 +6,7 @@
 > **說話時間**：50 + 38 + 15 轉場 = **103 秒**分段；加 Beat 3 poll 6 s = **實際約 109 秒**（host 上限 115）。
 > **Q&A**：1 分鐘主持（另計）。**台上不可帶筆記**；本檔與 `08_host_cue_card.md` 只作排練與後台使用。
 
-**朗讀圖例**：[PAUSE] = 停頓 1–2 秒 · [POINT …] = 用手掌指向畫面 · [ADVANCE] = 按下一頁 · [PLAY] = 播 S7 內嵌影片 · **粗體** = 加重音 · ⏱ = 相對秒數（以本節開始為 0:00）。
+**朗讀圖例**：[PAUSE] = 停頓 1–2 秒 · [POINT …] = 用手掌指向畫面 · [ADVANCE] = 按下一頁 · [Alt+Tab] = LAI 切浏览器/live · **粗體** = 加重音 · ⏱ = 相對秒數（以本節開始為 0:00）。
 
 ---
 
@@ -25,7 +25,7 @@
 >
 > ⏱ [0:20] **The problem:** [POINT 左欄] **six hundred fifty-five thousand rows of open data — and still an afternoon of spreadsheets for one answer.**
 > **The mission:** [POINT 中欄] **turn that data into a decision, not another chart.**
-> **The brief:** [POINT 右欄] **one screen for analysts, policy researchers, journalists and students — caveats on the page.**
+> **The solution:** [POINT 右欄] **one screen for analysts, policy researchers, journalists and students — caveats on the page.**
 >
 > ⏱ [0:35]（[ADVANCE] 到 S2）**Five people, one pipeline.** [POINT 成員卡]
 > **Zichao, database. Mantung, API. Patten, front end. Haolin, dashboard and close. I keep the story.**
@@ -75,20 +75,20 @@
 | # | 時鐘 | 場景 | 英文逐字 | 中文提示 |
 | --- | --- | --- | --- | --- |
 | **T1** | **1:28–1:31** | S3 → S4，交給 WENG | **"The data starts in MySQL — Zichao."** | 手勢指向 WENG，退半步；眼睛看 WENG 不是螢幕。 |
-| **T2** | **4:35–4:39** | S7 影片繼續播（demo A → demo B），交給 HUANG | **"Patten has the where. Haolin, the what and the when."** | 影片不要停；語氣把 "where / what / when" 分開。 |
+| **T2** | **4:35–4:39** | S7 live 继续（demo A → demo B），交给 HUANG | **"Patten has the where. Haolin, the what and the when."** | live 不要停/不要切回；语气把 "where / what / when" 分开。 |
 | **T3** | **6:52–6:55** | S13 → S14，交給 WENG | **"Weng, the business case."** | 廣告剛播完，音量先確認降下來再開口。 |
 | **T4** | **9:18–9:23** | S16 → S17，收尾＋交 Q&A | **"Thank you. Questions — and we have one for the next group."** | [ADVANCE] 到 S17；站回中間，面向評審。 |
 
 **C2 · 進入 demo 前的互動（3:37–3:43，6 s；Beat 3，不計入 15 s 轉場）**
 
-> LAI 此時 [ADVANCE] 到 S7、把游標放在影片播放鍵；你面向觀眾：
+> LAI 此时已完成浏览器预热（3:37 前）；你面向观众：
 > **"Hands up — India or Russia: who emitted more in 2025?"** [PAUSE 2]
 > **"India — 3,309. Russia — 1,670."** [PAUSE]
-> （LAI 在 3:43 接麥克風，說誠實開場句後在 3:51 按 PLAY；你退半步。）
+> （LAI 在 3:43 接麦，3:48 Alt+Tab 到浏览器；你退半步。）
 
 【中文註記 — 為什麼這樣講才有分】
 - Presentation Skills（10%）評「團隊合作」與「流暢度」；四段短轉場讓評審看到「每個人都被介紹、每個人都接得上」，而不是一人包辦。
-- **Beat 3 是 PowerPoint-safe 的舉手 poll**（v2）：沒有滑鼠、沒有瀏覽器，只有你的聲音與 S7 畫面；LAI 趁這 6 秒準備影片，一舉兩得。
+- **Beat 3 是举手 poll**：只有你的声音；LAI 趁这 6 秒完成浏览器切换准备（不要在台上操作）。
 - 轉場不要說 "Now let's move on to the next part, which is about cost-benefit analysis…" 這種長句；短句才像主持，也才不會吃掉別人的時間。
 - T2 的 "where / what / when" 直接對應 demo A/B 的分工，評審一聽就知道你們兩個人在講不同的 rubric 子項。
 
@@ -100,7 +100,7 @@
 
 **主持節奏**：
 1. 有人舉手 → **"Yes — go ahead."**
-2. 聽完問題 → 判斷路由，說 **"Zichao, the data."** / **"Mantung, the API."** / **"Patten, the page."** / **"Patten, the recording."** / **"Haolin, the campaign."** / **"Mantung, the ethics."**；主答者答 20 秒內，host 不搶答。
+2. 聽完問題 → 判斷路由，說 **"Zichao, the data."** / **"Mantung, the API."** / **"Patten, the page."** / **"Patten, the live demo."** / **"Haolin, the campaign."** / **"Mantung, the ethics."**；主答者答 20 秒內，host 不搶答。
 3. 若問題太大（例如「你覺得全球減排應該怎樣做？」）→ host 收窄：**"Let me take that as a product question: what can this brief help a client decide tomorrow?"** 再交給對應的人。
 4. 若 Q&A 冷場 → host 說 **"While you think — our question is for the next group."** 問出 S17 的問題；再自問自答一題：**"And the question we get most: how do you handle a partial 2026? Zichao."** 讓 WENG 答 20 秒。
 5. **最後 10 秒** → host：**"One last question."** 答完收：**"Thank you — that's our minute."**
@@ -116,7 +116,7 @@
 - 不確定的數字：**"That number is not in our data; we can check after the session."**（不可臨場編）
 - 被問到不是我們做的功能：**"That is not built — and we are not claiming it."**
 - 有人質疑資料可信度：**"Fair question. These are modelled daily estimates, not metered values — the Method panel says so."** 然後交 WENG。
-- 有人問「為何 demo 是錄影」：**"This classroom machine only shows PowerPoint — so we recorded the build running from MySQL on our own machine. Same data, recorded, not mocked."** 然後交 LAI。
+- 有人問「為何 demo 是 live／网络失败怎么办」：**"This is the live build — the browser reads our Flask API, which queries MySQL. If the classroom network fails, the same build is embedded as a 90-second recording, and we switch in five seconds."** 然后交 LAI。
 
 【中文註記 — 為什麼這樣講才有分】
 - Q&A 由 host 控場、按主題分人回答，是「團隊合作」與「熟悉自己成果」的直接證據；不要讓最會講的人搶答所有題。
@@ -137,8 +137,8 @@
 
 - [ ] 50 秒開場能**不看稿**從 "Good afternoon" 講到 "no notes"（可用手機錄一次，對秒）；tagline 改成 **See every tonne. Cut what matters.**
 - [ ] 38 秒需求段能說出「猜 2025 vs 2019」＋五個問題＋「route and view」收句。
-- [ ] 4 段轉場逐字背熟（T1–T4），每段 ≤4 秒；T2 時 S7 影片繼續播。
-- [ ] 三個互動全練：Beat 1 開場 poll、Beat 2 猜 2019、Beat 3 印度 vs 俄羅斯（6 秒，LAI 準備影片時）。
-- [ ] Q&A routing 表背熟（資料→WENG、API→LIM、頁面／錄影→LAI、廣告→HUANG、倫理→LIM）。
+- [ ] 4 段轉場逐字背熟（T1–T4），每段 ≤4 秒；T2 時 live 继续、不要切回 PPT。
+- [ ] 三個互動全練：Beat 1 開場 poll、Beat 2 猜 2019、Beat 3 印度 vs 俄羅斯（6 秒，LAI 准备浏览器时）。
+- [ ] Q&A routing 表背熟（資料→WENG、API→LIM、頁面／live/fallback→LAI、廣告→HUANG、倫理→LIM）。
 - [ ] S17 的下一組問題能一字不差背出。
 - [ ] 全場只拿 cue card 在後台；**上台雙手空空**（Lecture 17：不可使用筆記）。

@@ -3,7 +3,7 @@
 > 用途：**只供排練與後台複習**。Lecture 17 明定**台上不可使用筆記**，所以答案要靠排練記住；Q&A 現場由 host 按主題分人回答（見 `00` 第 4 節）。
 > 事實紀律：只用 verified facts；不確定的數字說 **"That number is not in our data; we can check after the session."** 不編。
 > 答題結構（每題 ≤20 秒）：**一句結論 → 一個證據（slide / file / route）→ 一句限制或誠實界線**。
-> **v2 場地**：Windows 教室、只有 PowerPoint、沒有瀏覽器／server；demo 是 S7 的 90 秒錄影。Q&A 遇到「為什麼不 live demo」一律誠實回答（見 Q6、快速補問）。
+> **v3 場地**：Windows 教室 + 浏览器；Mac 跑 Flask/MySQL，S7 是 live 90 秒；失败 5 秒切 S7 录屏。Q&A 遇到「live 失败怎么办」见 Q6、快速补问。
 
 ---
 
@@ -13,7 +13,7 @@
 > "We started from it — it taught us the pattern: Flask, one page, ECharts. But the brief asks for a customised interface, and the bonus was a reference, not our submission. We rebuilt the page around five questions a client asks: a sortable ranking with sparklines and CSV export, an Index · 2019 = 100 compare mode, rule-based findings, a Method panel with the GELSI mapping — and it runs offline. The tutorial gave us the pattern; the brief is ours."
 
 **中文註記**：語氣要尊重 reference（「kept what it got right」），不要貶低講義；重點是 **5 個具體改動**與「pattern 不是 product」。這也是 Lecture 17 錄音 22:14–24:26 的高分指引：原樣兩張圖不足以高分。
-**證據 pointer**：S12 對照表 · **S7 錄影 0:00–1:30**（S8–S11 備援截圖）· `shots/atlas/deck1-stage-hero.png` 等 · `project/app/index.html` · 講義 p.12 Bonus / p.23 customised UI。
+**證據 pointer**：S12 對照表 · **S7 live（fallback 錄屏）** · `assets/screenshots/` · `code/index.html` · 講義 p.12 Bonus / p.23 customised UI。
 
 ---
 
@@ -59,11 +59,11 @@
 
 ## Q6. What happens if MySQL dies during the demo?
 
-**English answer（約 26 s）**
-> "What you watched is a recording of the build running from MySQL on our own machine. If MySQL had failed during that build, the API returns a JSON 503 and the page shows its status pill — it is designed to fail loudly, not to fake numbers. On this classroom machine we cannot run MySQL at all, so the recording is the honest way to show the build. If the recording itself fails, we switch to the backup screenshots and keep the same narrative."
+**English answer（約 28 s）**
+> "The demo you just saw is live: the browser reads our Flask API, which queries the MySQL table built in Part 1. If MySQL dies, the API returns a JSON 503 and the page shows its status pill — it fails loudly, it does not fake numbers. If the classroom network dies first, the same build is embedded on slide 7 as a 90-second recording, and we switch in five seconds. The data is real in both paths; the recording is only a fallback."
 
-**中文註記**：v2 這題要同時答「系統行為」與「場地限制」：JSON 503／status pill 是 Governance 的實際設計；不能 live demo 是因為教室只有 PowerPoint。**不要**說「我們即場跑」，也不要假裝系統不會掛。
-**證據 pointer**：`project/app/app.py` 的 JSON 503 處理 · dashboard 狀態 pill／error banner · **S7 錄影** · S8–S11 備援截圖 · `scripts/07_interaction_plan.zh.md`。
+**中文註記**：v3 要分兩層答：① MySQL/API 失敗的系統行為（JSON 503/status pill）是 Governance 設計；② 網絡/現場失敗的 fallback 是 S7 錄屏。**不要**說「我們即場跑」如果 live 已失敗；也不要假裝系統不會掛。
+**證據 pointer**：`code/app.py` JSON 503 · status pill/error banner · **S7 live** · S7 錄屏 · S8–S11 截圖 · `07` live fallback。
 
 ---
 
@@ -116,8 +116,8 @@
 | 為什麼是 39 個 series 而不是 40？ | "Thirty-nine is what the table holds — 655,200 closes at 39 × 6 × 2,800; smaller emitters sit inside Rest of World." | `/api/meta`、Method 面板 |
 | 你們有幾條 API route？ | "Nine: health, meta, sectors, monthly, country_year, country_ytd, daily, compare, insights." | S5、`app.py` |
 | 成本假設哪裡來？ | "All on the assumptions slide and in `cost_benefit.xlsx` — labour at HK$80 as opportunity cost, analyst at HK$250 loaded rate." | S14、xlsx Assumptions |
-| 如果沒有網絡？ | "The build runs offline from local assets — ECharts and the world map are bundled. The demo is a recording, so it plays with the Wi-Fi off." | S6、`static/`、S7 |
-| 為什麼 demo 是錄影？ | "This classroom machine only shows PowerPoint — no browser, no server. We recorded the build running from MySQL on our own machine, so the demo is real data, not a mock." | S7、`07`、`app.py` |
+| 如果沒有網絡？ | "The build itself runs offline from local assets — ECharts and the world map are bundled. For the classroom, the demo has a recorded fallback on S7; the live version needs the tunnel/LAN. We test both." | S6、`static/`、S7、`LIVE_DEMO_PLAYBOOK.zh.md` |
+| 為什麼 demo 是 live／錄影 fallback？ | "The main demo is live: browser → Flask → MySQL. If the classroom network blocks it, the same build plays from the embedded 90-second recording; we switch in five seconds, and the data is real in both." | S7、`07`、`app.py`、playbook |
 | Q&A 被問到 Cantonese？ | 用英文答；開場可說 "We are happy to answer in English; we can follow Cantonese." | — |
 | 被問到不在資料的國家？ | "Carbon Monitor tracks 39 series; that country sits inside Rest of World — the brief says so instead of inventing a number." | Method 面板、`/api/meta` |
 
