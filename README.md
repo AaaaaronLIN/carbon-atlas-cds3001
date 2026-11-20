@@ -95,8 +95,8 @@ python3 app.py
 - **Patten 录音指南**：[`presentation/ads/voice_recording_sheet_Patten.md`](presentation/ads/voice_recording_sheet_Patten.md)
 
 ### 3.5 每个人要背的稿子（打印版）
-- **A4 可打印 PDF（9 页）**：[`presentation/Team_Rehearsal_Handout.pdf`](presentation/Team_Rehearsal_Handout.pdf)
-  - p1 团队/幻灯片分工；p2 全场时间线/舞台规则；p3 LIN；p4 WENG；p5 LIM；p6 LAI；p7–8 HUANG；p9 Q&A / final check / 48h plan
+- **A4 可打印 PDF（10 页）**：[`presentation/Team_Rehearsal_Handout.pdf`](presentation/Team_Rehearsal_Handout.pdf)
+  - p1 团队/幻灯片分工；p2 时间线/舞台规则/时间纪律；p3 LIN；p4 LIN 互动+Q&A；p5 WENG；p6 LIM；p7 LAI；p8–9 HUANG；p10 Q&A/final check/rubric
 - **每人单独 PDF（可直接发人）**：[`presentation/Team_Handouts_Individual.zip`](presentation/Team_Handouts_Individual.zip)
 
 ### 3.6 现场 live 网站演示（已决定：S7 优先 live，录屏 fallback）
@@ -172,7 +172,7 @@ carbon-atlas-cds3001/
 │  ├─ 00_STATUS.md · 01_DECISIONS.md · 02_TODO_OWNERS.md · CHANGELOG.md
 │  └─ PUBLISH_TO_GITHUB.md
 ├─ presentation/              ← 讲稿、run-of-show、广告脚本、成本 xlsx
-│  ├─ Team_Rehearsal_Handout.pdf ← 9 页 A4 打印稿（每人一页 + 时间线 + Q&A）
+│  ├─ Team_Rehearsal_Handout.pdf ← 10 页 A4 打印稿（每人一页 + 时间线 + 互动 + Q&A）
 │  ├─ Team_Handouts_Individual.zip ← 5 人各自 PDF
 │  ├─ scripts/                ← 9 份讲稿（host/5 人/Q&A/cue card/interaction）
 │  └─ ads/                    ← 海报源文件、音频/视频脚本、Patten 录音稿、媒体文件
