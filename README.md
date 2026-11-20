@@ -65,8 +65,11 @@ Carbon Monitor 的**每日碳排放 CSV** → **MySQL** → **Flask JSON API** �
 
 ## 3. 怎么用这套东西（组员最关心的）
 
-### 3.1 看 PPT（现场只放 PPT）
-- 文件：[`deliverable/Carbon_Atlas_Deck.pptx`](deliverable/Carbon_Atlas_Deck.pptx)（17 页，13.6 MB，媒体已内嵌）
+### 3.1 看 PPT（GitHub 不能预览 `.pptx`，正常）
+- **在线翻页看**（推荐）：[`deliverable/Carbon_Atlas_Deck.pdf`](deliverable/Carbon_Atlas_Deck.pdf) — GitHub 直接显示 PDF
+- **可编辑原文件**：[`deliverable/Carbon_Atlas_Deck.pptx`](deliverable/Carbon_Atlas_Deck.pptx) — 点 **Download**，PowerPoint 打开；GitHub 只会显示 "View raw"，不会渲染页面
+- **17 页总览图**：[`assets/screenshots/deck-contact-final.png`](assets/screenshots/deck-contact-final.png)
+- 文件说明汇总：[`deliverable/README.md`](deliverable/README.md)
 - **F5 放映** → **S7** 点深色画面播放 **90 秒 demo** → **S13** 点 `PLAY 30 s AUDIO`、`PLAY 45 s AD`
 - 教室 Windows 电脑**务必提前试播**；如果内嵌媒体不播，用 U 盘里 `presentation/ads/audio`、`presentation/ads/video` 的独立文件直接播放
 - 逐页讲稿：[`presentation/scripts/`](presentation/scripts/)（PPT-only 版，媒体播放 cue 已写好）
