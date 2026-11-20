@@ -1,6 +1,13 @@
 # Changelog
 
-## 2026-11-20 · v3.7（当前）
+## 2026-11-20 · v3.8（当前）
+- **audience-copy cleanup**：删除 slides 上所有 `SAY` / `Screenshot:` / `fallback` / `no notes` / storyboard 等内部用语（S4–S11、S14、S15）
+- 清空全部 speaker notes（旧 1.0 Member A–E 笔记 + 临时 team notes），避免 presenter view 出现内部文字
+- 最终 PDF 封面 "Screenshots..." → "Captured from..."; PDF 10 页扫描无内部用语
+- 新增 `tools/audit_deck.py`：自动扫描 forbidden terms / notes / media count；当前 PASS
+- S13 音频只留 transcript；S14 数字列右对齐、说明句首大写；S2 删除 delivery rules
+
+## 2026-11-20 · v3.7
 - S2 删除 "no notes / even speaking time" 等内部规则，改成 "Built end to end: database → API → interface → story."
 - S13 删除 audio 分镜三行（0:00/0:12/0:25），改为音频 transcript + "Voice-over + music" 说明，避免评委误读
 - S14 数字列右对齐、KPI 说明改句首大写；全 deck 数据说明统一句首大写
