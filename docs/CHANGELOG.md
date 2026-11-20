@@ -1,6 +1,10 @@
 # Changelog
 
-## 2026-11-20 · v3.2（当前）
+## 2026-11-20 · v3.3（当前）
+- 修复最终前端 PDF 封面：`Carbon Compass` → **Carbon Atlas**，旧 compass 图标 → 新 orbit mark；PDF 10 页全部检查无旧品牌残留
+- 封面把第三栏明确标成 **THE SOLUTION**，正好对应 rubric 的 problem / mission / solution
+
+## 2026-11-20 · v3.2
 - Deck 重新设计为 **Stage 深色 premium 版**：深墨绿 + 象牙白 + 薄荷绿/金，全 17 页统一；S8–S11 截图换成真实 Stage 界面；S13 海报/媒体保持深色一致
 - 新增 `deliverable/README.md`：说明 GitHub 不能预览 `.pptx`，先看 deck PDF；更新 README 的看 PPT 指引
 
