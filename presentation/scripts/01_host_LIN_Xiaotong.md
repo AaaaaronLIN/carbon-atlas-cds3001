@@ -77,7 +77,7 @@
 | **T1** | **1:28–1:31** | S3 → S4，交給 WENG | **"The data starts in MySQL — Zichao."** | 手勢指向 WENG，退半步；眼睛看 WENG 不是螢幕。 |
 | **T2** | **4:35–4:39** | S7 live 继续（demo A → demo B），交给 HUANG | **"Patten has the where. Haolin, the what and the when."** | live 不要停/不要切回；语气把 "where / what / when" 分开。 |
 | **T3** | **6:52–6:55** | S13 → S14，交給 WENG | **"Weng, the business case."** | 廣告剛播完，音量先確認降下來再開口。 |
-| **T4** | **9:18–9:23** | S16 → S17，收尾＋交 Q&A | **"Thank you. Questions — and we have one for the next group."** | [ADVANCE] 到 S17；站回中間，面向評審。 |
+| **T4** | **9:18–9:23** | S16 → S17，收尾＋交 Q&A | **"Thank you. We're happy to take questions."** | [ADVANCE] 到 S17；站回中間，面向評審。 |
 
 **C2 · 進入 demo 前的互動（3:37–3:43，6 s；Beat 3，不計入 15 s 轉場）**
 
@@ -96,13 +96,13 @@
 
 ## D. Q&A 主持（1 分鐘，9:23–10:23）｜S17 留在畫面
 
-**開場**（T4 已說）：**"Thank you. Questions — and we have one for the next group."**
+**開場**（T4 已說）：**"Thank you. We're happy to take questions."**
 
 **主持節奏**：
 1. 有人舉手 → **"Yes — go ahead."**
 2. 聽完問題 → 判斷路由，說 **"Zichao, the data."** / **"Mantung, the API."** / **"Patten, the page."** / **"Patten, the live demo."** / **"Haolin, the campaign."** / **"Mantung, the ethics."**；主答者答 20 秒內，host 不搶答。
 3. 若問題太大（例如「你覺得全球減排應該怎樣做？」）→ host 收窄：**"Let me take that as a product question: what can this brief help a client decide tomorrow?"** 再交給對應的人。
-4. 若 Q&A 冷場 → host 說 **"While you think — our question is for the next group."** 問出 S17 的問題；再自問自答一題：**"And the question we get most: how do you handle a partial 2026? Zichao."** 讓 WENG 答 20 秒。
+4. 若 Q&A 冷場 → host 說 **"While you think — here is the question we get most."** 再自問自答一題：**"And the question we get most: how do you handle a partial 2026? Zichao."** 讓 WENG 答 20 秒。
 5. **最後 10 秒** → host：**"One last question."** 答完收：**"Thank you — that's our minute."**
 
 **必問下一組的問題（Lecture 17 錄音要求：每組至少向其他組問一題；這是評分項，不可漏）**：
@@ -125,6 +125,16 @@
 
 ---
 
+## D2. 向其他組提問（不在本組 Q&A）
+
+**課程要求**：每組至少向其他組問一個問題，否則扣分。**不要**在我們自己的 1 分鐘 Q&A 問；在**下一組/其他組的 Q&A** 舉手或等停頓再問。
+
+> **"Which chart in your dashboard changed a decision — and how would you prove it?"**
+
+- 問題在 S17 畫面；不用等對方回答，也不追問。
+- 如果我們被排在最後一組：在較早組的 Q&A 就問，或當天向 TA 確認安排。
+- 本組 Q&A 只用來回答 panel，不用來問下一組。
+
 ## E. 收尾與離場
 
 - Q&A 結束：**"Thank you — that's our minute."**（停 1 秒，點頭，不要立刻收電腦）
@@ -140,5 +150,5 @@
 - [ ] 4 段轉場逐字背熟（T1–T4），每段 ≤4 秒；T2 時 live 继续、不要切回 PPT。
 - [ ] 三個互動全練：Beat 1 開場 poll、Beat 2 猜 2019、Beat 3 印度 vs 俄羅斯（6 秒，LAI 准备浏览器时）。
 - [ ] Q&A routing 表背熟（資料→WENG、API→LIM、頁面／live/fallback→LAI、廣告→HUANG、倫理→LIM）。
-- [ ] S17 的下一組問題能一字不差背出。
+- [ ] S17 問題能一字不差背出；知道要在**其他組 Q&A** 問，不是在本組 Q&A。
 - [ ] 全場只拿 cue card 在後台；**上台雙手空空**（Lecture 17：不可使用筆記）。

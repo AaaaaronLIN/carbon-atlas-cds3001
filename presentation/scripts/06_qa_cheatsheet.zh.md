@@ -127,6 +127,6 @@
 
 1. 有人舉手 → **"Yes — go ahead."**
 2. 判斷路由 → **"Zichao, the data."** / **"Mantung, the API."** / **"Patten, the page."** / **"Haolin, the campaign."** / **"Mantung, the ethics."**
-3. 冷場 → **"While you think — our question is for the next group."** 問 S17 的問題；再自問一題 partial-year，交 WENG。
+3. 冷場 → **"While you think — here is the question we get most."** 自問 partial-year，交 WENG。**S17 的問題留到其他組 Q&A 才問。**
 4. 最後 10 秒 → **"One last question."** 答完 → **"Thank you — that's our minute."**
 5. **必問句**：**"Which chart in your dashboard changed a decision — and how would you prove it?"**（Lecture 17 錄音要求，每組至少一題；不可漏）

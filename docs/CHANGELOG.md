@@ -1,6 +1,13 @@
 # Changelog
 
-## 2026-11-20 · v4.3（当前）
+## 2026-11-20 · v4.4（当前）
+- **Q&A 提问时机修正**：S17 的“向其他组提问”不在我们自己的 1 分钟 Q&A 问；改到下一组/其他组 Q&A 举手问（课程硬性要求，否则扣分）
+- S17 标题改 “OUR QUESTION FOR ANOTHER GROUP”；host T4 改 “Thank you. We're happy to take questions.”
+- **新增纯英文逐字稿** `English_Verbatim_Scripts.pdf`（7 页）：正文只有英文，顶部保留中文任务；每页一人
+- **新增每人整合包** `Team_Member_Packs.zip`：英文稿 + 中文指导 + Q&A
+- 讲稿 00/01/06/08 同步更新；Deck PDF/ZIP 已重出
+
+## 2026-11-20 · v4.3
 - S10 KPI 数字回到左对齐（headline KPI 风格；表格/排名仍右对齐，按位比较）
 - 全 deck 17 页重渲染检查：黄色 takeaway 行 8 处位置一致、单行不溢出、不与 footer 重叠；无 shape 超出页面边界
 - Deck PDF / contact sheet / ZIP 已重出

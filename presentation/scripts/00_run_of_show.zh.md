@@ -76,7 +76,7 @@
 | 8 | Cost–Benefit | 50 | **6:55 – 7:45** | WENG | S14 | 成本/效益表＋三個 KPI（≈17 個月、2.17:1、+HK$37,254）＋「not claiming」虛線框＋假設句 | 指表 → 指 KPI → 指虛線框 | *"Mantung, the responsibility side."* | — |
 | 9 | Safety & Responsibility（GELSI） | 53 | **7:45 – 8:38** | LIM | S15 | GELSI 五列（G/E/L/S/I：risk → what we do）＋coverage 39 series 限制條 | 逐列指五個字母 → 指 coverage strip | *"Haolin, bring it home."* | — |
 | 10 | Conclusion | 40 | **8:38 – 9:18** | HUANG | S16 | 三點回顧＋四個數字 chip＋金句＋honest next | 指三點 → 指 chips → 放慢念金句 | *"Thank you."*（接 T4） | — |
-| T4 | Host 收尾 + 交 Q&A | 5 | **9:18 – 9:23** | LIN | S16 → S17 | S17：Thank you / Questions — and one for you.＋我們給下一組的問題＋出處 | [ADVANCE] 到 S17 | *"Thank you. Questions — and we have one for the next group."* | — |
+| T4 | Host 收尾 + 交 Q&A | 5 | **9:18 – 9:23** | LIN | S16 → S17 | S17：Thank you / Questions — and one for you.＋我們給下一組的問題＋出處 | [ADVANCE] 到 S17 | *"Thank you. We're happy to take questions."* | — |
 | — | **Q&A** | 60 | **9:23 – 10:23** | LIN 主持、全員答 | S17（留在畫面） | S17 頁不切走 | — | 見第 4 節 | 必要時問下一組問題 |
 
 **總計：50 + 38 + 3 + 42 + 42 + 42 + 58 + 4 + 53 + 80 + 3 + 50 + 53 + 40 + 5 = 563 s = 9:23。**
@@ -167,9 +167,11 @@
 
 **時間**：9:23–10:23（S17 畫面不切走）。Host 主持，全員在場。
 
+> **向其他組提問（課程硬性要求，不在本組 Q&A 進行）**：準備好 S17 的問題，在**下一組/其他組的 Q&A 舉手或等停頓**時問；不要佔用我們自己的 1 分鐘。問題：**"Which chart in your dashboard changed a decision — and how would you prove it?"**
+
 ### 4.1 Host 開場與結束（英文照念）
 
-- 開場（T4 已說）：*"Thank you. Questions — and we have one for the next group."*
+- 開場（T4 已說）：*"Thank you. We're happy to take questions."*
 - 中段節奏：*"One at a time, please — we have about a minute."*
 - 收尾：*"Thank you — that's our minute."*
 

@@ -27,7 +27,7 @@
 | **6:52** | **T3** | **WENG** | **"Weng, the business case."**（等 S13 影片收掉再开口） |
 | **7:45** | 看 WENG | **LIM** | （WENG 自己交棒） |
 | **8:38** | 看 LIM | **HUANG** | （LIM 交棒："Haolin, bring it home."） |
-| **9:18** | **T4** | **Q&A** | **"Thank you. Questions — and we have one for the next group."** [ADVANCE 到 S17] |
+| **9:18** | **T4** | **Q&A** | **"Thank you. We're happy to take questions."** [ADVANCE 到 S17] |
 | **10:23** | 收 | — | **"Thank you — that's our minute."** |
 
 ## 🙋 互動（≤10 s；觀眾不接球就自答，不問第二次）
@@ -42,7 +42,7 @@
 
 - 點人：**"Yes — go ahead."** → 聽完 → **"Zichao, the data."** / **"Mantung, the API."** / **"Patten, the live demo."** / **"Haolin, the campaign."** / **"Mantung, the ethics."**
 - 大哉問收窄：**"Let me take that as a product question…"** 再交人。
-- 冷場：**"While you think — our question is for the next group."** → 問 ⭐ 句；再自問 **"And the question we get most: how do you handle a partial 2026? Zichao."**
+- 冷場：**"While you think — here is the question we get most."** → 自問 **"And the question we get most: how do you handle a partial 2026? Zichao."**
 - 最後 10 s：**"One last question."** → 收：**"Thank you — that's our minute."**
 
 ## ⭐ 必問下一組（不可漏；S17 中央）

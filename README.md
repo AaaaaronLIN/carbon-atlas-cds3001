@@ -98,8 +98,17 @@ python3 app.py
 - **A4 可打印 PDF（10 页，英文稿 + 中文指导）**：[`presentation/Team_Rehearsal_Handout.pdf`](presentation/Team_Rehearsal_Handout.pdf)
   - p1 团队/幻灯片分工；p2 时间线/舞台规则/时间纪律；p3 LIN；p4 LIN 互动+Q&A；p5 WENG；p6 LIM；p7 LAI；p8–9 HUANG；p10 Q&A/final check/rubric
 - **每人单独 PDF（可直接发人）**：[`presentation/Team_Handouts_Individual.zip`](presentation/Team_Handouts_Individual.zip)
+- **纯英文逐字稿（7 页）**：[`presentation/English_Verbatim_Scripts.pdf`](presentation/English_Verbatim_Scripts.pdf)
+  - 每人只背自己的页；顶部保留中文任务，正文只有英文；`[ ... ]` 是可选句
+- **每人整合包（英文稿 + 中文指导 + Q&A）**：[`presentation/Team_Member_Packs.zip`](presentation/Team_Member_Packs.zip)
+  - LIN 4 页 · WENG/LIM/LAI 3 页 · HUANG 5 页
 
-### 3.6 现场 live 网站演示（已决定：S7 优先 live，录屏 fallback）
+### 3.6 Q&A 的“向其他组提问”
+- 课程要求：**每组至少向其他组问一个问题，否则扣分**（p.20 + 录音补充）。
+- 做法：S17 显示问题，但在**下一组/其他组的 Q&A** 举手或等停顿问；**不在我们自己的 1 分钟 Q&A 里问**。
+- 问题：**“Which chart in your dashboard changed a decision — and how would you prove it?”**
+
+### 3.7 现场 live 网站演示（已决定：S7 优先 live，录屏 fallback）
 - 完整手册（TA 版，含 tunnel / 热点 / 90 秒操作 / 失败处理）：[`presentation/LIVE_DEMO_PLAYBOOK.zh.md`](presentation/LIVE_DEMO_PLAYBOOK.zh.md)
 - 操作卡（LAI 打印一张）：[`presentation/LIVE_DEMO_OPERATOR_CARD.md`](presentation/LIVE_DEMO_OPERATOR_CARD.md)
 - Mac 一键起 Flask：`DB_PASSWORD='...' tools/start_live_demo.sh`
