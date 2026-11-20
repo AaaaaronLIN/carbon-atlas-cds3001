@@ -534,4 +534,9 @@ def favicon():
 
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=5001, debug=True)
+    # Default stays local (127.0.0.1). For a classroom LAN demo run:
+    #   HOST=0.0.0.0 DB_PASSWORD=... python3 app.py
+    host = os.environ.get("HOST", "127.0.0.1")
+    port = int(os.environ.get("PORT", "5001"))
+    debug = os.environ.get("FLASK_DEBUG", "0") == "1"
+    app.run(host=host, port=port, debug=debug)

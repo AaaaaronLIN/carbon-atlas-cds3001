@@ -1,6 +1,12 @@
 # Changelog
 
-## 2026-11-20 · v3.3（当前）
+## 2026-11-20 · v3.4（当前）
+- 新增现场 live 网站演示套件：`presentation/LIVE_DEMO_PLAYBOOK.zh.md`、`LIVE_DEMO_OPERATOR_CARD.md`、`tools/start_live_demo.sh`、`start_tunnel.sh`、`live_demo_check.py`
+- `app.py` 支持 `HOST=0.0.0.0` / `PORT` / `FLASK_DEBUG`，方便教室局域网访问；本地默认仍是 127.0.0.1
+- S7 caption 改为 live + embedded fallback 两种模式
+- 实测：Mac LAN `10.9.64.72:5001` 与 Cloudflare quick tunnel 均返回 200
+
+## 2026-11-20 · v3.3
 - 修复最终前端 PDF 封面：`Carbon Compass` → **Carbon Atlas**，旧 compass 图标 → 新 orbit mark；PDF 10 页全部检查无旧品牌残留
 - 封面把第三栏明确标成 **THE SOLUTION**，正好对应 rubric 的 problem / mission / solution
 
