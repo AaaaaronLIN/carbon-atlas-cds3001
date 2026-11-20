@@ -43,7 +43,7 @@
 ## B. Dashboard demo A — S7 **live**（58 s 分段）｜globe → map → ranking（页面 0:00–0:44）
 
 **上台起点**：时钟 **3:37** · S7 在画面上 · 浏览器已打开、F11、URL 已预热（LAI 在 3:37 前完成）。
-**3:37–3:43 由 host 带产品 bridge**：**"Remember the number: 37,856 million tonnes a year. Patten — show us where it comes from."** 你趁这 6 秒把鼠标放在浏览器标签页上；**不要说话**。
+**3:37–3:43 你自己说产品 bridge**：**"Remember the number: 37,856 million tonnes a year. Let me show you where it comes from."** 说完把鼠标放在浏览器标签页上；3:43 接麦。
 
 > ⏱ [0:06]（**3:43**，接麦克风，诚实开场）**This is the live build — MySQL → Flask → this page. Every number below is a SQL query, not a screenshot.**
 >

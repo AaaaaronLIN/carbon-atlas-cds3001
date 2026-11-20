@@ -1,6 +1,12 @@
 # Changelog
 
-## 2026-11-20 · v5.2（当前）
+## 2026-11-20 · v5.3（当前）
+- **转场改为讲者自己完成**：LIN 不再负责 T1–T4 技术转场；3:37 bridge 改由 LAI 说
+- WENG 收 S4 → LIM；LIM 收 S5 → LAI；LAI 收 6a → HUANG；HUANG 收 S13 → WENG；WENG 收 S14 → LIM；LIM 收 S15 → HUANG；HUANG 收 S16 → LIN Q&A
+- 更新 `Slide_Ownership_Map.pdf` / 9 页 run sheet / packs / scripts / ZIP
+- 时间总账：口述约 481s + 75s 媒体 + 7s 走动 = 563s = 9:23
+
+## 2026-11-20 · v5.2
 - 新增 **`Slide_Ownership_Map.pdf`（2 页）**：每页谁负责 / 多久 / 讲什么 + 每人职责卡
 - 破冰改为 **天气 vs 碳排放**（0:06，唯一互动）；删除 2019 vs 2025 提问
 - S1 副标题：`A decision brief on global CO₂ — as easy to check as the weather.`

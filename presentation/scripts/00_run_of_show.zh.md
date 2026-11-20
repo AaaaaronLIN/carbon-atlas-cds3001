@@ -23,7 +23,7 @@
 
 | 顯示名 | 角色 | 負責評分項 | 分段秒數 | 實際口述（估） |
 | --- | --- | --- | --- | --- |
-| **LIN Xiaotong (4589755)** | Host / Company & story | #1、#2、全部轉場、1 個互動、Q&A 主持 | 103 | **109 s**（含 3:37 產品 bridge 6 s） |
+| **LIN Xiaotong (4589755)** | Host / Company & story | #1、#2、1 個互動、Q&A 主持 | 88 | **≈93 s**（不含技術轉場） |
 | **WENG Zhichao (4589896)** | Database (Part 1) & cost–benefit | #3、#8 | 92 | **92 s** |
 | **LIM Mantung (4592996)** | API (Part 2) & Safety/GELSI | #4、#9 | 95 | **95 s** |
 | **LAI Patten (4001777)** | Front end (Part 3) & demo A 旁白 | #5、#6a | 100（42 + 58） | **94 s**（42 + 52） |
@@ -64,19 +64,19 @@
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1 | Company intro + logo + team + avatars | 50 | **0:00 – 0:50** | LIN | S1 → S2 | S1：logo、Carbon Atlas 字標、tagline、problem / mission / brief 三欄；S2：五張成員卡＋卡通頭像＋姓名/ID | [ADVANCE] → 指 logo → 指三欄 → 指成員卡 | *"Every member speaks — English, no notes."*（S2 收句） | **Beat 1 開場舉手 poll（10 s）** |
 | 2 | User Requirements | 38 | **0:50 – 1:28** | LIN | S3 | 四個 persona＋五行「問題 → 資料 → route → 圖表」表 | 指 persona → 指表 → 指 requirements chain 收句 | *"Every row ends in a route and a view."*（接 T1） | — |
-| T1 | → Part 1 | 3 | **1:28 – 1:31** | LIN | S3 → S4 | 交棒畫面 | [ADVANCE] | *"The data starts in MySQL — Zichao."* | — |
+| T1 | → Part 1 | 3 | **1:28 – 1:31** | WENG | S3 → S4 | WENG 自己開 S4 | — | *"Part 1 is not just downloading a CSV…"* | — |
 | 3 | Part 1 code | 42 | **1:31 – 2:13** | WENG | S4 | CREATE TABLE + LOAD DATA（@dummy、STR_TO_DATE）＋大字 655,200＋驗證列＋Workbench 截圖 | 指 SQL 三段 → 指 655,200 → 指驗證列 | *"Mantung, make it a URL."* | — |
 | 4 | Part 2 code | 42 | **2:13 – 2:55** | LIM | S5 | run_sql helper、/api/sectors、JSON 範例、SAFE BY DEFAULT、JSON 截圖 | 指 helper → 指 endpoint → 指 JSON → 指安全兩行 | *"Patten, draw it."* | — |
 | 5 | Part 3 code | 42 | **2:55 – 3:37** | LAI | S6 | fetch/map/setOption 程式、browser→Flask→MySQL 流程、本機 assets | 指 fetch → 指 rows.map → 指 markPoint → 指流程圖 | *"That is the code. Let me open the live build."* | — |
-| 6a | Dashboard demo A（live 前半） | 58 | **3:37 – 4:35** | LAI（＋LIN bridge 6 s） | **S7 → 浏览器 live**（页面 0:00–0:44） | live：Stage hero／globe → map → ranking；LAI 控鼠标 | LIN（3:37–3:43）：**"Remember the number: 37,856 million tonnes a year. Patten — show us where it comes from."**；LAI：3:43 接麦 → **3:48 [Alt+Tab 浏览器]** → 页面 0:00 旁白 | *"That is the where."*（live 继续） | **產品 bridge（6 s，非互動）** |
-| T2 | → demo B | 4 | **4:35 – 4:39** | LIN | 浏览器 live | 页面停在 ranking 尾段；不停 | 不出手 | *"Patten has the where. Haolin, the what and the when."* | — |
+| 6a | Dashboard demo A（live 前半） | 58 | **3:37 – 4:35** | LAI | **S7 → 浏览器 live**（页面 0:00–0:44） | live：Stage hero／globe → map → ranking；LAI 控鼠标 | LAI（3:37–3:43）：**"Remember the number: 37,856 million tonnes a year. Let me show you where it comes from."** → 3:43 接麦 → **3:48 [Alt+Tab 浏览器]** → 页面 0:00 旁白 | *"That is the where."*（live 继续） | **產品 bridge（6 s，非互動）** |
+| T2 | → demo B | 4 | **4:35 – 4:39** | HUANG | 浏览器 live | HUANG 自己接 6b | — | *"The same brief, deeper — the what and the when."* | — |
 | 6b | Dashboard demo B（live 后半） | 53 | **4:39 – 5:32** | HUANG | **浏览器 live → S12** | live：sector → weekday → trend/compare/Index → findings → Method/GELSI；5:21 Alt+Tab 回 PPT | [POINT] live；LAI 控鼠标；5:21 LAI 回 PPT，HUANG [ADVANCE S12] | *"The product is done. Now the campaign."*（接 S13） | — |
 | 7 | Ad campaign | 80 | **5:32 – 6:52** | HUANG | S13 | 海報圖＋AUDIO 0:30 卡＋VIDEO 0:45 卡＋共用句子 | [POINT 海報] → **[PLAY audio，內嵌]** 30 s → **[PLAY video，內嵌]** 45 s → 指共用句 | *"One message, three media."*（接 T3） | 媒體播放（30 + 45 s） |
-| T3 | → cost–benefit | 3 | **6:52 – 6:55** | LIN | S13 → S14 | 交棒畫面 | [ADVANCE] | *"Weng, the business case."* | — |
+| T3 | → cost–benefit | 3 | **6:52 – 6:55** | HUANG | S13 → S14 | HUANG 收句 | [ADVANCE] | *"One message, three media. Weng, the business case."* | — |
 | 8 | Cost–Benefit | 50 | **6:55 – 7:45** | WENG | S14 | 成本/效益表＋三個 KPI（≈17 個月、2.17:1、+HK$37,254）＋「not claiming」虛線框＋假設句 | 指表 → 指 KPI → 指虛線框 | *"Mantung, the responsibility side."* | — |
 | 9 | Safety & Responsibility（GELSI） | 53 | **7:45 – 8:38** | LIM | S15 | GELSI 五列（G/E/L/S/I：risk → what we do）＋coverage 39 series 限制條 | 逐列指五個字母 → 指 coverage strip | *"Haolin, bring it home."* | — |
 | 10 | Conclusion | 40 | **8:38 – 9:18** | HUANG | S16 | 三點回顧＋四個數字 chip＋金句＋honest next | 指三點 → 指 chips → 放慢念金句 | *"Thank you."*（接 T4） | — |
-| T4 | Host 收尾 + 交 Q&A | 5 | **9:18 – 9:23** | LIN | S16 → S17 | S17：Thank you / Questions — and one for you.＋我們給下一組的問題＋出處 | [ADVANCE] 到 S17 | *"Thank you. We're happy to take questions."* | — |
+| T4 | Host 收尾 + 交 Q&A | 5 | **9:18 – 9:23** | HUANG → LIN | S16 → S17 | HUANG 说完 “Thank you.”；LIN 接 Q&A | [ADVANCE] 到 S17 | *"We're happy to take questions."* | — |
 | — | **Q&A** | 60 | **9:23 – 10:23** | LIN 主持、全員答 | S17（留在畫面） | S17 頁不切走 | — | 見第 4 節 | 必要時問下一組問題 |
 
 **總計：50 + 38 + 3 + 42 + 42 + 42 + 58 + 4 + 53 + 80 + 3 + 50 + 53 + 40 + 5 = 563 s = 9:23。**
@@ -88,7 +88,7 @@
 | 0:00 | **3:48**（Alt+Tab 到浏览器） | live hero／globe | LAI |
 | 0:14 | 4:02 | Where + China | LAI |
 | 0:26 | 4:14 | ranking、sparkline、vs 2019 | LAI |
-| 0:44 | **4:32** | ranking 尾段 → T2 | LAI 收句；LIN T2 |
+| 0:44 | **4:32** | ranking 尾段 → T2 | LAI 收句；HUANG 自己接 6b |
 | 0:51 | **4:39** | What / India | HUANG |
 | 1:02 | 4:50 | trend、compare、Index | HUANG |
 | 1:20 | 5:08 | findings、Method／GELSI | HUANG |
@@ -104,7 +104,7 @@
 
 | 成員 | 分段分配 | 實際口述（含 video voiceover／poll） | 判定（85–110；host ≤115） |
 | --- | --- | --- | --- |
-| LIN Xiaotong | 50 + 38 + 15 = **103 s** | **109 s**（3:37 bridge 6 s） | ✅ host 上限內 |
+| LIN Xiaotong | 50 + 38 = **88 s** | **≈93 s**（含 Q&A 開場） | ✅ |
 | WENG Zhichao | 42 + 50 = **92 s** | **92 s** | ✅ |
 | LIM Mantung | 42 + 53 = **95 s** | **95 s** | ✅ |
 | LAI Patten | 42 + 58 = **100 s** | **94 s**（42 + 開場 5 + 旁白 47） | ✅ |
@@ -114,7 +114,7 @@
 | **全場** | 488 + 75 | **563 s = 9:23** | ✅ |
 
 - **90 s demo（live 或 fallback 录屏）是 6a + 6b 的背景画面**，旁白叠在上面，不另外加时间；它不是「第 4 段媒体」。
-- 3:37 的產品 bridge 6 s 由 host 在 6a 內帶，所以 LAI 的實際口述比 6a 分段少 6 s；兩人都仍在 85–110 內。
+- 3:37 的產品 bridge 6 s 由 LAI 自己帶；技術轉場由各講者自己說。
 
 ### 2.2 Buffer 計算
 
@@ -171,7 +171,7 @@
 
 ### 4.1 Host 開場與結束（英文照念）
 
-- 開場（T4 已說）：*"Thank you. We're happy to take questions."*
+- 開場（HUANG 說完 Thank you 後）：*"We're happy to take questions."*
 - 中段節奏：*"One at a time, please — we have about a minute."*
 - 收尾：*"Thank you — that's our minute."*
 
@@ -242,7 +242,7 @@
 | 檔案 | 用途 |
 | --- | --- |
 | `00_run_of_show.zh.md` | 本文件：時間軸、秒數核算、Fallback 調節、Q&A 交接、場地 pre-flight |
-| `01_host_LIN_Xiaotong.md` | Host 全稿：開場、需求、1 個互動、3:37 產品 bridge、4 段轉場、Q&A 主持、收尾 |
+| `01_host_LIN_Xiaotong.md` | Host 全稿：開場、需求、1 個互動、Q&A 主持、收尾（技術轉場由各講者自己說） |
 | `02_WENG_Zhichao.md` | Part 1 code + Cost–Benefit |
 | `03_LIM_Mantung.md` | Part 2 code + Safety & Responsibility（GELSI） |
 | `04_LAI_Patten.md` | Part 3 code + demo A（S7 live 前段；fallback 录屏） |

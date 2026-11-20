@@ -64,34 +64,18 @@
 
 ---
 
-## C. 四段轉場（15 s，逐字照念）
+## C. 轉場（由講者自己說，host 不報下一位）
 
-> 轉場只有一個功能：把麥克風交給下一個人，並讓評審知道「評分順序在走」。每句 ≤4 秒，不評論、不總結。
+- **1:28** LIN 收句 “Every row ends in a route and a view.” → WENG 自己開 S4。
+- **4:35** LAI 收句 “That is the where.” → HUANG 自己接 6b “The same brief, deeper…”。
+- **6:52** HUANG 收句 “One message, three media. Weng, the business case.” → WENG 開 S14。
+- **9:18** HUANG 收句 “Thank you.” → LIN 開 Q&A：“We're happy to take questions.”
 
-| # | 時鐘 | 場景 | 英文逐字 | 中文提示 |
-| --- | --- | --- | --- | --- |
-| **T1** | **1:28–1:31** | S3 → S4，交給 WENG | **"The data starts in MySQL — Zichao."** | 手勢指向 WENG，退半步；眼睛看 WENG 不是螢幕。 |
-| **T2** | **4:35–4:39** | S7 live 继续（demo A → demo B），交给 HUANG | **"Patten has the where. Haolin, the what and the when."** | live 不要停/不要切回；语气把 "where / what / when" 分开。 |
-| **T3** | **6:52–6:55** | S13 → S14，交給 WENG | **"Weng, the business case."** | 廣告剛播完，音量先確認降下來再開口。 |
-| **T4** | **9:18–9:23** | S16 → S17，收尾＋交 Q&A | **"Thank you. We're happy to take questions."** | [ADVANCE] 到 S17；站回中間，面向評審。 |
-
-**C2 · 進入 demo 前的產品 bridge（3:37–3:43，6 s；不計入 15 s 轉場）**
-
-> 面向觀眾：
-> **"Remember the number: 37,856 million tonnes a year. Patten — show us where it comes from."**
-> （LAI 3:43 接麥；你退半步。）
-
-【中文註記 — 為什麼這樣講才有分】
-- Presentation Skills（10%）評「團隊合作」與「流暢度」；四段短轉場讓評審看到「每個人都被介紹、每個人都接得上」，而不是一人包辦。
-- **3:37 是產品 bridge，不是互動**：只說一句，把畫面交給 LAI；不要問觀眾問題。
-- 轉場不要說 "Now let's move on to the next part, which is about cost-benefit analysis…" 這種長句；短句才像主持，也才不會吃掉別人的時間。
-- T2 的 "where / what / when" 直接對應 demo A/B 的分工，評審一聽就知道你們兩個人在講不同的 rubric 子項。
-
----
+> 技術轉場（S4→S5、S5→S6、S14→S15、S15→S16）也由該段講者自己的收句完成，host 不介入。
 
 ## D. Q&A 主持（1 分鐘，9:23–10:23）｜S17 留在畫面
 
-**開場**（T4 已說）：**"Thank you. We're happy to take questions."**
+**開場**（T4 已說）：**"We're happy to take questions."**
 
 **主持節奏**：
 1. 有人舉手 → **"Yes — go ahead."**

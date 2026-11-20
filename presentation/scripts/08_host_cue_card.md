@@ -16,18 +16,18 @@
 | **0:47** | 停 1 秒 | — | "Every member speaks — English, no notes." |
 | **0:50** | S3 需求段 | — | 直接进入四类用户 + 五个问题（不问数据） |
 | **1:12** | persona + 五行表 | — | "one field, one route, one view" |
-| **1:28** | **T1** | **WENG** | **"The data starts in MySQL — Zichao."**（指他、退半步） |
+| **1:28** | **T1** | **WENG** | （LIN 收句；WENG 自己開 S4）（指他、退半步） |
 | **2:13** | 看 WENG | **LIM** | （WENG 自己交棒） |
 | **2:55** | 看 LIM | **LAI** | （LIM 自己交棒） |
 | **3:37** | **產品 bridge** | LAI 准备浏览器 | **"Remember the number: 37,856 million tonnes a year. Patten — show us where it comes from."**（6 s 收） |
 | **3:43** | LAI 開場 | — | 你退半步，**不要**說話；LAI 说 live 开場句 |
 | **3:48** | LAI Alt+Tab 到浏览器 | — | live 页面 0:00；你站在侧边看画面 |
-| **4:35** | **T2** | **HUANG** | **"Patten has the where. Haolin, the what and the when."**（live 继续，不要切回） |
+| **4:35** | **T2** | **HUANG** | （LAI 收 “That is the where.”；HUANG 自己接 6b）（live 继续，不要切回） |
 | **4:39** | HUANG 旁白 | — | 你盯時間：5:21 回 PPT、5:32 進 S13 |
-| **6:52** | **T3** | **WENG** | **"Weng, the business case."**（等 S13 影片收掉再开口） |
+| **6:52** | **T3** | **WENG** | **"One message, three media. Weng, the business case."**（HUANG 說）（等 S13 影片收掉再开口） |
 | **7:45** | 看 WENG | **LIM** | （WENG 自己交棒） |
 | **8:38** | 看 LIM | **HUANG** | （LIM 交棒："Haolin, bring it home."） |
-| **9:18** | **T4** | **Q&A** | **"Thank you. We're happy to take questions."** [ADVANCE 到 S17] |
+| **9:18** | **T4** | **Q&A** | （HUANG 說 Thank you；LIN 開 Q&A “We're happy to take questions.”） [ADVANCE 到 S17] |
 | **10:23** | 收 | — | **"Thank you — that's our minute."** |
 
 ## 🙋 互動（≤10 s；觀眾不接球就自答，不問第二次）

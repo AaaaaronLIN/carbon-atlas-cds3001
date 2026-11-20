@@ -65,6 +65,7 @@
 > （影片是 dashboard 螢幕錄影；同樣不說話）
 >
 > ⏱ [1:18]（影片結束，回到麥克風）**One message, three media.**
+> ⏱ [1:20] **Weng, the business case.**（交 WENG，不用 host）
 >
 > ⏱ [1:20]（收，交 host T3）
 
