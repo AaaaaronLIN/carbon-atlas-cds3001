@@ -95,6 +95,8 @@ python3 app.py
 - **Patten 录音指南**：[`presentation/ads/voice_recording_sheet_Patten.md`](presentation/ads/voice_recording_sheet_Patten.md)
 
 ### 3.5 最终背稿本（打印版，9 页）
+- **每页分工总表（2 页）**：[`presentation/Slide_Ownership_Map.pdf`](presentation/Slide_Ownership_Map.pdf)
+  - 每页：谁负责 / 多久 / 讲什么；第二页每人职责卡
 - **主文件（A4 可打印）**：[`presentation/Carbon_Atlas_Run_Sheet_and_Scripts.pdf`](presentation/Carbon_Atlas_Run_Sheet_and_Scripts.pdf)
   - p1 8 个步骤 + 1 个互动 + 全组规则
   - p2 LIN 英文稿；p3 LIN 互动/交接/Q&A
@@ -182,7 +184,8 @@ carbon-atlas-cds3001/
 │  ├─ 00_STATUS.md · 01_DECISIONS.md · 02_TODO_OWNERS.md · CHANGELOG.md
 │  └─ PUBLISH_TO_GITHUB.md
 ├─ presentation/              ← 讲稿、run-of-show、广告脚本、成本 xlsx
-│  ├─ Carbon_Atlas_Run_Sheet_and_Scripts.pdf ← 9 页 A4 背稿本（8 步 + 2 互动 + 每人英文稿）
+│  ├─ Carbon_Atlas_Run_Sheet_and_Scripts.pdf ← 9 页 A4 背稿本（8 步 + 1 互动 + 每人英文稿）
+│  ├─ Slide_Ownership_Map.pdf ← 2 页每页分工/时长表
 │  ├─ Team_Script_Packs.zip ← 5 人各自 Script Pack
 │  ├─ scripts/                ← 9 份讲稿（host/5 人/Q&A/cue card/interaction）
 │  └─ ads/                    ← 海报源文件、音频/视频脚本、Patten 录音稿、媒体文件

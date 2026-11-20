@@ -1,6 +1,12 @@
 # Changelog
 
-## 2026-11-20 · v5.1（当前）
+## 2026-11-20 · v5.2（当前）
+- 新增 **`Slide_Ownership_Map.pdf`（2 页）**：每页谁负责 / 多久 / 讲什么 + 每人职责卡
+- 破冰改为 **天气 vs 碳排放**（0:06，唯一互动）；删除 2019 vs 2025 提问
+- S1 副标题：`A decision brief on global CO₂ — as easy to check as the weather.`
+- 9 页 run sheet / packs / scripts / ZIP 全部同步
+
+## 2026-11-20 · v5.1
 - **互动减为 1 个**：0:06 天气 vs 碳排放（host）；删除 0:50 的 2019 vs 2025 提问，LIN 不再背这段
 - **S1 副标题**：`A decision brief on global CO₂ — as easy to check as the weather.`（tagline / campaign line / 三媒体不动）
 - LIN 只负责：破冰 + 产品引入 + 用户需求 + 4 个交接 + Q&A 主持
