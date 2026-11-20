@@ -1,6 +1,12 @@
 # Changelog
 
-## 2026-11-20 · v3.4（当前）
+## 2026-11-20 · v3.5（当前）
+- 用 5 位成员的真实头像作 likeness 参考，重画 **原创卡通头像**（仍符合 rubric 的 "Cartoon profile picture"）：
+  LIN 黑发侧分/深色西装、WENG 乱发+圆眼镜+花衬衫、LIM 短发+西装领带、HUANG 卷发+方框眼镜、Patten 刘海+方框眼镜+绿色 hoodie
+- 网站 Team 区、Deck S2、PDF Team 页全部同步；LAI 角色更新为 **FRONT END & LIVE DEMO**
+- 原始真人照片只保存在本地 `presentation/team_photos/`，**不进 public repo**（隐私）
+
+## 2026-11-20 · v3.4
 - 新增现场 live 网站演示套件：`presentation/LIVE_DEMO_PLAYBOOK.zh.md`、`LIVE_DEMO_OPERATOR_CARD.md`、`tools/start_live_demo.sh`、`start_tunnel.sh`、`live_demo_check.py`
 - `app.py` 支持 `HOST=0.0.0.0` / `PORT` / `FLASK_DEBUG`，方便教室局域网访问；本地默认仍是 127.0.0.1
 - S7 caption 改为 live + embedded fallback 两种模式
