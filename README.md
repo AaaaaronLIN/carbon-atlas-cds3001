@@ -35,7 +35,7 @@ Lingnan University · CDS3001 Databases and Data Warehouses · 2026-11-27 18:00 
 |---|---|
 | ![Deck](assets/screenshots/deck-contact-final.png) | ![Comparison](assets/screenshots/comparison-current.png) |
 
-> 更多截图在 `assets/screenshots/`；deck 内嵌媒体说明见 `deliverable/` 与 `presentation/scripts/00_run_of_show.zh.md`。
+> 更多截图在 `assets/screenshots/`；deck 内嵌媒体说明见 `deliverable/` 与 `presentation/Carbon_Atlas_Chapters_and_Scripts.pdf`。
 > **GitHub 仓库地址 / 日常操作（clone、push、邀请组员）**：见 [`docs/PUBLISH_TO_GITHUB.md`](docs/PUBLISH_TO_GITHUB.md)。
 > 最终 Moodle 提交 ZIP 不在 repo 里（体积原因）；repo 的 `code/` + `deliverable/` 已包含全部必交文件，ZIP 由 Lead 另外打包发群。
 
@@ -51,7 +51,7 @@ Lingnan University · CDS3001 Databases and Data Warehouses · 2026-11-27 18:00 
 | LAI Patten | 4001777 | Front end & demo | Part 3 code（42 s）+ demo A 录制旁白（47 s）+ **广告人声** |
 | HUANG Haolin | 4455930 | Insights, ads & conclusion | demo B（53 s）+ 广告（5 s + 75 s 媒体）+ 结论（40 s） |
 
-> 总长 **563 s = 9:23** + 1 分钟 Q&A；每人实际说话 92–109 s。完整版：[`presentation/scripts/00_run_of_show.zh.md`](presentation/scripts/00_run_of_show.zh.md)
+> 总长 **563 s = 9:23** + 1 分钟 Q&A；5 个连续章节（93 / 126 / 104 / 144 / 93 s）。完整版：[`presentation/Carbon_Atlas_Chapters_and_Scripts.pdf`](presentation/scripts/00_run_of_show.zh.md)
 
 ---
 
@@ -72,7 +72,7 @@ Carbon Monitor 的**每日碳排放 CSV** → **MySQL** → **Flask JSON API** �
 - 文件说明汇总：[`deliverable/README.md`](deliverable/README.md)
 - **F5 放映** → **S7** 点深色画面播放 **90 秒 demo** → **S13** 点 `PLAY 30 s AUDIO`、`PLAY 45 s AD`
 - 教室 Windows 电脑**务必提前试播**；如果内嵌媒体不播，用 U 盘里 `presentation/ads/audio`、`presentation/ads/video` 的独立文件直接播放
-- 逐页讲稿：[`presentation/scripts/`](presentation/scripts/)（PPT-only 版，媒体播放 cue 已写好）
+- 逐页讲稿：[`presentation/Carbon_Atlas_Chapters_and_Scripts.pdf`](presentation/Carbon_Atlas_Chapters_and_Scripts.pdf)（8 页：5 章节 + 每人英文稿 + 中文指导）
 
 ### 3.2 看网页（自己电脑，需 MySQL）
 ```bash
@@ -175,7 +175,7 @@ carbon-atlas-cds3001/
 │  ├─ Carbon_Atlas_Chapters_and_Scripts.pdf ← 8 页 A4 章节背稿本（5 章节 + 1 互动）
 │  ├─ Slide_Ownership_Map.pdf ← 2 页章节/每页分工/时长表
 │  ├─ Team_Script_Packs.zip ← 5 人各自 Script Pack
-│  ├─ scripts/                ← 9 份讲稿（host/5 人/Q&A/cue card/interaction）
+│  ├─ Carbon_Atlas_Chapters_and_Scripts.pdf ← 8 页章节背稿本（唯一排练依据）
 │  └─ ads/                    ← 海报源文件、音频/视频脚本、Patten 录音稿、媒体文件
 ├─ assets/screenshots/        ← 关键截图（Stage hero、团队页、17 页 deck 总览、广告页等）
 ├─ tools/                     ← 生成 PDF / 录制 demo 用的脚本（可复现）
@@ -199,7 +199,7 @@ carbon-atlas-cds3001/
 |---|---|
 | 教室 Windows 播不了内嵌媒体 | U 盘独立 mp4/mp3 直接播；S8–S11 截图仍在 deck 里；讲稿有媒体失败话术 |
 | 无法现场跑 MySQL/Python | 已录 90 s demo 视频，PPT-only 设计 |
-| 排练超时 | `presentation/scripts/00_run_of_show.zh.md` 有 8:38 / 9:18 检查点与删句机制 |
+| 排练超时 | `presentation/Carbon_Atlas_Chapters_and_Scripts.pdf` 有 8:38 / 9:18 检查点与删句机制 |
 | Patten 11-24 前没录 | 当前 TTS 草稿已嵌入，可先交；但真人声更好 |
 | 数据被重新下载导致数字变化 | 冻结 2026-08-31 快照，不改 |
 

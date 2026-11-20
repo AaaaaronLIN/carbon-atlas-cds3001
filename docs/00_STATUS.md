@@ -13,7 +13,7 @@
 | 45 秒视频广告 | ✅（TTS 草稿人声） | `deliverable/carbon_atlas_ad_45s.mp4` |
 | 30 秒音频广告 | ✅（TTS 草稿人声） | `deliverable/audio_ad_30s_draft.mp3` |
 | A3 海报 | ✅ | `deliverable/poster.png` / `.pdf` |
-| 9:23 讲稿包 | ✅ 9 份 | `presentation/scripts/` |
+| 9:23 讲稿包 | ✅ 8 页章节版 | `presentation/Carbon_Atlas_Chapters_and_Scripts.pdf` |
 | 成本效益 / GELSI | ✅ | `presentation/cost_benefit.xlsx` + deck S14/S15 |
 | 最终 Moodle ZIP | 🟡 等 Patten 人声后做最终重打包 | 由 Lead 生成 |
 

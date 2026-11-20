@@ -1,6 +1,12 @@
 # Changelog
 
-## 2026-11-20 · v6.2（当前）
+## 2026-11-20 · v6.3（当前）
+- **最终核对**：旧 9 份 markdown 逐人稿已退役并从 repo/submission ZIP 移除；唯一排练依据为 8 页 `Carbon_Atlas_Chapters_and_Scripts.pdf`
+- 清理残留 “live / live build / live URL” 文案：WENG 交接改 “Patten, show us the build”，LAI 页改 RECORDED DEMO，Q&A 改 page/demo
+- 最终 ZIP：无旧 scripts；`Presentation/scripts/` 只放 8 页章节 PDF
+- README/STATUS 同步
+
+## 2026-11-20 · v6.2
 - **最终决策：教室电脑默认不打开网站**；S7 播 90 秒录屏，录屏失败才用 S8–S11 静态截图
 - 移除 S8–S11 的 BACKUP 标签（不再需要吓观众/提示跳过）
 - 默认流程：3:37 “I'll show the recorded build.” → 3:43 播 S7 视频 → 5:21 HUANG 12+Enter 跳 S12
