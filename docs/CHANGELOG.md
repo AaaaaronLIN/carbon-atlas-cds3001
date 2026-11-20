@@ -1,6 +1,11 @@
 # Changelog
 
-## 2026-11-20 · v4.2（当前）
+## 2026-11-20 · v4.3（当前）
+- S10 KPI 数字回到左对齐（headline KPI 风格；表格/排名仍右对齐，按位比较）
+- 全 deck 17 页重渲染检查：黄色 takeaway 行 8 处位置一致、单行不溢出、不与 footer 重叠；无 shape 超出页面边界
+- Deck PDF / contact sheet / ZIP 已重出
+
+## 2026-11-20 · v4.2
 - 明确 **S7 fallback 录屏没有声音**：不在视频里加 AI 旁白；live 失败时 LAI/HUANG 继续现场讲
 - S8–S11 截图 fallback 同样无声音，由讲者继续讲
 - S13 的 45 s 视频广告 + 30 s 音频广告有声音；最终由 Patten 真人声替换 TTS
