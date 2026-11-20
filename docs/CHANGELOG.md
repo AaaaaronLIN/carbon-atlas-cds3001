@@ -1,6 +1,10 @@
 # Changelog
 
-## 2026-11-19 · v3.0（当前）
+## 2026-11-20 · v3.1（当前）
+- 重新设计 A3 海报：与网站默认 **Stage 深色主题**一致（深墨绿 + 象牙白 + 薄荷绿），加入真实 Stage 介面截图、数据管线、四问结构；修正 2,800 天数字
+- 海报/deck/ZIP 同步更新
+
+## 2026-11-19 · v3.0
 - 新增：90 秒真实 MySQL build 录屏（Stage 主题）、45 秒视频广告、30 秒音频广告、媒体嵌入 deck S7/S13
 - 新增：最终前端 PDF 10 页（Stage + Day + Team + Story + GELSI + partial-year + 复现）
 - 新增：9:23 PPT-only 讲稿包（run-of-show / 5 人逐字稿 / Q&A / cue card / interaction）
