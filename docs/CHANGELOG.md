@@ -1,6 +1,13 @@
 # Changelog
 
-## 2026-11-20 · v3.8（当前）
+## 2026-11-20 · v3.9（当前）
+- 删除所有 slide kicker 里的 rubric 权重 `(10%)`（S4/S5/S6/S7/S13/S14/S15）——评分标准不应出现在观众页面
+- S12 表头 `REFERENCE (MOODLE BONUS)` → `REFERENCE DASHBOARD`，正文改 "supplied dashboard"
+- S10 三个 KPI 数字改为右对齐（与标签列分开），解决数字长度不同造成的视觉错位
+- audit_deck.py 新增 rubric 权重 / Moodle 字样扫描；当前 PASS
+- Deck PDF / contact sheet / ZIP 已重出
+
+## 2026-11-20 · v3.8
 - **audience-copy cleanup**：删除 slides 上所有 `SAY` / `Screenshot:` / `fallback` / `no notes` / storyboard 等内部用语（S4–S11、S14、S15）
 - 清空全部 speaker notes（旧 1.0 Member A–E 笔记 + 临时 team notes），避免 presenter view 出现内部文字
 - 最终 PDF 封面 "Screenshots..." → "Captured from..."; PDF 10 页扫描无内部用语
