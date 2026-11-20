@@ -1,6 +1,12 @@
 # Changelog
 
-## 2026-11-20 · v3.9（当前）
+## 2026-11-20 · v4.0（当前）
+- 引用写法统一：`arXiv:2004.13614` → **`source paper arXiv:2004.13614`**（deck 封面 / S17 / 海报 / 最终 PDF / 網站 Method/footer）
+- 说明：arXiv ID `2004.13614` = 2020 年 4 月提交的 Carbon Monitor 论文编号，不是 2004 年或数据年份
+- 论文标题：COVID-19 causes record decline in global CO2 emissions（Liu et al., 2020）
+- 所有 deck/PDF/海报/ZIP 已同步
+
+## 2026-11-20 · v3.9
 - 删除所有 slide kicker 里的 rubric 权重 `(10%)`（S4/S5/S6/S7/S13/S14/S15）——评分标准不应出现在观众页面
 - S12 表头 `REFERENCE (MOODLE BONUS)` → `REFERENCE DASHBOARD`，正文改 "supplied dashboard"
 - S10 三个 KPI 数字改为右对齐（与标签列分开），解决数字长度不同造成的视觉错位
