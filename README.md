@@ -95,7 +95,7 @@ python3 app.py
 - **Patten 录音指南**：[`presentation/ads/voice_recording_sheet_Patten.md`](presentation/ads/voice_recording_sheet_Patten.md)
 
 ### 3.5 每个人要背的稿子（打印版）
-- **A4 可打印 PDF（10 页）**：[`presentation/Team_Rehearsal_Handout.pdf`](presentation/Team_Rehearsal_Handout.pdf)
+- **A4 可打印 PDF（10 页，英文稿 + 中文指导）**：[`presentation/Team_Rehearsal_Handout.pdf`](presentation/Team_Rehearsal_Handout.pdf)
   - p1 团队/幻灯片分工；p2 时间线/舞台规则/时间纪律；p3 LIN；p4 LIN 互动+Q&A；p5 WENG；p6 LIM；p7 LAI；p8–9 HUANG；p10 Q&A/final check/rubric
 - **每人单独 PDF（可直接发人）**：[`presentation/Team_Handouts_Individual.zip`](presentation/Team_Handouts_Individual.zip)
 
