@@ -1,7 +1,8 @@
-# Carbon Atlas · 现场 Live Website 演示手册（TA / 全组版）
+# Carbon Atlas · Demo 手册（默认录屏版）
 
-> 目标：在 9:23 的演示里，用**教室 Windows 电脑的浏览器**打开真实网站（Flask → MySQL → 页面），而不是只看 PPT 里的录屏；同时保留 **90 秒视频**作为一键 fallback。
-> 本文所有命令都在自己的 Mac 上执行；Windows 教室电脑只需要 **打开一个 URL**。
+> **2026-11-20 决策：教室电脑默认不打开网站。** 当天默认播 S7 的 90 秒录屏；录屏播不了才用 S8–S11 截图。以下 live 流程仅作背景/备选，不是当天默认流程。
+>
+> 默认只依赖：**PowerPoint + S7 内嵌视频 + S8–S11 静态截图**；不依赖教室网络/浏览器/URL。
 
 ---
 
@@ -297,23 +298,26 @@ macOS 如果开了防火墙：
 
 ---
 
-## 5.6 Fallback 逐步骤（LAI + HUANG）
+## 5.6 默认模式：不打开网站，直接播 S7 录屏
 
-### A. 网页 5 秒打不开
-1. LAI：**“I'll show the recorded build.”**
-2. Alt+Tab 回 PPT（S7）
-3. 点 S7 的 90 秒视频 poster；录屏无声，LAI 继续同一份 demo 稿
-4. 视频结束 / 5:21：**HUANG 按 `12` + Enter 跳 S12**（不要按 →，否则会到 S8）
+> **2026-11-20 决策：教室电脑不打开网站。** 默认播 S7 的 90 秒录屏；录屏播不了才用 S8–S11 截图。以下 live 内容仅作背景/备选，不是当天默认流程。
 
-### B. 录屏也播不了
+### 正常默认流程
+1. **3:37** LAI：**“I'll show the recorded build.”**
+2. **3:43** 点 S7 的 90 秒视频 poster
+3. 录屏无声；LAI 继续同一份 demo 稿
+4. **5:21** HUANG 按 **`12` + Enter 跳 S12**（不要按 →，否则到 S8）
+
+### 录屏播不了
 1. LAI：**“Let me walk you through the screens.”**
-2. HUANG 按 → 到 **S8**，依次 **S9 → S10 → S11**
-3. LAI 用同一份稿按 Where/What/When/Findings 讲
+2. HUANG 按 → 到 **S8**，然后 **S9 → S10 → S11**
+3. LAI 用同一份稿按 Where / What / When / Findings 讲
 4. 讲完 S11，按 → 到 **S12**
 
-### C. live 中途卡住
-- 4:00 前：按 A 播录屏；
-- 4:00 后：按 B，直接切当前对应的 S8–S11，不重播整段；
-- 一句 “I'll show the recorded build.” 后继续。
+### 绝对不要
+- 不打开浏览器 / 不输 URL / 不 Alt+Tab / 不试 tunnel
+- 不刷新 / 不重启 MySQL / 不重启 tunnel
+- 不开 terminal / 不找文件
+- 不按 → 从 S7 到 S8（录屏结束必须 **12+Enter** 跳 S12）
 
-**绝对不要**：刷新页面、重启 MySQL/tunnel、开 terminal、在台上输 URL、按 → 从 S7 到 S8。
+**默认只依赖 PowerPoint + S7 内嵌视频 + S8–S11 静态截图，不依赖教室网络或浏览器。**

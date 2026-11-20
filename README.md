@@ -108,36 +108,27 @@ python3 app.py
 - 做法：S17 显示问题，但在**下一组/其他组的 Q&A** 举手或等停顿问；**不在我们自己的 1 分钟 Q&A 里问**。
 - 问题：**“Which chart in your dashboard changed a decision — and how would you prove it?”**
 
-### 3.7 现场 live 网站演示（已决定：S7 优先 live，录屏 fallback）
-- 完整手册（TA 版，含 tunnel / 热点 / 90 秒操作 / 失败处理）：[`presentation/LIVE_DEMO_PLAYBOOK.zh.md`](presentation/LIVE_DEMO_PLAYBOOK.zh.md)
-- 操作卡（LAI 打印一张）：[`presentation/LIVE_DEMO_OPERATOR_CARD.md`](presentation/LIVE_DEMO_OPERATOR_CARD.md)
-- Mac 一键起 Flask：`DB_PASSWORD='...' tools/start_live_demo.sh`
-- 公网 HTTPS URL：`tools/start_tunnel.sh`（Cloudflare quick tunnel，今天已实测 `/api/health` 200）
-- 预检：`python3 tools/live_demo_check.py https://xxxx.trycloudflare.com`
-- 失败 5 秒内切回 S7 的 90 秒录屏（已内嵌，U 盘也有独立 mp4）；讲稿 `presentation/scripts/` 已改为 live 版。
-
-**一句话**：Mac 跑 MySQL + Flask → `cloudflared` 给一个 `https://...trycloudflare.com` → 教室 Windows 浏览器打开；如果教室网络挡，切回 S7 录屏。
+### 3.7 Demo：默认播 S7 90 秒录屏（不打开网站）
+- **当天默认**：不打开浏览器/URL；在 S7 播已内嵌的 90 秒录屏，LAI 继续同一份 demo 旁白。
+- 录屏播不了：用 S8–S11 静态截图，按同一顺序讲。
+- 操作卡：[`presentation/LIVE_DEMO_OPERATOR_CARD.md`](presentation/LIVE_DEMO_OPERATOR_CARD.md)
+- 背景手册（live 仅历史/备选）：[`presentation/LIVE_DEMO_PLAYBOOK.zh.md`](presentation/LIVE_DEMO_PLAYBOOK.zh.md)
+- **不依赖**教室网络、浏览器、tunnel 或 URL；不需要当天测试网站。
 
 ---
 
-## 4. 演示结构（9:23）
+## 4. 演示结构（5 个连续章节，9:23）
 
-| # | 环节 | 秒 | 讲者 |
-|---|---|---|---|
-| 1 | 公司介绍 + logo + 成员 + 卡通头像（含开场举手 poll） | 50 | LIN |
-| 2 | User Requirements（含"猜 2025 vs 2019"） | 38 | LIN |
-| 3 | Part 1 code | 42 | WENG |
-| 4 | Part 2 code | 42 | LIM |
-| 5 | Part 3 code | 42 | LAI |
-| 6a | 播 S7 90 s demo + 地球/地图/排名表旁白（含 India vs Russia 举手竞猜） | 58 | LAI + LIN |
-| 6b | demo 后半段 + Findings/GELSI 旁白 → S12 | 53 | HUANG |
-| 7 | 广告：海报 → 30 s 音频 → 45 s 视频 | 80 | HUANG |
-| 8 | Cost–Benefit | 50 | WENG |
-| 9 | Safety & Responsibility（GELSI） | 53 | LIM |
-| 10 | Conclusion | 40 | HUANG |
-| — | Host 收尾 + Q&A（含问别组问题） | 5 + 60 | LIN |
+| # | 章节 | 讲者 | Slides | 时间 | 内容 |
+|---|---|---|---|---|---|
+| 1 | Why | LIN | S1–S3 | 0:00–1:28 | 天气破冰、产品、团队、用户需求 |
+| 2 | How it's built | WENG | S4–S6 | 1:31–3:37 | Part 1 + Part 2 + Part 3 全部代码 |
+| 3 | See it work | LAI | S7 | 3:37–5:21 | 播 90 秒录屏 + 同一份 demo 旁白 |
+| 4 | Why it's worth it | HUANG | S12–S14 | 5:21–7:45 | 客制化 + 广告三媒体 + 成本效益 |
+| 5 | Responsible + close | LIM | S15–S16 | 7:45–9:18 | GELSI + 结论 |
+| — | Q&A | LIN 主持 | S17 | 9:18–10:23 | 1 分钟；向其他组的问题在对方 Q&A 问 |
 
-3 个互动：**开场举手**、**猜 2025 vs 2019**、**India vs Russia 2025 谁多**（答案 India 3,309 / Russia 1,670）。
+**唯一互动**：0:06 天气 vs 碳排放（LIN）。**demo 只有一个旁白**（LAI），录屏/截图同一份稿。
 
 ---
 

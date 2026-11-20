@@ -1,6 +1,14 @@
 # Changelog
 
-## 2026-11-20 · v6.1（当前）
+## 2026-11-20 · v6.2（当前）
+- **最终决策：教室电脑默认不打开网站**；S7 播 90 秒录屏，录屏失败才用 S8–S11 静态截图
+- 移除 S8–S11 的 BACKUP 标签（不再需要吓观众/提示跳过）
+- 默认流程：3:37 “I'll show the recorded build.” → 3:43 播 S7 视频 → 5:21 HUANG 12+Enter 跳 S12
+- 录屏失败：LAI “Let me walk you through the screens.” → HUANG S8→S11 → S12
+- 更新 chapters PDF / map / packs / operator card / playbook / README / ZIP
+- 不再依赖教室网络、浏览器、tunnel 或 URL
+
+## 2026-11-20 · v6.1
 - Fallback 明确：live 失败 → “I'll show the recorded build.” → S7 90s 录屏（同一份 LAI 稿）→ HUANG **12+Enter** 跳 S12
 - 录屏也失败 → S8–S11 截图（同一份稿）；讲完 S11 → S12
 - 中场失败：4:00 前播录屏；4:00 后切当前 S8–S11，不重播
