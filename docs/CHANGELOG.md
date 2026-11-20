@@ -1,6 +1,11 @@
 # Changelog
 
-## 2026-11-20 · v4.0（当前）
+## 2026-11-20 · v4.1（当前）
+- 引用改成 **source paper arXiv:2004.13614**（deck 封面/S17、海报、最终 PDF、网站）
+- 海报底部 source line 之前被版面裁掉：已收紧 hero/stats/answers/pipeline/footer 间距，source 现在完整可见
+- 全部 deck/PDF/海报/ZIP 重新同步
+
+## 2026-11-20 · v4.0
 - 引用写法统一：`arXiv:2004.13614` → **`source paper arXiv:2004.13614`**（deck 封面 / S17 / 海报 / 最终 PDF / 網站 Method/footer）
 - 说明：arXiv ID `2004.13614` = 2020 年 4 月提交的 Carbon Monitor 论文编号，不是 2004 年或数据年份
 - 论文标题：COVID-19 causes record decline in global CO2 emissions（Liu et al., 2020）
