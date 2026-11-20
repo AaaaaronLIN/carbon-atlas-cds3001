@@ -96,12 +96,12 @@ python3 app.py
 
 ### 3.5 最终背稿本（打印版，9 页）
 - **主文件（A4 可打印）**：[`presentation/Carbon_Atlas_Run_Sheet_and_Scripts.pdf`](presentation/Carbon_Atlas_Run_Sheet_and_Scripts.pdf)
-  - p1 8 个步骤 + 2 个互动 + 全组规则
+  - p1 8 个步骤 + 1 个互动 + 全组规则
   - p2 LIN 英文稿；p3 LIN 互动/交接/Q&A
   - p4 WENG；p5 LIM；p6 LAI；p7–8 HUANG；p9 Q&A/检查/评分覆盖
 - **每人单独 pack（可直接发人）**：[`presentation/Team_Script_Packs.zip`](presentation/Team_Script_Packs.zip)
   - LIN 4 页 · WENG/LIM/LAI 3 页 · HUANG 4 页
-- **怎么用**：每人只背自己的英文页；每页顶部有中文“这一段主要讲什么”，底部是交接/Q&A。
+- **怎么用**：每人只背自己的英文页；每页顶部有中文“这一段主要讲什么”，底部是交接/Q&A。唯一互动在 0:06（天气 vs 碳排放），0:50 后直接进入用户需求。
 - 旧版 10 页 handout、纯英文稿、Team_Member_Packs 已退役，不再作为排练依据。
 
 ### 3.6 Q&A 的“向其他组提问”

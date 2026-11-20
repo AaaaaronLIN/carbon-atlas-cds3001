@@ -1,6 +1,12 @@
 # Changelog
 
-## 2026-11-20 · v5.0（当前）
+## 2026-11-20 · v5.1（当前）
+- **互动减为 1 个**：0:06 天气 vs 碳排放（host）；删除 0:50 的 2019 vs 2025 提问，LIN 不再背这段
+- **S1 副标题**：`A decision brief on global CO₂ — as easy to check as the weather.`（tagline / campaign line / 三媒体不动）
+- LIN 只负责：破冰 + 产品引入 + 用户需求 + 4 个交接 + Q&A 主持
+- 9 页 run sheet / 每人 packs / 讲稿 00·01·07·08 同步；Deck PDF / ZIP 重出
+
+## 2026-11-20 · v5.0
 - **流程简化**：8 个步骤按顺序走；互动从 3 个减到 **2 个，全部由 LIN 带**；3:37 改为 6 秒产品 bridge（不是互动）
 - **英文稿重写**：短句、口语化；每页顶部明确写“这一段主要讲什么（中文）”；英文正文不再混中文/cue
 - **新主文件**：`Carbon_Atlas_Run_Sheet_and_Scripts.pdf`（9 页）

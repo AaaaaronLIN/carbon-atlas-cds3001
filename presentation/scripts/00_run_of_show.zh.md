@@ -23,7 +23,7 @@
 
 | 顯示名 | 角色 | 負責評分項 | 分段秒數 | 實際口述（估） |
 | --- | --- | --- | --- | --- |
-| **LIN Xiaotong (4589755)** | Host / Company & story | #1、#2、全部轉場、2 個互動、Q&A 主持 | 103 | **109 s**（含 3:37 產品 bridge 6 s） |
+| **LIN Xiaotong (4589755)** | Host / Company & story | #1、#2、全部轉場、1 個互動、Q&A 主持 | 103 | **109 s**（含 3:37 產品 bridge 6 s） |
 | **WENG Zhichao (4589896)** | Database (Part 1) & cost–benefit | #3、#8 | 92 | **92 s** |
 | **LIM Mantung (4592996)** | API (Part 2) & Safety/GELSI | #4、#9 | 95 | **95 s** |
 | **LAI Patten (4001777)** | Front end (Part 3) & demo A 旁白 | #5、#6a | 100（42 + 58） | **94 s**（42 + 52） |
@@ -38,7 +38,7 @@
 | # | 評分項 | 權重 | 秒 | 講者 | 呈現方式 |
 | --- | --- | --- | --- | --- | --- |
 | 1 | Company intro + logo + 成員介紹 + 卡通頭像（含開場 poll） | 5% | 50 | LIN Xiaotong | S1→S2 |
-| 2 | User Requirements（含「猜 2025 vs 2019」互動） | 5% | 38 | LIN Xiaotong | S3 |
+| 2 | User Requirements | 5% | 38 | LIN Xiaotong | S3 |
 | 3 | Part 1 code | 10% | 42 | WENG Zhichao | S4 |
 | 4 | Part 2 code | 10% | 42 | LIM Mantung | S5 |
 | 5 | Part 3 code | 10% | 42 | LAI Patten | S6 |
@@ -63,7 +63,7 @@
 | # | 評分項 | 秒 | 累計時鐘 | 講者 | 投影片 | 台上畫面 | 播放／操作 | 交接句（English，照念） | 互動 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1 | Company intro + logo + team + avatars | 50 | **0:00 – 0:50** | LIN | S1 → S2 | S1：logo、Carbon Atlas 字標、tagline、problem / mission / brief 三欄；S2：五張成員卡＋卡通頭像＋姓名/ID | [ADVANCE] → 指 logo → 指三欄 → 指成員卡 | *"Every member speaks — English, no notes."*（S2 收句） | **Beat 1 開場舉手 poll（10 s）** |
-| 2 | User Requirements | 38 | **0:50 – 1:28** | LIN | S3 | 四個 persona＋五行「問題 → 資料 → route → 圖表」表 | 指 persona → 指表 → 指 requirements chain 收句 | *"Every row ends in a route and a view."*（接 T1） | **Beat 2 猜 2025 vs 2019（10 s）** |
+| 2 | User Requirements | 38 | **0:50 – 1:28** | LIN | S3 | 四個 persona＋五行「問題 → 資料 → route → 圖表」表 | 指 persona → 指表 → 指 requirements chain 收句 | *"Every row ends in a route and a view."*（接 T1） | — |
 | T1 | → Part 1 | 3 | **1:28 – 1:31** | LIN | S3 → S4 | 交棒畫面 | [ADVANCE] | *"The data starts in MySQL — Zichao."* | — |
 | 3 | Part 1 code | 42 | **1:31 – 2:13** | WENG | S4 | CREATE TABLE + LOAD DATA（@dummy、STR_TO_DATE）＋大字 655,200＋驗證列＋Workbench 截圖 | 指 SQL 三段 → 指 655,200 → 指驗證列 | *"Mantung, make it a URL."* | — |
 | 4 | Part 2 code | 42 | **2:13 – 2:55** | LIM | S5 | run_sql helper、/api/sectors、JSON 範例、SAFE BY DEFAULT、JSON 截圖 | 指 helper → 指 endpoint → 指 JSON → 指安全兩行 | *"Patten, draw it."* | — |
@@ -142,7 +142,7 @@
 | **D2** | 6a live ranking 段 | LAI | *"The view changes the URL, so a colleague can open exactly what you cited. One click exports the current view."* | **約 7 s** | live/录屏都有 ranking 画面；rubric 不要求逐个互动。 |
 
 - 仍落後 >15 s：刪 **D3**（WENG，成本段）*"A managed-cloud option adds HK$3,000 a year: break-even 24.4 months, net 28,254."*（約 5 s）。
-- **絕對不可刪**：兩個互動、S15 五列、廣告 75 s、結論金句、S7 live（失败时用录屏）。
+- **絕對不可刪**：唯一互動、S15 五列、廣告 75 s、結論金句、S7 live（失败时用录屏）。
 
 ### 3.2 超前時（只加這兩段）
 
@@ -242,11 +242,11 @@
 | 檔案 | 用途 |
 | --- | --- |
 | `00_run_of_show.zh.md` | 本文件：時間軸、秒數核算、Fallback 調節、Q&A 交接、場地 pre-flight |
-| `01_host_LIN_Xiaotong.md` | Host 全稿：開場、需求、2 個互動、3:37 產品 bridge、4 段轉場、Q&A 主持、收尾 |
+| `01_host_LIN_Xiaotong.md` | Host 全稿：開場、需求、1 個互動、3:37 產品 bridge、4 段轉場、Q&A 主持、收尾 |
 | `02_WENG_Zhichao.md` | Part 1 code + Cost–Benefit |
 | `03_LIM_Mantung.md` | Part 2 code + Safety & Responsibility（GELSI） |
 | `04_LAI_Patten.md` | Part 3 code + demo A（S7 live 前段；fallback 录屏） |
 | `05_HUANG_Haolin.md` | Demo B（live 后段旁白）+ Ad campaign（S13 内嵌媒体）+ Conclusion |
 | `06_qa_cheatsheet.zh.md` | 10 題 Q&A（英文答案＋中文註記＋證據 pointer） |
-| `07_interaction_plan.zh.md` | 2 個互動 beat＋PPT 媒體失敗 fallback |
+| `07_interaction_plan.zh.md` | 1 個互動 beat＋PPT 媒體失敗 fallback |
 | `08_host_cue_card.md` | Host 一頁 A4 cue card（後台／排練用，不上台） |

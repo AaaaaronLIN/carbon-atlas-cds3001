@@ -1,4 +1,4 @@
-# 07 · Interaction Plan（2 個互動 beat）＋ Live / Media Failure Fallback（v3）
+# 07 · Interaction Plan（1 個互動 beat）＋ Live / Media Failure Fallback（v3）
 
 > 這份文件給三種人看：**host**（誰說話／何時救場）、**操作者**（誰按什麼）、**計時者**（容許秒數）。
 > **v3 場地事實**：Windows 教室電腦 + 浏览器；Mac 跑 Flask/MySQL；S7 优先 live（tunnel/LAN），失败 5 秒切 S7 录屏；有声音输出；USB 备份。
@@ -13,41 +13,19 @@
 | 位置 | 時鐘 **0:06–0:16**（Section 1 內） |
 | 秒數預算 | **10 s**（含兩次停頓）；硬上限 12 s |
 | 操作者 | **無**（host 一人完成；LAI / HUANG 在側邊站定） |
-| 目的 | 讓觀眾在 15 秒內從「聽眾」變成「參與者」；也把「有數字、沒有 sector」的落差變成 pitch 的缺口。 |
+| 目的 | 用「天氣 vs 碳排放」把產品價值講清楚：讓碳排放像天氣一樣容易查。 |
 
 **Host 逐字**
-> **"Quick show of hands: who has read a carbon number this week?"** [PAUSE 2]
-> **"Keep it up if you could name the sector."** [PAUSE 2]
-> **"Almost none. That is the gap we sell against."**
+> **"Quick show of hands — who checked the weather this week?"** [PAUSE 2]
+> **"Who checked carbon emissions this week?"** [PAUSE 2]
+> **"That is the gap. We check what we feel. We don't check what we could change."**
 
 **預期反應**：第一個問題 3–6 隻手；第二個問題 0–2 隻手。若有人喊答案，host 點頭說 **"Good — write it down."** 再繼續。
 
 **觀眾沉默的 fallback（host 自答 + 數據）**
-> **"No hands — fine. The number is public anyway: 37,856 million tonnes in 2025. What is missing is where it comes from."** [PAUSE]（不要再問第二次；直接接 "Our product is Carbon Atlas."）
+> **"That is the gap. We check what we feel. We don't check what we could change."** [PAUSE]（不要再問第二次；直接接 "Our product is Carbon Atlas."）
 
-**超時處理**：若已超過 12 s，刪掉第二問，直接說 **"Almost none. That is the gap."** 接產品名。
-
----
-
-## Beat 2 · 猜 2025 vs 2019（Section 2，#User Requirements）
-
-| 項目 | 內容 |
-| --- | --- |
-| 位置 | 時鐘 **0:50–1:00**（Section 2 開頭） |
-| 秒數預算 | **10 s**；硬上限 12 s |
-| 操作者 | **無**（host 一人完成；WENG 在 S4 就位） |
-| 目的 | 用「猜」把 2019→2025 的 +4.0% 種進評審腦裡，也自然接到需求表的「How has it moved?」。 |
-
-**Host 逐字**
-> **"Quick guess — 2025 versus 2019: has the world's CO₂ gone up or down? And by how much?"** [PAUSE 2]
-> **"Up — 4.0%."** [PAUSE] **"36,397 to 37,856. Eight years, and no real decline."**
-
-**預期反應**："down"（最常見，因為新聞常說減排）、"flat"、"10%"、"5%"。若有人喊「down」：不要停留，直接 **"Up — 4.0%."** 給正確方向。
-
-**觀眾沉默的 fallback（host 自答 + 數據）**
-> **"I'll answer it: up 4.0% — 36,397 to 37,856. Eight years, no real decline."** [PAUSE]（直接接 "Four users — analyst, researcher, journalist, student — and five questions."）
-
-**超時處理**：若已超過 12 s，只說答案 **"Up 4.0% — 36,397 to 37,856."** 立刻接 requirements。
+**超時處理**：若已超過 12 s，只說 **"That is the gap."** 接產品名。
 
 ---
 

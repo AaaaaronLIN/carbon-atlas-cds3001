@@ -14,7 +14,7 @@
 | **0:20** | 三欄問題/使命/簡報 | — | problem → mission → brief（各一句） |
 | **0:35** | 點成員卡 | — | "Five people, one pipeline."（Zichao / Mantung / Patten / Haolin / I） |
 | **0:47** | 停 1 秒 | — | "Every member speaks — English, no notes." |
-| **0:50** | S3 需求段 | — | 猜 2025 vs 2019 → "Up — 4.0%." |
+| **0:50** | S3 需求段 | — | 直接进入四类用户 + 五个问题（不问数据） |
 | **1:12** | persona + 五行表 | — | "one field, one route, one view" |
 | **1:28** | **T1** | **WENG** | **"The data starts in MySQL — Zichao."**（指他、退半步） |
 | **2:13** | 看 WENG | **LIM** | （WENG 自己交棒） |
@@ -34,8 +34,7 @@
 
 | 位置 | 第一句 | 冷場 fallback（自答＋數據） |
 | --- | --- | --- |
-| 0:06 舉手 | "Quick show of hands: who has read a carbon number this week?" | "No hands — fine. 37,856 million tonnes in 2025. What's missing is where it comes from." |
-| 0:50 猜 2019 | "Quick guess — 2025 versus 2019: up or down? And by how much?" | "I'll answer it: up 4.0% — 36,397 to 37,856. Eight years, no real decline." |
+| 0:06 舉手 | "Who checked the weather this week?" → "Who checked carbon emissions this week?" | "That is the gap. We check what we feel. We don't check what we could change." |
 | 3:37 bridge | "Remember the number: 37,856 million tonnes a year. Patten — show us where it comes from." | 一句帶過，交 LAI；不問觀眾 |
 
 ## 🎤 Q&A（9:23–10:23，開場已由 T4 帶出）

@@ -17,11 +17,12 @@
 > ⏱ [0:00]（S1）
 > **Good afternoon — I'm Xiaotong Lin, account lead at Data Fanatics.** [PAUSE]
 >
-> ⏱ [0:06] **Quick show of hands: who has read a carbon number this week?** [PAUSE 2]
-> **Keep it up if you could name the sector.** [PAUSE 2]
-> **Almost none. That is the gap.** [PAUSE]
+> ⏱ [0:06] **Quick show of hands — who checked the weather this week?** [PAUSE 2]
+> **Who checked carbon emissions this week?** [PAUSE 2]
+> **That is the gap. We check what we feel. We don't check what we could change.** [PAUSE]
 >
 > ⏱ [0:14] **Our product is Carbon Atlas.** [POINT logo] **See every tonne. Cut what matters.**
+> **A decision brief on global CO₂ — as easy to check as the weather.**
 >
 > ⏱ [0:20] **The problem:** [POINT 左欄] **six hundred fifty-five thousand rows of open data — and still an afternoon of spreadsheets for one answer.**
 > **The mission:** [POINT 中欄] **turn that data into a decision, not another chart.**
@@ -39,7 +40,7 @@
 - 不要念 ID（IDs 在卡片上），不要說「我們訪問過用戶」或任何虛構經歷；也不要唸 tagline 兩次。
 - 語氣：前 15 秒像聊天（慢、看人），講到 problem/mission/brief 轉成 pitch（清楚、有重音），最後點名時每個人名停 0.2 秒、手同時指向卡片。
 
-**忘詞備援（若腦袋空白）**：看一眼 S1 的三欄，直接念「**The problem… The mission… The brief…**」；這三句是順序記憶點，不需要背全文。若 poll 完全沒人舉手，接：**"No hands — fine. The number is public anyway: 37,856 million tonnes in 2025. What is missing is where it comes from."**（這是 fallback，不是笑話；用數據自答，見 `07` Beat 1）。
+**忘詞備援（若腦袋空白）**：看一眼 S1 的三欄，直接念「**The problem… The mission… The brief…**」；這三句是順序記憶點，不需要背全文。若兩個問題都沒人舉手，接：**"That is the gap. We check what we feel. We don't check what we could change."**（這是 fallback，不是笑話；用數據自答，見 `07` Beat 1）。
 
 ---
 
@@ -47,24 +48,19 @@
 
 **起點**：計時 0:50 · S3 在畫面上（四個 persona＋五行表）· 先面向觀眾，不面向螢幕。
 
-> ⏱ [0:00] **Quick guess — 2025 versus 2019: has the world's CO₂ gone up or down? And by how much?** [PAUSE 2]
-> **Up — 4.0%.** [PAUSE] **36,397 to 37,856. Eight years, and no real decline.**
->
-> ⏱ [0:13] **Four users — analyst, researcher, journalist, student — and five questions.** [POINT persona 列]
+> ⏱ [0:00] **Four users — analyst, researcher, journalist, student — and five questions.** [POINT persona 列]
 > **Which countries? Which sectors? How has it moved? How do two countries compare? And how partial is this year?**
 >
-> ⏱ [0:25] [POINT 表格] **Each question becomes one field, one route, one view: map, bars, line, compare — and the partial-year flag.**
+> ⏱ [0:12] [POINT 表格] **Each question becomes one field, one route, one view: map, bars, line, compare — and the partial-year flag.**
 > **Every row ends in a route and a view. Nothing decorative, nothing unexplained.**
 >
-> ⏱ [0:35] [PAUSE 1]（收，交給 T1）
+> ⏱ [0:28] [PAUSE 1]（收，交給 T1）
 
 【中文註記 — 為什麼這樣講才有分】
 - 評分要求：「解決方案需要哪些資料」，並把使用者需求連到**資料欄位、查詢（SQL）、後面的 dashboard**；不可只列技術名詞。本段用「使用者問題 → data field → route → view」四段鏈說清楚，S3 的表格則是證據。收句 "Every row ends in a route and a view" 直接回應「不要只列技術名稱」。
-- **Beat 2 是「猜 2025 vs 2019」**（v2 保留版）：答案揭曉用已核實數字 36,397 → 37,856（+4.0%），一句講完就收；不要展開成趨勢分析（那段是 #6b 的 HUANG）。這題也自然接到五個需求問題中的「How has it moved?」。
-- 若有人喊「down / 跌」：用 **"Up — 4.0%."** 直接糾正，不要停留；若完全沉默：**"I'll answer it: up 4.0% — 36,397 to 37,856."** 然後接 requirements。
+- **S3 不再問 2025 vs 2019**：這個數據洞察留給 HUANG 在 6b 講；你只講四類用戶、五個問題、route/view 收句，背誦量更少。
+- 不要主動問數據；直接從「Four users」開始。
 - 不要在這段講 Chart.js / ECharts / Flask 等名詞，技術名詞留給 Part 1–3；這裡只講「客戶得到什麼視圖」。
-
-**觀眾沉默的 fallback**：**"I'll answer it: up 4.0% — 36,397 to 37,856. Eight years, no real decline."**（自答後直接接「Four users — …」，不要重問）。
 
 ---
 
@@ -145,9 +141,9 @@
 ## F. Host 排練檢查（個人）
 
 - [ ] 50 秒開場能**不看稿**從 "Good afternoon" 講到 "no notes"（可用手機錄一次，對秒）；tagline 改成 **See every tonne. Cut what matters.**
-- [ ] 38 秒需求段能說出「猜 2025 vs 2019」＋五個問題＋「route and view」收句。
+- [ ] 38 秒需求段能直接說「四類用戶＋五個問題＋route/view 收句」，不問數據。
 - [ ] 4 段轉場逐字背熟（T1–T4），每段 ≤4 秒；T2 時 live 继续、不要切回 PPT。
-- [ ] 兩個互動全練：Beat 1 開場 poll、Beat 2 猜 2019；3:37 只練產品 bridge。
+- [ ] 唯一互動：0:06 天氣 vs 碳排放；3:37 只練產品 bridge。
 - [ ] Q&A routing 表背熟（資料→WENG、API→LIM、頁面／live/fallback→LAI、廣告→HUANG、倫理→LIM）。
 - [ ] S17 問題能一字不差背出；知道要在**其他組 Q&A** 問，不是在本組 Q&A。
 - [ ] 全場只拿 cue card 在後台；**上台雙手空空**（Lecture 17：不可使用筆記）。
