@@ -63,6 +63,7 @@
 
 **live 打不开／断网 — 5 秒 fallback（Lead 指定的话）**
 > [页面 5 秒没出来，或 URL 报错] **"I'll show the recorded build."** [Alt+Tab 回 PPT → 点 S7 海报，播 90 秒录屏]
+> **S7 錄屏本身沒有聲音**：你繼續現場講，不要等聲音、不要臨時找配音。
 > 然后按原录屏版旁白讲完 6a：globe → map → ranking；收句 **"That is the where."**
 > **不要**在台上重启 MySQL／tunnel／浏览器；**不要**找文件；**不要**让 HUANG 接手鼠标。5 秒内没恢复就走 fallback。
 

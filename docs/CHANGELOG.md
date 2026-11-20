@@ -1,6 +1,12 @@
 # Changelog
 
-## 2026-11-20 · v4.1（当前）
+## 2026-11-20 · v4.2（当前）
+- 明确 **S7 fallback 录屏没有声音**：不在视频里加 AI 旁白；live 失败时 LAI/HUANG 继续现场讲
+- S8–S11 截图 fallback 同样无声音，由讲者继续讲
+- S13 的 45 s 视频广告 + 30 s 音频广告有声音；最终由 Patten 真人声替换 TTS
+- 讲稿 / live playbook / operator card 已补上“录屏无声，继续讲”提示
+
+## 2026-11-20 · v4.1
 - 引用改成 **source paper arXiv:2004.13614**（deck 封面/S17、海报、最终 PDF、网站）
 - 海报底部 source line 之前被版面裁掉：已收紧 hero/stats/answers/pipeline/footer 间距，source 现在完整可见
 - 全部 deck/PDF/海报/ZIP 重新同步

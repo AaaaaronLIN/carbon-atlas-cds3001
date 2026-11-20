@@ -55,7 +55,7 @@
 
 | 狀況 | 逐字 |
 | --- | --- |
-| S7 live 打不开／卡住 | （LAI 5 秒内切回 PPT 播 S7 录屏）你接着：**"We planned for this — the same product, now recorded."** 不道歉、不 debug。 |
+| S7 live 打不开／卡住 | （LAI 5 秒内切回 PPT 播 S7 录屏；**录屏没有声音，继续讲**）你接着：**"We planned for this — the same product, now recorded."** 不道歉、不 debug。 |
 | S13 媒體不播／沒聲 | （HUANG 描述三媒體）你只說：**"The media are embedded on this slide — and the line is the same in all three."** |
 | **全場最可能被問：為什麼 demo 是 live／网络失败怎么办？** | **"This is the live build — browser, Flask, MySQL. If the classroom network fails, the same build plays from the embedded 90-second recording; we switch in five seconds."**（然后交 LAI） |
 | 忘詞 | S1 念 **"The problem… The mission… The solution…"**；S3 念 **"one route, one view."** |

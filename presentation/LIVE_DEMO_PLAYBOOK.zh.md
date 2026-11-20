@@ -225,7 +225,7 @@ macOS 如果开了防火墙：
 
 | 症状 | 处理 |
 |---|---|
-| Alt+Tab 后页面空白/转圈 | 数到 5；没出来就 **Alt+Tab 回 PPT → 点 S7 海报播 90 秒录屏**；说一句 “I'll show the recorded build.” |
+| Alt+Tab 后页面空白/转圈 | 数到 5；没出来就 **Alt+Tab 回 PPT → 点 S7 海报播 90 秒录屏**；说一句 “I'll show the recorded build.”。**录屏没有声音，继续现场讲**，不要等音频。 |
 | 右上角 `API offline` | 直接切回视频（说明网络问题，不在台上重启 MySQL） |
 | Tunnel URL 打不开 | 切回视频；如还有时间，改用 LAN URL（提前准备好） |
 | 教室电脑没有浏览器/被锁 | 用 PPT 视频 + U 盘独立 mp4 |
