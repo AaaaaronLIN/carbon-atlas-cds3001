@@ -189,6 +189,24 @@ macOS 如果开了防火墙：
 
 ---
 
+## 5.5 PowerPoint「Play Full Screen」设置（S13 视频 / S7 fallback）
+
+> 这是 PowerPoint 的**播放选项**，不是版面属性；必须在一台 **Windows PowerPoint** 上设置一次。
+> 不设置也能播，只是视频在 S13 的卡片里比较小；设置后 45 秒广告会铺满投影。
+
+1. 在 Windows PowerPoint 打开 `Carbon_Atlas_Deck.pptx`；
+2. 到 **S13**，**单击选中**（不是点播放）45 秒的视频画面；
+3. 顶部出现 **Video Format / Playback** → 点 **Playback**；
+4. 在 **Video Options** 勾选 **Play Full Screen**；
+5. 到 **S7**，选中 90 秒 fallback 视频，同样勾选 **Play Full Screen**（如果打算用录屏 fallback）；
+6. **Shift+F5** 从当前页试播一次，确认全屏；Ctrl+S 保存；
+7. 把这份设置好的 `.pptx` 放回 USB / 最终 ZIP。
+
+> 如果教室电脑不能保存/不愿意改主文件：至少在上台前用教室 PowerPoint 打开一次并设置；不影响评委看到的其他页。
+> **不设置也不会扣分**——45 秒广告仍会在卡片内播放并有声音；全屏只是更好看。
+
+---
+
 ## 6. 讲稿要改的 3 句话（live 版）
 
 原稿是按“播录屏”写的；如果确定 live，把这三句换掉：

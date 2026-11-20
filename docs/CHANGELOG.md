@@ -1,6 +1,13 @@
 # Changelog
 
-## 2026-11-20 · v3.6（当前）
+## 2026-11-20 · v3.7（当前）
+- S2 删除 "no notes / even speaking time" 等内部规则，改成 "Built end to end: database → API → interface → story."
+- S13 删除 audio 分镜三行（0:00/0:12/0:25），改为音频 transcript + "Voice-over + music" 说明，避免评委误读
+- S14 数字列右对齐、KPI 说明改句首大写；全 deck 数据说明统一句首大写
+- 视频全屏：在 PowerPoint 里通过 Playback → Play Full Screen 设置（步骤进 playbook；非版面属性，Mac 上无法直接写）
+- Deck PDF / contact sheet / ZIP 已重出
+
+## 2026-11-20 · v3.6
 - **最终决定：S7 优先现场 live**（Mac Flask+MySQL → 教室浏览器 tunnel/LAN），S7 内嵌 90 秒录屏为 5 秒 fallback
 - 9 份讲稿全部改为 live cue：`00` run-of-show / `01` host / `02` WENG / `03` LIM / `04` LAI / `05` HUANG / `06` Q&A / `07` fallback / `08` cue card
 - S7 caption 已同步；live 失败流程写入 `07` 和 `LIVE_DEMO_PLAYBOOK.zh.md`
