@@ -94,7 +94,12 @@ python3 app.py
 - 45 s 视频草稿：[`deliverable/carbon_atlas_ad_45s.mp4`](deliverable/carbon_atlas_ad_45s.mp4)
 - **Patten 录音指南**：[`presentation/ads/voice_recording_sheet_Patten.md`](presentation/ads/voice_recording_sheet_Patten.md)
 
-### 3.5 现场 live 网站演示（已决定：S7 优先 live，录屏 fallback）
+### 3.5 每个人要背的稿子（打印版）
+- **A4 可打印 PDF（9 页）**：[`presentation/Team_Rehearsal_Handout.pdf`](presentation/Team_Rehearsal_Handout.pdf)
+  - p1 团队/幻灯片分工；p2 全场时间线/舞台规则；p3 LIN；p4 WENG；p5 LIM；p6 LAI；p7–8 HUANG；p9 Q&A / final check / 48h plan
+- **每人单独 PDF（可直接发人）**：[`presentation/Team_Handouts_Individual.zip`](presentation/Team_Handouts_Individual.zip)
+
+### 3.6 现场 live 网站演示（已决定：S7 优先 live，录屏 fallback）
 - 完整手册（TA 版，含 tunnel / 热点 / 90 秒操作 / 失败处理）：[`presentation/LIVE_DEMO_PLAYBOOK.zh.md`](presentation/LIVE_DEMO_PLAYBOOK.zh.md)
 - 操作卡（LAI 打印一张）：[`presentation/LIVE_DEMO_OPERATOR_CARD.md`](presentation/LIVE_DEMO_OPERATOR_CARD.md)
 - Mac 一键起 Flask：`DB_PASSWORD='...' tools/start_live_demo.sh`
@@ -167,6 +172,8 @@ carbon-atlas-cds3001/
 │  ├─ 00_STATUS.md · 01_DECISIONS.md · 02_TODO_OWNERS.md · CHANGELOG.md
 │  └─ PUBLISH_TO_GITHUB.md
 ├─ presentation/              ← 讲稿、run-of-show、广告脚本、成本 xlsx
+│  ├─ Team_Rehearsal_Handout.pdf ← 9 页 A4 打印稿（每人一页 + 时间线 + Q&A）
+│  ├─ Team_Handouts_Individual.zip ← 5 人各自 PDF
 │  ├─ scripts/                ← 9 份讲稿（host/5 人/Q&A/cue card/interaction）
 │  └─ ads/                    ← 海报源文件、音频/视频脚本、Patten 录音稿、媒体文件
 ├─ assets/screenshots/        ← 关键截图（Stage hero、团队页、17 页 deck 总览、广告页等）
