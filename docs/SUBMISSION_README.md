@@ -93,6 +93,6 @@ Full request/response examples and the SQL behind each route: `Part_2_API/API_re
 
 ## Credits
 
-Data: [Carbon Monitor](https://carbonmonitor.org/) — fair-use open data, cite **arXiv:2004.13614**; the dataset is living and values are revised.
+Data: [Carbon Monitor](https://carbonmonitor.org/) — fair-use open data, cite **Sci Data 7, 392 (2020), doi:10.1038/s41597-020-00708-7**; the dataset is living and values are revised.
 Charts: Apache ECharts 5.5.1 (Apache-2.0) and its world map geometry, bundled locally under `static/`.
 Built by Data Fanatics for CDS3001 Databases and Data Warehouses, Lingnan University.

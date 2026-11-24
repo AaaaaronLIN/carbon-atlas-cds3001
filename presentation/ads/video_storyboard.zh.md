@@ -27,7 +27,7 @@
 | 5 | 0:23–0:30 | 7.0 s | 產業長條圖（Power 35.6% → Industry 33.5% → …）+ 星期節奏圖。 | `POWER + INDUSTRY = 69.1%` / `AVIATION < 4%` | "Power and industry are sixty-nine percent. Aviation is under four." | 只錄這兩個圖，不要一路滾動（45 秒裝不下）。 |
 | 6 | 0:30–0:37 | 7.0 s | 月度趨勢圖，游標停在 2020-04 的標註；切到 compare 疊圖（兩條線）。 | `APR 2020: −5%` / `2019 → 2025: +4%` | "The 2020 dip was a shock. The plateau since 2019 is the problem." | 這是全片最重要的「判斷」，字卡一定要留 2 秒可讀。 |
 | 7 | 0:37–0:41 | 4.0 s | 捲到 Findings 卡 + Method & responsibility 面板（GELSI 對照）。 | `RULE-BASED FINDINGS · CAVEATS ON SCREEN` | "Every finding traces to one query — and the caveats are on the screen." | 只錄 2 張 finding 卡；Method 面板要拍到「snapshot date」。 |
-| 8 | 0:41–0:45 | 4.0 s | 片尾卡：logo + 品牌句 + CTA + 資料出處小字。 | `ASK FOR A 15-MINUTE WALKTHROUGH` / `Carbon Monitor · arXiv:2004.13614 · data to 2026-08-31` | "Carbon Atlas. See every tonne. Cut what matters." | 與海報右下角 CTA 同一句話；出處字級可小，但不可省略。 |
+| 8 | 0:41–0:45 | 4.0 s | 片尾卡：logo + 品牌句 + CTA + 資料出處小字。 | `ASK FOR A 15-MINUTE WALKTHROUGH` / `Carbon Monitor · Sci Data 7, 392 (2020), doi:10.1038/s41597-020-00708-7 · data to 2026-08-31` | "Carbon Atlas. See every tonne. Cut what matters." | 與海報右下角 CTA 同一句話；出處字級可小，但不可省略。 |
 
 ---
 

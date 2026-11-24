@@ -68,7 +68,7 @@
 |---|---|---|
 | G Governance | 单一 owned pipeline；方法面板印 source/coverage/unit；`/api/health` 状态 | ✅ |
 | E Ethical | 不完整年 like-for-like；坐标轴从 0；不挑区间；明确写限制 | ✅ |
-| L Legal | Carbon Monitor fair-use、引用 arXiv:2004.13614、无个人数据 | ✅ |
+| L Legal | Carbon Monitor fair-use、引用 Sci Data 7, 392 (2020), doi:10.1038/s41597-020-00708-7、无个人数据 | ✅ |
 | S Social | 键盘可操作、对比度、无仅靠颜色、reduced-motion、可打印浅色主题 | ✅ |
 | I Implications | 部门/国家集中度指向行动；拒绝臆造人均（数据集无人名列） | ✅ |
 

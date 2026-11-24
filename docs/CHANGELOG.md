@@ -1,6 +1,12 @@
 # Changelog
 
-## 2026-11-24 · v7.9（当前）
+## 2026-11-24 · v8.0（当前）
+- 引用统一为 Carbon Monitor 数据集论文：**Sci Data 7, 392 (2020), doi:10.1038/s41597-020-00708-7**
+- 同步 deck S1/S15/S17、海报、front-end PDF、网站、8 页稿、docs
+- S17 最终：去掉重复小 logo；`Any questions?` + Q&A invite + tagline
+- Deck / poster / front PDF / handout / ZIP / repo 同步
+
+## 2026-11-24 · v7.9
 - S17 去掉重复的小 logo（logo_qa），保留右侧主视觉 + 页脚 brand mark
 - `Questions.` → `Any questions?`，更清楚
 - 保留 `Ask us anything — data, method, or the build.` + official tagline

@@ -63,7 +63,7 @@ page(f"""
   <table class="meta">
     <tr><th>Product</th><td>Carbon Atlas — Global Carbon Brief</td></tr>
     <tr><th>Team</th><td>Data Fanatics · Lingnan University · CDS3001</td></tr>
-    <tr><th>Data</th><td>Carbon Monitor daily CO₂ estimates · MtCO₂ per day · fair-use open data (arXiv:2004.13614)</td></tr>
+    <tr><th>Data</th><td>Carbon Monitor daily CO₂ estimates · MtCO₂ per day · fair-use open data (Sci Data 7, 392 (2020), doi:10.1038/s41597-020-00708-7)</td></tr>
     <tr><th>Stack</th><td>MySQL 8 → Flask + PyMySQL → HTML + Apache ECharts (bundled locally)</td></tr>
     <tr><th>Run</th><td><code>python3 app.py</code> → <code>http://127.0.0.1:5001/</code></td></tr>
   </table>
@@ -302,7 +302,7 @@ page(f"""
   <tr><td>6 · Compare</td><td>Overlay a second country and switch to <i>Index · 2019 = 100</i>.</td></tr>
 </table>
 <p class="endnote">Data Fanatics · CDS3001 Group Project · Part 1 MySQL · Part 2 Flask API ·
-Part 3 ECharts. Data: Carbon Monitor, fair-use open data, cite arXiv:2004.13614.</p>
+Part 3 ECharts. Data: Carbon Monitor, fair-use open data, cite Sci Data 7, 392 (2020), doi:10.1038/s41597-020-00708-7.</p>
 """)
 
 CSS = """

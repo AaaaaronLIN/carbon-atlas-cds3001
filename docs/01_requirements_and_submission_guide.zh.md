@@ -443,7 +443,7 @@ SELECT * FROM carbon_emission LIMIT 10;
 ### g.1 数据来源、许可与引用
 
 - 数据源：**Carbon Monitor**（https://carbonmonitor.org/），公开可下载的全球日度 CO₂ 估算数据；讲义把它作为 open dataset 使用（L10 slide 6）。
-- 引用：使用与展示时注明 **Carbon Monitor**，并引用其方法论文献 **arXiv:2004.13614**（近实时全球 CO₂ 排放监测）。**[建议]** 在 PDF 末页与 dashboard footer 各放一次。
+- 引用：使用与展示时注明 **Carbon Monitor**，并引用其方法论文献 **Sci Data 7, 392 (2020), doi:10.1038/s41597-020-00708-7**（近实时全球 CO₂ 排放监测）。**[建议]** 在 PDF 末页与 dashboard footer 各放一次。
 - 不声称数据所有权：我们只是使用者与可视化者；不要写「our data」，写「data from Carbon Monitor」。
 - **[待确认]** Carbon Monitor 的具体许可条款（如 CC BY 4.0）与官方引用格式，以官网 FAQ / 下载页为准；拿不准就写「open data, cited」。
 
@@ -551,7 +551,7 @@ L19 的 GELSI 框架只展开了 G/E/L/S 四项（slides 23–26）；**Implicat
 
 - ☐ 所有数字统一：655,200 行 / 39 地区 / 6 部门 / 2019-01-01–2026-08-31 / MtCO₂ per day
 - ☐ 所有截图与 PDF 来自同一数据版本（2026-10-23 下载）
-- ☐ 引用 Carbon Monitor + arXiv:2004.13614
+- ☐ 引用 Carbon Monitor + Sci Data 7, 392 (2020), doi:10.1038/s41597-020-00708-7
 - ☐ 明确「估算，不是实测」「for awareness, not accountability」
 - ☐ 成本效益所有数字标 assumption，未完成功能标 planned
 

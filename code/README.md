@@ -129,7 +129,7 @@ commented so every chart can be traced back to a route and a SQL query.
 
 ## 6. Data, limits and ethics (the one-slide version)
 
-* **Source:** [Carbon Monitor](https://carbonmonitor.org/) — fair-use open data; cite **arXiv:2004.13614**.
+* **Source:** [Carbon Monitor](https://carbonmonitor.org/) — fair-use open data; cite **Sci Data 7, 392 (2020), doi:10.1038/s41597-020-00708-7**.
 * **Unit:** the raw column is **MtCO₂ per day**; every total on the page is a *sum of daily estimates* for the chosen period.
 * **Living dataset:** values are revised after release, so a later download differs.
 * **2026 is partial** (to 31 Aug): we compare it with the same months of 2019, never with a full year.
