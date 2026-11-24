@@ -1,6 +1,11 @@
 # Changelog
 
-## 2026-11-24 · v7.3（当前）
+## 2026-11-24 · v7.4（当前）
+- S5 右下角 API health 面板：白色浏览器截图改为深色 terminal 版本，匹配 Stage 主题
+- 保留 `/api/health` JSON、655200 rows、carbon_lab、2026-08-31
+- Deck / PDF / ZIP / repo 同步
+
+## 2026-11-24 · v7.3
 - **S7 demo 升级 1920×1080 / 30fps / H.264 CRF18**（7.2 MB，90.0s）；全屏更清晰
 - S13 保持 720p（源素材 720p，upscale 无真实收益）
 - Deck / PDF / final ZIP / repo 同步
