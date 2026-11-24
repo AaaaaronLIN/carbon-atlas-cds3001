@@ -1,6 +1,11 @@
 # Changelog
 
-## 2026-11-24 · v7.5（当前）
+## 2026-11-24 · v7.6（当前）
+- S2 团队卡顺序改为演讲顺序：LIN → WENG → LAI → HUANG → LIM
+- 仅移动整卡（头像/姓名/角色/学号/quote），不改文字/样式；页脚与页码未动
+- Deck / PDF / ZIP / repo 同步
+
+## 2026-11-24 · v7.5
 - 全 deck 观众向文案清理：去掉内部提示、防御性/口号化语句
 - S2 角色标签改为当前分工：WENG DB/API/UI、LIM GELSI/Conclusion、LAI Product Demo、HUANG Customisation/Ads/Cost
 - S7 live demo → recorded demo；S13 去掉 PRINTED/SHOWN FIRST
