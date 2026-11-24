@@ -1,6 +1,13 @@
 # Changelog
 
-## 2026-11-24 · v7.4（当前）
+## 2026-11-24 · v7.5（当前）
+- 全 deck 观众向文案清理：去掉内部提示、防御性/口号化语句
+- S2 角色标签改为当前分工：WENG DB/API/UI、LIM GELSI/Conclusion、LAI Product Demo、HUANG Customisation/Ads/Cost
+- S7 live demo → recorded demo；S13 去掉 PRINTED/SHOWN FIRST
+- S15 去掉 ethics/slogan 句；S16 去掉 NEXT HONESTLY；S10/S11/S12/S14 去防御性措辞
+- 保留 S14 “WHAT WE ARE NOT CLAIMING” 与 S15 GELSI/coverage（评分要求）
+
+## 2026-11-24 · v7.4
 - S5 右下角 API health 面板：白色浏览器截图改为深色 terminal 版本，匹配 Stage 主题
 - 保留 `/api/health` JSON、655200 rows、carbon_lab、2026-08-31
 - Deck / PDF / ZIP / repo 同步
