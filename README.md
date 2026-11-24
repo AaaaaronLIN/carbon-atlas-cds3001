@@ -90,8 +90,8 @@ python3 app.py
 
 ### 3.4 看广告三媒体
 - 海报：[`deliverable/poster.png`](deliverable/poster.png) / `.pdf`
-- 30 s 音频草稿：[`deliverable/audio_ad_30s_draft.mp3`](deliverable/audio_ad_30s_draft.mp3)
-- 45 s 视频草稿：[`deliverable/carbon_atlas_ad_45s.mp4`](deliverable/carbon_atlas_ad_45s.mp4)
+- 30 s 音频广告（Patten 人声）：[`deliverable/audio_ad_30s_final.mp3`](deliverable/audio_ad_30s_final.mp3)
+- 45 s 视频广告（Patten 人声）：[`deliverable/carbon_atlas_ad_45s_final.mp4`](deliverable/carbon_atlas_ad_45s_final.mp4)
 - **Patten 录音指南**：[`presentation/ads/voice_recording_sheet_Patten.md`](presentation/ads/voice_recording_sheet_Patten.md)
 
 ### 3.5 最终背稿本（连续章节版，8 页）

@@ -25,7 +25,7 @@
 | B4 | 不可用笔记 | 🟡 | 讲稿按关键词设计；需排练到脱稿 |
 | B5 | 安全/伦理投影片 ≥1 | ✅ | deck S15 GELSI 五列 + 网页 Method 面板 |
 | B6 | 结论投影片 ≥1 | ✅ | deck S16 |
-| B7 | Poster + Audio + Video 三媒体 | ✅（草稿） | `ads/poster.png|pdf`、`ads/audio/audio_ad_30s_draft.*`、`ads/video/carbon_atlas_ad_45s.mp4`；等 Patten 人声替换 |
+| B7 | Poster + Audio + Video 三媒体 | ✅（Patten 人声） | `ads/poster.png|pdf`、`ads/audio/audio_ad_30s_final.mp3`、`ads/video/carbon_atlas_ad_45s_final.mp4` |
 | B8 | 成本效益 + 假设 | ✅ | `cost_benefit.xlsx`；S14 |
 | B9 | 向其他组提问 ≥1 | ✅ | Host 的 Q&A 问题已写在 `01_host…` |
 | B10 | 手机静音/准时 | ⬜ | 团队纪律 |
@@ -41,7 +41,7 @@
 | 4 | Part 2 code | 10% | deck S5 + `app.py` + API 参考 + JSON 截图 | ✅ |
 | 5 | Part 3 code | 10% | deck S6 + `index.html`（fetch → map → setOption） | ✅ |
 | 6 | Front-End Dashboard | 10% | **S7 内嵌 90 s 真实录屏**（Stage/globe/map/table/sector/trend/findings/GELSI）+ S8–S11 截图备份 + S12 客制化对照 | ✅ |
-| 7 | Ad Campaign | 10% | S13：A3 poster + **内嵌 30 s audio** + **内嵌 45 s video**；三媒体同一句 | ✅（草稿） |
+| 7 | Ad Campaign | 10% | S13：A3 poster + **内嵌 30 s audio** + **内嵌 45 s video**；三媒体同一句 | ✅（Patten 人声） |
 | 8 | Cost-Benefit | 10% | S14 + xlsx（17 个月回本、2.17:1、+37,254） | ✅ |
 | 9 | Safety & Responsibility | 10% | S15 GELSI + 网页 Method | ✅ |
 | 10 | Conclusion | 10% | S16 三句 + 数字 + 金句 + next honestly | ✅ |
