@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-24 · v7.0（当前）
+- **Patten 人声最终版**：30s audio + 45s video，已嵌入 S13；30/45 时长准确
+- 无音乐干净版（旧 music bed 含 TTS 残留，不使用）
+- 最终 ZIP 37.8 MB；repo 同步最终媒体/文档
+- 旧 TTS 草稿从 deliverable/repo/presentation 移除
+
+
 ## 2026-11-20 · v6.3（当前）
 - **最终核对**：旧 9 份 markdown 逐人稿已退役并从 repo/submission ZIP 移除；唯一排练依据为 8 页 `Carbon_Atlas_Chapters_and_Scripts.pdf`
 - 清理残留 “live / live build / live URL” 文案：WENG 交接改 “Patten, show us the build”，LAI 页改 RECORDED DEMO，Q&A 改 page/demo

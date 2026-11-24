@@ -7,7 +7,7 @@
 
 | # | 要求 | 状态 | 证据 |
 |---|---|---|---|
-| A1 | 一个 ZIP、含 Part 1/2/3 code + 最终前端 PDF | 🟡 | `out/submission/CDS3001_CarbonAtlas_DataFanatics.zip`（41 MB，56 files）已生成；等 Patten 人声后做最终重打包 |
+| A1 | 一个 ZIP、含 Part 1/2/3 code + 最终前端 PDF | 🟡 | `submission/CDS3001_CarbonAtlas_DataFanatics.zip`（37.8 MB）已生成；Patten 人声已嵌入 |
 | A2 | Part 1 code（LOAD DATA + 验证） | ✅ | `Part_1_Database/Part_1_setup.sql` + `verification_output.txt`（655,200 行） |
 | A3 | Part 2 code | ✅ | `Part_2_API/app.py`（9 routes）+ `API_reference.md` |
 | A4 | Part 3 code | ✅ | `Part_3_Frontend/index.html` + `static/`（本地 ECharts + map） |
