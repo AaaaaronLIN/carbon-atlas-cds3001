@@ -200,7 +200,7 @@ carbon-atlas-cds3001/
 | 教室 Windows 播不了内嵌媒体 | U 盘独立 mp4/mp3 直接播；S8–S11 截图仍在 deck 里；讲稿有媒体失败话术 |
 | 无法现场跑 MySQL/Python | 已录 90 s demo 视频，PPT-only 设计 |
 | 排练超时 | `presentation/Carbon_Atlas_Chapters_and_Scripts.pdf` 有 8:38 / 9:18 检查点与删句机制 |
-| Patten 11-24 前没录 | 当前 TTS 草稿已嵌入，可先交；但真人声更好 |
+| Patten 人声 | 已完成并嵌入；当前为无音乐干净版（如需音乐，需一条干净 music bed） |
 | 数据被重新下载导致数字变化 | 冻结 2026-08-31 快照，不改 |
 
 ---

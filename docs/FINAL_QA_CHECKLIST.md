@@ -21,11 +21,11 @@
 |---|---|---|---|
 | B1 | 9–10 分钟 + 1 分钟 Q&A | ✅ | `scripts/00`：**563 s = 9:23**；媒体 90 s demo + 75 s ads 已计入 |
 | B2 | 全英文 | ✅ | 5 份讲稿英文口述 |
-| B3 | 每人发言、平均 | ✅ | 109 / 92 / 95 / 94 / 98 s（host ≤115） |
+| B3 | 每人发言、平均 | ✅ | 93 / 126 / 104 / 144（含 75s 媒体）/ 93 s；连续章节 |
 | B4 | 不可用笔记 | 🟡 | 讲稿按关键词设计；需排练到脱稿 |
 | B5 | 安全/伦理投影片 ≥1 | ✅ | deck S15 GELSI 五列 + 网页 Method 面板 |
 | B6 | 结论投影片 ≥1 | ✅ | deck S16 |
-| B7 | Poster + Audio + Video 三媒体 | ✅（Patten 人声） | `ads/poster.png|pdf`、`ads/audio/audio_ad_30s_final.mp3`、`ads/video/carbon_atlas_ad_45s_final.mp4` |
+| B7 | Poster + Audio + Video 三媒体 | ✅ | `ads/poster.png|pdf`、`ads/audio/audio_ad_30s_final.mp3`、`ads/video/carbon_atlas_ad_45s_final.mp4`；Patten 人声，无音乐 |
 | B8 | 成本效益 + 假设 | ✅ | `cost_benefit.xlsx`；S14 |
 | B9 | 向其他组提问 ≥1 | ✅ | Host 的 Q&A 问题已写在 `01_host…` |
 | B10 | 手机静音/准时 | ⬜ | 团队纪律 |

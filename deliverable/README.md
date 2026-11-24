@@ -10,8 +10,8 @@
 | `Carbon_Atlas_Final_Frontend.pdf` | 必交最终前端 PDF（10 页） | GitHub 可直接预览 |
 | `poster.png` / `poster.pdf` | A3 海报（Stage 深色版） | 图片直接看；PDF 可打印 A3 |
 | `carbon_atlas_demo_90s.mp4` | S7 的 90 秒 demo | 下载播放 |
-| `carbon_atlas_ad_45s_final.mp4` | 45 秒视频广告（Patten 人声） | 下载播放 |
-| `audio_ad_30s_final.mp3` | 30 秒音频广告（Patten 人声） | 下载播放 |
+| `carbon_atlas_ad_45s_final.mp4` | 45 秒视频广告（Patten 人声，无音乐） | 下载播放 |
+| `audio_ad_30s_final.mp3` | 30 秒音频广告（Patten 人声，无音乐） | 下载播放 |
 
 ## 17 页总览
 ![deck contact sheet](../assets/screenshots/deck-contact-final.png)

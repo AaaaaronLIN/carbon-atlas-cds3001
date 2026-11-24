@@ -8,14 +8,14 @@
 | Part 2 Flask API（9 条 JSON 路由） | ✅ 完成并实测 | `code/app.py` + `code/API_reference.md` |
 | Part 3 网页（Carbon Atlas 2.0） | ✅ 完成，Stage 默认 | `code/index.html` + `code/static/` |
 | 最终前端 PDF（必交） | ✅ 10 页 | `deliverable/Carbon_Atlas_Final_Frontend.pdf` |
-| 17 页 PPT（Stage 深色版，含内嵌媒体） | ✅ 14.6 MB，S7 demo、S13 audio+video；S2 头像已按真人照片重画 | `deliverable/Carbon_Atlas_Deck.pptx` |
+| 17 页 PPT（Stage 深色版，含内嵌媒体） | ✅ 13.9 MB，S7 demo、S13 Patten audio+video；S2 头像已按真人照片重画 | `deliverable/Carbon_Atlas_Deck.pptx` |
 | 90 秒 demo 录屏 | ✅ 真实 MySQL build、Stage 主题 | `deliverable/carbon_atlas_demo_90s.mp4` |
 | 45 秒视频广告 | ✅（Patten 人声） | `deliverable/carbon_atlas_ad_45s_final.mp4` |
 | 30 秒音频广告 | ✅（Patten 人声） | `deliverable/audio_ad_30s_final.mp3` |
 | A3 海报 | ✅ | `deliverable/poster.png` / `.pdf` |
 | 9:23 讲稿包 | ✅ 8 页章节版 | `presentation/Carbon_Atlas_Chapters_and_Scripts.pdf` |
 | 成本效益 / GELSI | ✅ | `presentation/cost_benefit.xlsx` + deck S14/S15 |
-| 最终 Moodle ZIP | 🟡 等 Patten 人声后做最终重打包 | 由 Lead 生成 |
+| 最终 Moodle ZIP | ✅ 37.8 MB，已含 Patten 人声 | `submission/CDS3001_CarbonAtlas_DataFanatics.zip` |
 
 ## 本轮（2026-11-18 ~ 19）已修复的细节
 - 深色主题下 inline code 白底白字 → 改成深绿底象牙字；
