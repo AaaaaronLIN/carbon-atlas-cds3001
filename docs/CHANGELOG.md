@@ -1,6 +1,11 @@
 # Changelog
 
-## 2026-11-24 · v7.7（当前）
+## 2026-11-24 · v7.8（当前）
+- S17 加回品牌收尾：`Ask us anything — data, method, or the build.` + `See every tonne. Cut what matters.`
+- 保持无内部提问块；B9 仍在 LIN 主持卡/对方 Q&A
+- Deck / PDF / ZIP / repo 同步
+
+## 2026-11-24 · v7.7
 - S17 删除 “OUR QUESTION FOR ANOTHER GROUP” 块与副标题；只保留 Thank you / Questions. / 来源 / 地球
 - 向其他组的问题移到 LIN 主持 cue card/手机；在对方 Q&A 问（B9 仍满足）
 - Deck / PDF / ZIP / repo 同步
