@@ -1,6 +1,10 @@
 # Changelog
 
-## 2026-11-24 · v7.0（当前）
+## 2026-11-24 · v7.1（当前）
+- 新增 `presentation/S13_Media_Fallback_Card.pdf`（HUANG 一页 fallback 卡：内嵌→独立文件→口述）
+- 加入 repo / 最终 ZIP；不改 deck
+
+## 2026-11-24 · v7.0
 - **Patten 人声最终版**：30s audio + 45s video，已嵌入 S13；30/45 时长准确
 - 无音乐干净版（旧 music bed 含 TTS 残留，不使用）
 - 最终 ZIP 37.8 MB；repo 同步最终媒体/文档
