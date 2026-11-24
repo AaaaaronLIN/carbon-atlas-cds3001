@@ -1,6 +1,10 @@
 # Changelog
 
-## 2026-11-24 · v8.0（当前）
+## 2026-11-24 · v8.1（当前）
+- S7 小字改为 `Same five questions as slide 3 — then findings and method.`，更清楚且覆盖 findings/method
+- Deck / PDF / ZIP / repo 同步
+
+## 2026-11-24 · v8.0
 - 引用统一为 Carbon Monitor 数据集论文：**Sci Data 7, 392 (2020), doi:10.1038/s41597-020-00708-7**
 - 同步 deck S1/S15/S17、海报、front-end PDF、网站、8 页稿、docs
 - S17 最终：去掉重复小 logo；`Any questions?` + Q&A invite + tagline
