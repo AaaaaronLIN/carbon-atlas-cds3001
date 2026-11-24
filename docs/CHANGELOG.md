@@ -1,6 +1,12 @@
 # Changelog
 
-## 2026-11-24 · v7.8（当前）
+## 2026-11-24 · v7.9（当前）
+- S17 去掉重复的小 logo（logo_qa），保留右侧主视觉 + 页脚 brand mark
+- `Questions.` → `Any questions?`，更清楚
+- 保留 `Ask us anything — data, method, or the build.` + official tagline
+- Deck / PDF / ZIP / repo 同步
+
+## 2026-11-24 · v7.8
 - S17 加回品牌收尾：`Ask us anything — data, method, or the build.` + `See every tonne. Cut what matters.`
 - 保持无内部提问块；B9 仍在 LIN 主持卡/对方 Q&A
 - Deck / PDF / ZIP / repo 同步
