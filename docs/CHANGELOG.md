@@ -1,6 +1,11 @@
 # Changelog
 
-## 2026-11-24 · v7.2（当前）
+## 2026-11-24 · v7.3（当前）
+- **S7 demo 升级 1920×1080 / 30fps / H.264 CRF18**（7.2 MB，90.0s）；全屏更清晰
+- S13 保持 720p（源素材 720p，upscale 无真实收益）
+- Deck / PDF / final ZIP / repo 同步
+
+## 2026-11-24 · v7.2
 - S7 90s demo 重录：修复 dark-theme inline code 白底白字（旧视频 baked bug）；重嵌，90.0s
 - S13 audio poster 从黑色占位替换为品牌 `PLAY 30 s AUDIO` 按钮；媒体点击不变
 - Deck PDF / final ZIP / repo 同步
