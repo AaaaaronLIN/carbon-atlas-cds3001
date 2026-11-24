@@ -1,6 +1,11 @@
 # Changelog
 
-## 2026-11-24 · v7.1（当前）
+## 2026-11-24 · v7.2（当前）
+- S7 90s demo 重录：修复 dark-theme inline code 白底白字（旧视频 baked bug）；重嵌，90.0s
+- S13 audio poster 从黑色占位替换为品牌 `PLAY 30 s AUDIO` 按钮；媒体点击不变
+- Deck PDF / final ZIP / repo 同步
+
+## 2026-11-24 · v7.1
 - 新增 `presentation/S13_Media_Fallback_Card.pdf`（HUANG 一页 fallback 卡：内嵌→独立文件→口述）
 - 加入 repo / 最终 ZIP；不改 deck
 
