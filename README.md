@@ -105,7 +105,7 @@ python3 app.py
 
 ### 3.6 Q&A 的“向其他组提问”
 - 课程要求：**每组至少向其他组问一个问题，否则扣分**（p.20 + 录音补充）。
-- 做法：S17 显示问题，但在**下一组/其他组的 Q&A** 举手或等停顿问；**不在我们自己的 1 分钟 Q&A 里问**。
+- 做法：**S17 不显示问题**（只保留 Thank you / Questions）；问题放在 LIN 的主持 cue card/手机，在**下一组/其他组的 Q&A** 举手或等停顿问；**不在我们自己的 1 分钟 Q&A 里问**。
 - 问题：**“Which chart in your dashboard changed a decision — and how would you prove it?”**
 
 ### 3.7 Demo：默认播 S7 90 秒录屏（不打开网站）

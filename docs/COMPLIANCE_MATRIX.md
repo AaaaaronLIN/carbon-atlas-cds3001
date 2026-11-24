@@ -31,7 +31,7 @@
 | B6 | 至少一张**结论**投影片 | 摘要 p.9 | ✅ | deck S16 |
 | B7 | **Poster + Audio + Video** 三媒体齐全 | 摘要 p.8；L17 slide 23 | ✅ | 海报 ✅；30 s Patten audio ✅；45 s Patten video ✅；已嵌入 deck S13；无音乐干净版 |
 | B8 | 成本效益：成本/售价/利润、假设标明、不冒充收益 | 摘要 p.8 | ✅ | `cost_benefit.xlsx`：一次性 HK$31,746、年收益 HK$23,000、回本 16.6 月、3 年净 +37,254、2.17:1；"NOT claiming" 页 |
-| B9 | 每小组**至少向其他组问一个问题** | 摘要 p.11（录音补充） | ✅ | Host 在 Q&A 提问："Which chart in your dashboard changed a decision — and how would you prove it?" |
+| B9 | 每小组**至少向其他组问一个问题** | 摘要 p.11（录音补充） | ✅ | LIN 主持卡/手机备忘；在对方 Q&A 问："Which chart in your dashboard changed a decision — and how would you prove it?"；S17 不显示 |
 | B10 | 手机静音/震动、专注、准时 | 摘要 p.10–11 | ⬜ | 排演时作为团队纪律 |
 | B11 | 全体出席（缺席上限 10/20） | 摘要 p.5；L17 slide 19 | ⬜ | 确认 5 人当天到场 |
 

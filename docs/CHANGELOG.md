@@ -1,6 +1,11 @@
 # Changelog
 
-## 2026-11-24 · v7.6（当前）
+## 2026-11-24 · v7.7（当前）
+- S17 删除 “OUR QUESTION FOR ANOTHER GROUP” 块与副标题；只保留 Thank you / Questions. / 来源 / 地球
+- 向其他组的问题移到 LIN 主持 cue card/手机；在对方 Q&A 问（B9 仍满足）
+- Deck / PDF / ZIP / repo 同步
+
+## 2026-11-24 · v7.6
 - S2 团队卡顺序改为演讲顺序：LIN → WENG → LAI → HUANG → LIM
 - 仅移动整卡（头像/姓名/角色/学号/quote），不改文字/样式；页脚与页码未动
 - Deck / PDF / ZIP / repo 同步

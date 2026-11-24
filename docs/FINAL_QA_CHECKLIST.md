@@ -27,7 +27,7 @@
 | B6 | 结论投影片 ≥1 | ✅ | deck S16 |
 | B7 | Poster + Audio + Video 三媒体 | ✅ | `ads/poster.png|pdf`、`ads/audio/audio_ad_30s_final.mp3`、`ads/video/carbon_atlas_ad_45s_final.mp4`；Patten 人声，无音乐 |
 | B8 | 成本效益 + 假设 | ✅ | `cost_benefit.xlsx`；S14 |
-| B9 | 向其他组提问 ≥1 | ✅ | Host 的 Q&A 问题已写在 `01_host…` |
+| B9 | 向其他组提问 ≥1 | ✅ | LIN 主持卡/手机；对方 Q&A 问；S17 只留 Questions |
 | B10 | 手机静音/准时 | ⬜ | 团队纪律 |
 | B11 | 全员出席 | ⬜ | 团队确认 |
 
